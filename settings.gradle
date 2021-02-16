@@ -1,0 +1,7 @@
+include ':TypefacePlugin'
+include ':ConstraintLayoutCompat'
+include ':AopPlugin'
+include ':StandardPlugin'
+include ':PaintedSkin'
+include ':Demo'
+rootProject.name = "ThemeSkinDemo"
