@@ -15,7 +15,10 @@ ext {
     ]
 
     Tripartite_Library = [
-            aspectJ     : "org.aspectj:aspectjrt:1.8.9",
+            aspectJ     : "org.aspectj:aspectjrt:1.9.6",
+            auto_service: "com.google.auto.service:auto-service:1.0-rc7",
+            javapoet    : "com.squareup:javapoet:1.13.0",
+            common      : "com.google.auto:auto-common:0.11",
     ]
 
 }

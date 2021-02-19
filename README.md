@@ -56,7 +56,6 @@ buildscript {
     }
     dependencies {
         ...
-        classpath 'org.aspectj:aspectjtools:1.8.+' // 如果不使用AutoPlugin可以不添加
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10' // 如果不使用AutoPlugin可以不添加
     }
     allprojects {
@@ -85,6 +84,7 @@ dependencies {
     implementation 'org.alee.component:PaintedSkin:TAG'
 	implementation 'org.alee.component:Skin-StandardPlugin:TAG'
 	// StandardPlugin 与 AutoPlugin 只需添加一个
+	annotationProcessor 'org.alee.component:Skin-AutoPlugin:TAG'
 	implementation 'org.alee.component:Skin-AutoPlugin:TAG'
 	//如果项目中的ConstraintLayout需要换肤则引入
 	implementation 'org.alee.component:Skin-ConstraintLayoutCompat:TAG'
@@ -171,7 +171,7 @@ final class OptionFactory implements IOptionFactory {
 
 ```java
 @Skin
-final class OptionFactory implements IOptionFactory {
+public final class OptionFactory implements IOptionFactory {
     @Override
     public int defaultTheme() {
         return 0;
@@ -264,7 +264,7 @@ class NightOption implements IThemeSkinOption {
         textView.setTextColor(getResources().getColor(R.color.textColor));
         textView.setText("动态创建View参与换肤");
         WindowManager.getInstance().getWindowProxy(getContext()).addEnabledThemeSkinView(textView, new SkinElement("textColor", R.color.textColor));
-        ((LinearLayout) rootView.findViewById(R.id.ly_container)).addView(textView);
+        layout.addView(textView);
 ```
 
 ---

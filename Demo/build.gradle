@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'android-aspectjx'
 }
 
 android {
@@ -34,7 +35,11 @@ android {
 }
 
 dependencies {
+    annotationProcessor  project(path: ':Library:Plugin:AopPlugin')
     implementation rootProject.ext.Official_Library["appcompat"]
     implementation rootProject.ext.Official_Library["constraintlayout"]
     implementation 'com.google.android.material:material:1.1.0'
+    implementation   project(path: ':Library:PaintedSkin')
+    implementation   project(path: ':Library:Plugin:AopPlugin')
+    implementation   project(path: ':Library:ConstraintLayoutCompat')
 }

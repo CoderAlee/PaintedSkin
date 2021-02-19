@@ -6,7 +6,7 @@ buildscript {
     repositories(warehouse_address)
     dependencies {
         classpath "com.android.tools.build:gradle:${gradle_tool}"
-        classpath "org.aspectj:aspectjtools:${aspectj_tools}"
+//        classpath "org.aspectj:aspectjtools:${aspectj_tools}"
         classpath "com.hujiang.aspectjx:gradle-android-plugin-aspectjx:${aspectjx_plugin}"
     }
 }
