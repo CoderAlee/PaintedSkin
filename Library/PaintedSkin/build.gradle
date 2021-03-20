@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven'
 }
 
 android {
@@ -34,5 +35,21 @@ android {
 
 dependencies {
     compileOnly rootProject.ext.Official_Library["appcompat"]
-    implementation files('libs\\Reflex-1.5.0-all.jar')
+    compileOnly files('libs\\Reflex-1.5.0-all.jar')
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = "org.alee.component"
+            pom.artifactId = "paintedskin"
+            pom.version = "3.0.3"
+            repository(url: "http://192.168.21.220:8081/repository/Component/") {
+                authentication(userName: "peix", password: "peix")
+            }
+            snapshotRepository(url: "http://192.168.21.220:8081/repository/maven-snapshots") {
+                authentication(userName: "peix", password: "peix")
+            }
+        }
+    }
 }

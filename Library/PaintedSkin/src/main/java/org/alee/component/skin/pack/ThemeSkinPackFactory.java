@@ -20,8 +20,8 @@ public final class ThemeSkinPackFactory {
     public static void loadThemeSkinPack(@NonNull Context context, ILoadThemeSkinObserver observer, List<String> pathList) {
         LoadThemeSkinQueue queue = new LoadThemeSkinQueue(context);
         BaseThemeSkinPack defaultPack = new DefaultThemeSkinPack();
+        queue.addTask(defaultPack);
         if (null == pathList) {
-            queue.addTask(defaultPack);
             queue.performTask(defaultPack, observer);
             return;
         }

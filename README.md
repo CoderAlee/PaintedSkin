@@ -4,7 +4,7 @@
 ```
 [![Gitter](https://badges.gitter.im/Android-PaintedSkin/community.svg)](https://gitter.im/Android-PaintedSkin/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ![build](https://img.shields.io/badge/build-passing-green.svg)
-[![skin-support](https://img.shields.io/badge/release-v3.0.0-green.svg)
+[![skin-support](https://img.shields.io/badge/release-v3.0.3-green.svg)
 ![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ---
@@ -13,7 +13,7 @@
 
 |模块|说明|版本|
 |---|---|---|
-|PaintedSkin|换肤核心包|3.0.0@aar|
+|PaintedSkin|换肤核心包|3.0.3@aar|
 |StandardPlugin|减少代码侵入的插件包|1.0.0@aar|
 |AutoPlugin|全自动插件包|1.0.0@aar|
 |ConstraintLayoutCompat|ConstraintLayout换肤兼容包|1.0.0@aar|
@@ -81,15 +81,16 @@ android {
 ``` gradle
 
 dependencies {
-    implementation 'org.alee.component:PaintedSkin:TAG'
-	implementation 'org.alee.component:Skin-StandardPlugin:TAG'
+    implementation 'org.alee.component:paintedskin:TAG'
+    implementation 'org.alee.component:reflex:2.0.0'
+	implementation 'org.alee.component:skin-standard-plugin:TAG'
 	// StandardPlugin 与 AutoPlugin 只需添加一个
-	annotationProcessor 'org.alee.component:Skin-AutoPlugin:TAG'
-	implementation 'org.alee.component:Skin-AutoPlugin:TAG'
+	annotationProcessor 'org.alee.component:skin-auto-plugin:TAG'
+	implementation 'org.alee.component:skin-auto-plugin:TAG'
 	//如果项目中的ConstraintLayout需要换肤则引入
-	implementation 'org.alee.component:Skin-ConstraintLayoutCompat:TAG'
+	implementation 'org.alee.component:skin-constraintlayout-compat:TAG'
 	// 需要替换字体库时引入
-	implementation 'org.alee.component:TypefacePlugin:TAG'
+	implementation 'org.alee.component:typeface-plugin:TAG'
     ...
 }
 ```
@@ -102,7 +103,7 @@ dependencies {
 
 > `SkinMode.REPLACE_ALL`  所有View都参与换肤，添加了**skin:enable="false"** 标签的View 将不参与换肤;
 >
-> ``SkinMode.REPLACE_MARKED` 只有添加了**skin:enable="true"**标签的View才参与换肤；
+> `SkinMode.REPLACE_MARKED` 只有添加了**skin:enable="true"**标签的View才参与换肤；
 >
 > `SkinMode.DO_NOT_REPLACE` 任何View都不参与换肤
 

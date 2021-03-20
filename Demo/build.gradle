@@ -35,11 +35,18 @@ android {
 }
 
 dependencies {
-    annotationProcessor  project(path: ':Library:Plugin:AopPlugin')
     implementation rootProject.ext.Official_Library["appcompat"]
     implementation rootProject.ext.Official_Library["constraintlayout"]
     implementation 'com.google.android.material:material:1.1.0'
-    implementation   project(path: ':Library:PaintedSkin')
-    implementation   project(path: ':Library:Plugin:AopPlugin')
     implementation   project(path: ':Library:ConstraintLayoutCompat')
+    implementation files('libs\\Reflex-1.5.0-all.jar')
+    if (CITING_THE_SOURCE_CODE.toBoolean()){
+        implementation   project(path: ':Library:PaintedSkin')
+        annotationProcessor  project(path: ':Library:Plugin:AopPlugin')
+        implementation   project(path: ':Library:Plugin:AopPlugin')
+    }else {
+        implementation 'org.alee.component:painted-skin:3.0.0'
+        annotationProcessor 'org.alee.component:skin-auto-plugin:1.0.0'
+        implementation 'org.alee.component:skin-auto-plugin:1.0.0'
+    }
 }

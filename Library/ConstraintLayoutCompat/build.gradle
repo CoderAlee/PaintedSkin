@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven'
 }
 
 android {
@@ -36,4 +37,20 @@ dependencies {
     compileOnly rootProject.ext.Official_Library["appcompat"]
     compileOnly rootProject.ext.Official_Library["constraintlayout"]
     compileOnly project(path: ':Library:PaintedSkin')
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = "org.alee.component"
+            pom.artifactId = "skin-constraintlayout-compat"
+            pom.version = "1.0.0"
+            repository(url: "http://192.168.21.220:8081/repository/Component/") {
+                authentication(userName: "peix", password: "peix")
+            }
+            snapshotRepository(url: "http://192.168.21.220:8081/repository/maven-snapshots") {
+                authentication(userName: "peix", password: "peix")
+            }
+        }
+    }
 }

@@ -623,7 +623,7 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
      * @return true:有效
      */
     protected boolean isValidColorStateList(ColorStateList stateList) {
-        return null != stateList && -1 != stateList.getDefaultColor();
+        return null != stateList;
     }
 
     /**

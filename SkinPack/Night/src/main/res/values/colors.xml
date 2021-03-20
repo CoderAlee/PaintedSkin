@@ -3,5 +3,6 @@
     <color name="teal_200">#6495ED</color>
     <color name="teal_700">#0000FF</color>
     <color name="black">#FFFFFFFF</color>
+    <color name="white">#FF000000</color>
     <color name="yellow">#FFA500</color>
 </resources>

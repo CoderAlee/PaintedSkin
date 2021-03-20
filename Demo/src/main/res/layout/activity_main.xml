@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tv_test1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -19,17 +20,49 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:enabled="true"
-        android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:clickable="true"
+        android:enabled="true"
         android:text="测试可变颜色"
         android:textColor="@color/text"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_test1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_test9_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="--------------- 测试.9背景 ---------------"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:src="@mipmap/icon_setting"
+        android:layout_width="108dp"
+        android:id="@+id/iv_setting"
+        app:layout_constraintTop_toBottomOf="@id/ll_test1"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="138dp"/>
 
     <Button
         android:id="@+id/btn_switch"
@@ -39,8 +72,9 @@
         android:text="换肤"
         android:textColor="@color/black"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_setting"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 </androidx.constraintlayout.widget.ConstraintLayout>

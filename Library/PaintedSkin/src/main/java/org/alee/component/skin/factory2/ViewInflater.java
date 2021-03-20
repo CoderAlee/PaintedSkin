@@ -87,8 +87,6 @@ final class ViewInflater {
                     try {
                         temp = inflater.createView(name, BASICS_PREFIX, attributeSet);
                     } catch (Throwable ignored) {
-                        ignored.printStackTrace();
-                        PrintUtil.getInstance().printD("未能成功创建 [ " + BASICS_PREFIX + name + " ]");
                     }
                 }
                 if (null == temp) {
@@ -96,15 +94,13 @@ final class ViewInflater {
                         try {
                             temp = inflater.createView(name, prefix, attributeSet);
                         } catch (Throwable ignored) {
-                            ignored.printStackTrace();
-                            PrintUtil.getInstance().printD("未能成功创建 [ " + prefix + name + " ]");
+                        }
+
+                        if (null == temp) {
+                            temp = createView(context, name, prefix, attributeSet);
                         }
                         if (null != temp) {
-                            return temp;
-                        }
-                        temp = createView(context, name, prefix, attributeSet);
-                        if (null != temp) {
-                            return temp;
+                            break;
                         }
                     }
                 }
@@ -113,6 +109,9 @@ final class ViewInflater {
             }
         } catch (Exception e) {
             PrintUtil.getInstance().printE(e);
+        }
+        if (null == temp) {
+            PrintUtil.getInstance().printD("未能成功创建 [ " + name + " ]");
         }
         return temp;
     }

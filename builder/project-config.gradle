@@ -7,7 +7,7 @@ ext {
 
     warehouse_address = {
 		google()
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
 		maven { url 'https://jitpack.io' }
 		maven {	url 'https://plugins.gradle.org/m2/'}
         mavenCentral()

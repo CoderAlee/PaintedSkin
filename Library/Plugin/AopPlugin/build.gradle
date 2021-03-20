@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven'
 }
 
 android {
@@ -36,5 +37,25 @@ dependencies {
     implementation rootProject.ext.Tripartite_Library["aspectJ"]
     implementation project(path: ':Library:Plugin:AopPlugin:AopPlugin-Compiler')
     compileOnly rootProject.ext.Official_Library["appcompat"]
-    compileOnly project(path: ':Library:PaintedSkin')
+    if (CITING_THE_SOURCE_CODE.toBoolean()){
+        compileOnly project(path: ':Library:PaintedSkin')
+    }else {
+        compileOnly 'org.alee.component:painted-skin:3.0.0'
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = "org.alee.component"
+            pom.artifactId = "skin-auto-plugin"
+            pom.version = "1.0.0"
+            repository(url: "http://192.168.21.220:8081/repository/Component/") {
+                authentication(userName: "peix", password: "peix")
+            }
+            snapshotRepository(url: "http://192.168.21.220:8081/repository/maven-snapshots") {
+                authentication(userName: "peix", password: "peix")
+            }
+        }
+    }
 }
