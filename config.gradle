@@ -10,15 +10,25 @@ ext {
     ]
 
     Official_Library = [
-            appcompat: "androidx.appcompat:appcompat:1.1.0",
-            constraintlayout:"androidx.constraintlayout:constraintlayout:1.1.3",
+            appcompat       : "androidx.appcompat:appcompat:1.1.0",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:1.1.3",
     ]
 
     Tripartite_Library = [
-            aspectJ     : "org.aspectj:aspectjrt:1.9.6",
-            auto_service: "com.google.auto.service:auto-service:1.0-rc7",
-            javapoet    : "com.squareup:javapoet:1.13.0",
-            common      : "com.google.auto:auto-common:0.11",
+            aspectJ                     : "org.aspectj:aspectjrt:1.9.6",
+            auto_service                : "com.google.auto.service:auto-service:1.0-rc7",
+            javapoet                    : "com.squareup:javapoet:1.13.0",
+            common                      : "com.google.auto:auto-common:0.11",
+            reflex                      : "org.alee.component:reflex:2.0.0",
+            paintedskin                 : "org.alee.component:paintedskin:3.1.0",
+            skin_constraintlayout_compat: "org.alee.component:skin-constraintlayout-compat:1.1.0",
+            skin_auto_plugin            : "org.alee.component:skin-auto-plugin:1.1.0",
+            skin_standard_plugin        : "org.alee.component:skin-standard-plugin:1.1.0",
+            skin_auto_plugin            : "org.alee.component:skin-auto-plugin:1.2.0",
+            typeface_plugin             : "org.alee.component:typeface-plugin:1.1.0",
+            base_compiler               : "org.alee.component:base-compiler:1.0.0",
+            skin_apa                    : "org.alee.component:skin-apa:1.0.0",
+            skin_apc                    : "org.alee.component:skin-apc:1.0.0",
     ]
 
 }

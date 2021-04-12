@@ -38,15 +38,18 @@ dependencies {
     implementation rootProject.ext.Official_Library["appcompat"]
     implementation rootProject.ext.Official_Library["constraintlayout"]
     implementation 'com.google.android.material:material:1.1.0'
-    implementation   project(path: ':Library:ConstraintLayoutCompat')
-    implementation files('libs\\Reflex-1.5.0-all.jar')
-    if (CITING_THE_SOURCE_CODE.toBoolean()){
-        implementation   project(path: ':Library:PaintedSkin')
-        annotationProcessor  project(path: ':Library:Plugin:AopPlugin')
-        implementation   project(path: ':Library:Plugin:AopPlugin')
-    }else {
-        implementation 'org.alee.component:painted-skin:3.0.0'
-        annotationProcessor 'org.alee.component:skin-auto-plugin:1.0.0'
-        implementation 'org.alee.component:skin-auto-plugin:1.0.0'
+    implementation rootProject.ext.Tripartite_Library["reflex"]
+    if (CITING_THE_SOURCE_CODE.toBoolean()) {
+        implementation project(path: ':Library:PaintedSkin')
+        annotationProcessor project(path: ':Library:Plugin:AopPlugin')
+        implementation project(path: ':Library:Plugin:AopPlugin')
+        implementation project(path: ':Library:ConstraintLayoutCompat')
+    } else {
+        implementation rootProject.ext.Tripartite_Library["paintedskin"]
+        implementation rootProject.ext.Tripartite_Library["skin_constraintlayout_compat"]
+        annotationProcessor rootProject.ext.Tripartite_Library["skin_auto_plugin"]
+        implementation rootProject.ext.Tripartite_Library["skin_auto_plugin"]
+//        implementation rootProject.ext.Tripartite_Library["skin_standard_plugin"]
+        implementation rootProject.ext.Tripartite_Library["typeface_plugin"]
     }
 }

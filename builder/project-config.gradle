@@ -1,13 +1,16 @@
 ext {
     aspectj_tools = '1.8.+'
     aspectjx_plugin = '2.0.10'
-    gradle_tool = '4.0.0'
+    gradle_tool = '4.1.0'
     mx_maven_url = "http://192.168.21.220:8081"
     mx_maven = "$mx_maven_url/repository/maven-public"
 
     warehouse_address = {
 		google()
         maven { url 'https://maven.aliyun.com/repository/public' }
+		maven {
+        url  "https://dl.bintray.com/l15040565660/Alee" 
+    }
 		maven { url 'https://jitpack.io' }
 		maven {	url 'https://plugins.gradle.org/m2/'}
         mavenCentral()

@@ -1,0 +1,24 @@
+{
+  "name": "Painted-Skin",
+  "version": "1.0.0",
+  "description": "#### Description  一款解决Android App 换肤框架，极低的侵入性与学习成本。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:MingYu-Liu/Painted-Skin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "release": "standard-version"
+  }
+}

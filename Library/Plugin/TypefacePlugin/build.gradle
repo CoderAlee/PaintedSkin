@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'maven'
+    id 'com.github.panpf.bintray-publish'
 }
 
 android {
@@ -37,7 +38,11 @@ android {
 
 dependencies {
     compileOnly rootProject.ext.Official_Library["appcompat"]
-    compileOnly project(path: ':Library:PaintedSkin')
+    if (CITING_THE_SOURCE_CODE.toBoolean()){
+        compileOnly project(path: ':Library:PaintedSkin')
+    }else {
+        compileOnly  rootProject.ext.Tripartite_Library["paintedskin"]
+    }
 }
 
 uploadArchives {
@@ -54,4 +59,14 @@ uploadArchives {
             }
         }
     }
+}
+
+publish {
+    userOrg = 'l15040565660'  //Bintray用户名
+    repoName = 'Alee' //Bintray上创建的仓库名,如果你创建的是maven,则可以干掉这一行,否则需要指定仓库名
+    groupId = 'org.alee.component' //依赖名implementation 'x:y:z'中的x
+    artifactId = 'typeface-plugin' //依赖名implementation 'x:y:z'中的y
+    publishVersion = '1.1.0' //依赖名implementation 'x:y:z'中的z
+    desc = '替换字体插件' //对这个库的描述
+    website = 'https://github.com/CoderAlee/PaintedSkin' //VCS地址,填写该项目的Github地址就好
 }
