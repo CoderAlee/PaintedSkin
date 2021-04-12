@@ -1,4 +1,6 @@
 include ':Demo'
+include ':SkinPack:Night'
+project(':SkinPack:Night').projectDir = new File(settingsDir, '/SkinPack/Night')
 if (CITING_THE_SOURCE_CODE.toBoolean()){
     include ':Library:PaintedSkin'
     project(':Library:PaintedSkin').projectDir = new File(settingsDir, '/Library/PaintedSkin')
@@ -16,7 +18,5 @@ if (CITING_THE_SOURCE_CODE.toBoolean()){
     project(':Library:Plugin:AopPlugin:AopPlugin-Compiler').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin/AopPlugin-Compiler')
     include ':Library:Plugin:AopPlugin:AopPlugin-Annotation'
     project(':Library:Plugin:AopPlugin:AopPlugin-Annotation').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin/AopPlugin-Annotation')
-    include ':SkinPack:Night'
-    project(':SkinPack:Night').projectDir = new File(settingsDir, '/SkinPack/Night')
 }
 rootProject.name = "PaintedSkinDemo"
