@@ -4,7 +4,7 @@
 ```
 [![Gitter](https://badges.gitter.im/Android-PaintedSkin/community.svg)](https://gitter.im/Android-PaintedSkin/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ![build](https://img.shields.io/badge/build-passing-green.svg)
-[![skin-support](https://img.shields.io/badge/release-v3.0.3-green.svg)
+[![skin-support](https://img.shields.io/badge/release-v3.1.0-green.svg)
 ![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ---
@@ -13,13 +13,38 @@
 
 |模块|说明|版本|
 |---|---|---|
-|PaintedSkin|换肤核心包|3.0.3@aar|
-|StandardPlugin|减少代码侵入的插件包|1.0.0@aar|
-|AutoPlugin|全自动插件包|1.0.0@aar|
-|ConstraintLayoutCompat|ConstraintLayout换肤兼容包|1.0.0@aar|
-|TypefacePlugin|替换字体插件|1.0.0@aar|
+|PaintedSkin|换肤核心包|3.1.0|
+|StandardPlugin|减少代码侵入的插件包|1.1.0|
+|AutoPlugin|全自动插件包|1.2.0|
+|ConstraintLayoutCompat|ConstraintLayout换肤兼容包|1.1.0|
+|TypefacePlugin|替换字体插件|1.1.0|
 
 ---
+
+#### 版本履历
+
+##### V3.0.0
+
+- [x]   支持AndroidX.
+
+##### V3.0.1
+
+- [x]   修复无法初始化默认皮肤包问题.
+
+##### V3.0.2
+
+- [x]    剥离对于Reflex库的依赖.
+
+##### V3.0.3
+
+- [x]   减少无意义日志输出、优化对于ColorStateList的加载.
+
+##### V3.1.0
+
+- [x]  剥离依赖，上传至公网Maven
+
+---
+
 
 ## 框架实现原理
 
@@ -51,7 +76,7 @@
 
 buildscript {
     repositories {
-    	maven { url "http://192.168.21.220:8081/repository/maven-public" }
+    	maven { url "https://dl.bintray.com/l15040565660/Alee" } // 必须添加
 		maven { url "https://jitpack.io" } // 如果不使用AutoPlugin可以不添加
     }
     dependencies {
@@ -59,7 +84,7 @@ buildscript {
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10' // 如果不使用AutoPlugin可以不添加
     }
     allprojects {
-    	maven { url "http://192.168.21.220:8081/repository/maven-public"  }
+    	maven { url "https://dl.bintray.com/l15040565660/Alee" } // 必须添加
 		maven { url "https://jitpack.io" } // 如果不使用AutoPlugin可以不添加
     }
 }
@@ -81,8 +106,10 @@ android {
 ``` gradle
 
 dependencies {
+	// 依赖的反射库
+ 	implementation 'org.alee.component:reflex:2.0.0'
+ 	// 核心库
     implementation 'org.alee.component:paintedskin:TAG'
-    implementation 'org.alee.component:reflex:2.0.0'
 	implementation 'org.alee.component:skin-standard-plugin:TAG'
 	// StandardPlugin 与 AutoPlugin 只需添加一个
 	annotationProcessor 'org.alee.component:skin-auto-plugin:TAG'
