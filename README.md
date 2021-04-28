@@ -4,7 +4,7 @@
 ```
 [![Gitter](https://badges.gitter.im/Android-PaintedSkin/community.svg)](https://gitter.im/Android-PaintedSkin/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ![build](https://img.shields.io/badge/build-passing-green.svg)
-[![skin-support](https://img.shields.io/badge/release-v3.1.0-green.svg)
+[![skin-support](https://img.shields.io/badge/release-v3.1.2-green.svg)
 ![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ---
@@ -13,7 +13,7 @@
 
 |模块|说明|版本|
 |---|---|---|
-|PaintedSkin|换肤核心包|3.1.0|
+|PaintedSkin|换肤核心包|3.1.2|
 |StandardPlugin|减少代码侵入的插件包|1.1.0|
 |AutoPlugin|全自动插件包|1.2.0|
 |ConstraintLayoutCompat|ConstraintLayout换肤兼容包|1.1.0|
@@ -43,8 +43,15 @@
 
 - [x]  剥离依赖，上传至公网Maven
 
----
+##### V3.1.1
 
+- [x]  优化动态添加换肤View设置资源时机
+
+##### V3.1.2
+
+- [x]  修复由于`onThemeSkinSwitch`函数内部逻辑错误导致换肤失败问题
+
+---
 
 ## 框架实现原理
 
