@@ -8,6 +8,9 @@ package org.alee.component.skin.service;
  *
  *********************************************************/
 public interface ISwitchThemeSkinObserver {
-
+    /**
+     * 当主题皮肤切换时被回调
+     * <p> 注意此回调可能为非UI线程
+     */
     void onThemeSkinSwitch();
 }

@@ -20,7 +20,7 @@ ext {
             javapoet                    : "com.squareup:javapoet:1.13.0",
             common                      : "com.google.auto:auto-common:0.11",
             reflex                      : "org.alee.component:reflex:2.0.0",
-            paintedskin                 : "org.alee.component:paintedskin:3.1.0",
+            paintedskin                 : "org.alee.component:paintedskin:3.1.2",
             skin_standard_plugin        : "org.alee.component:skin-standard-plugin:1.1.0",
             skin_auto_plugin            : "org.alee.component:skin-auto-plugin:1.2.0",
             skin_constraintlayout_compat: "org.alee.component:skin-constraintlayout-compat:1.1.0",

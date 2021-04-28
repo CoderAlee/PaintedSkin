@@ -14,6 +14,7 @@ import org.alee.component.skin.parser.DefaultExecutorBuilder;
 import org.alee.component.skin.parser.IThemeSkinExecutorBuilder;
 import org.alee.component.skin.parser.ThemeSkinExecutorBuilderManager;
 import org.alee.component.skin.util.ObjectMemoryAddress;
+import org.alee.component.skin.util.PrintUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -173,7 +174,11 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
             }
         }
         for (ISwitchThemeSkinObserver observer : tempList) {
-            observer.onThemeSkinSwitch();
+            try {
+                observer.onThemeSkinSwitch();
+            }catch (Throwable e){
+                PrintUtil.getInstance().printE(e);
+            }
         }
     }
 
