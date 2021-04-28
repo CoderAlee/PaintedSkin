@@ -9,9 +9,7 @@ import androidx.annotation.NonNull;
 import org.alee.component.skin.collection.SparseStack;
 import org.alee.component.skin.executor.ISkinExecutor;
 import org.alee.component.skin.executor.SkinElement;
-import org.alee.component.skin.pack.IThemeSkinPack;
 import org.alee.component.skin.parser.ThemeSkinExecutorBuilderManager;
-import org.alee.component.skin.service.ThemeSkinService;
 import org.alee.component.skin.util.ObjectMemoryAddress;
 import org.alee.component.skin.util.PrintUtil;
 
@@ -38,9 +36,7 @@ final class ViewWarehouse implements IEnableThemeSkinViewWarehouse {
             skinView.addSkinExecutor(executor);
             mViewStack.put(ObjectMemoryAddress.getAddress(view), skinView);
         }
-        if (IThemeSkinPack.SkinPackType.TYPE_DEFAULT != ThemeSkinService.getInstance().getCurrentThemeSkinPack().getSkinPackType()) {
-            executor.execute(view);
-        }
+        executor.execute(view);
     }
 
     /**
