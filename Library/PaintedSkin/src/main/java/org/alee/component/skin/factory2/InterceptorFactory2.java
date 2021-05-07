@@ -8,6 +8,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.alee.component.skin.util.PrintUtil;
+
 /**********************************************************
  *
  * @author: MY.Liu
@@ -44,6 +46,8 @@ abstract class InterceptorFactory2 extends BaseFactory2 {
         }
         if (null != temp) {
             distinguishEnableSkin(temp, attributeSet);
+        }else {
+            PrintUtil.getInstance().printD("未能成功创建 [ " + name + " ]");
         }
         return temp;
     }

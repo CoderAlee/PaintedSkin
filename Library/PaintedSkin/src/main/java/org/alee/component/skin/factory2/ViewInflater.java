@@ -110,9 +110,6 @@ final class ViewInflater {
         } catch (Exception e) {
             PrintUtil.getInstance().printE(e);
         }
-        if (null == temp) {
-            PrintUtil.getInstance().printD("未能成功创建 [ " + name + " ]");
-        }
         return temp;
     }
 

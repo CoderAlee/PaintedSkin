@@ -4,8 +4,8 @@
 ```
 [![Gitter](https://badges.gitter.im/Android-PaintedSkin/community.svg)](https://gitter.im/Android-PaintedSkin/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ![build](https://img.shields.io/badge/build-passing-green.svg)
-[![skin-support](https://img.shields.io/badge/release-v3.1.2-green.svg)
-![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![](https://jitpack.io/v/CoderAlee/PaintedSkin.svg)](https://jitpack.io/#CoderAlee/PaintedSkin)
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ---
 
@@ -13,11 +13,11 @@
 
 |模块|说明|版本|
 |---|---|---|
-|PaintedSkin|换肤核心包|3.1.2|
-|StandardPlugin|减少代码侵入的插件包|1.1.0|
-|AutoPlugin|全自动插件包|1.2.0|
-|ConstraintLayoutCompat|ConstraintLayout换肤兼容包|1.1.0|
-|TypefacePlugin|替换字体插件|1.1.0|
+|PaintedSkin|换肤核心包|3.1.6|
+|StandardPlugin|减少代码侵入的插件包|3.1.6|
+|AutoPlugin|全自动插件包|3.1.6|
+|ConstraintLayoutCompat|ConstraintLayout换肤兼容包|3.1.6|
+|TypefacePlugin|替换字体插件|3.1.6|
 
 ---
 
@@ -51,6 +51,14 @@
 
 - [x]  修复由于`onThemeSkinSwitch`函数内部逻辑错误导致换肤失败问题
 
+##### V3.1.5
+
+- [x]  JCenter移植至Jitpack
+
+##### V3.1.6
+
+- [x]  移除冗余Log
+
 ---
 
 ## 框架实现原理
@@ -83,16 +91,14 @@
 
 buildscript {
     repositories {
-    	maven { url "https://dl.bintray.com/l15040565660/Alee" } // 必须添加
-		maven { url "https://jitpack.io" } // 如果不使用AutoPlugin可以不添加
+		maven { url "https://jitpack.io" } // 必须添加
     }
     dependencies {
         ...
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10' // 如果不使用AutoPlugin可以不添加
     }
     allprojects {
-    	maven { url "https://dl.bintray.com/l15040565660/Alee" } // 必须添加
-		maven { url "https://jitpack.io" } // 如果不使用AutoPlugin可以不添加
+		maven { url "https://jitpack.io" } // 必须添加
     }
 }
 
@@ -114,17 +120,17 @@ android {
 
 dependencies {
 	// 依赖的反射库
- 	implementation 'org.alee.component:reflex:2.0.0'
+ 	implementation 'com.github.CoderAlee:Reflex:1.2.0'
  	// 核心库
-    implementation 'org.alee.component:paintedskin:TAG'
-	implementation 'org.alee.component:skin-standard-plugin:TAG'
+    implementation 'com.github.CoderAlee.PaintedSkin:PaintedSkin:TAG'
+	implementation 'com.github.CoderAlee.PaintedSkin:StandardPlugin:TAG'
 	// StandardPlugin 与 AutoPlugin 只需添加一个
-	annotationProcessor 'org.alee.component:skin-auto-plugin:TAG'
-	implementation 'org.alee.component:skin-auto-plugin:TAG'
+	annotationProcessor 'com.github.CoderAlee.PaintedSkin:AopPlugin:TAG'
+	implementation 'com.github.CoderAlee.PaintedSkin:AopPlugin:TAG'
 	//如果项目中的ConstraintLayout需要换肤则引入
-	implementation 'org.alee.component:skin-constraintlayout-compat:TAG'
+	implementation 'com.github.CoderAlee.PaintedSkin:ConstraintLayoutCompat:TAG'
 	// 需要替换字体库时引入
-	implementation 'org.alee.component:typeface-plugin:TAG'
+	implementation 'com.github.CoderAlee.PaintedSkin:TypefacePlugin:TAG'
     ...
 }
 ```
