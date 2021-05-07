@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'maven'
-    id 'com.github.panpf.bintray-publish'
+    id 'com.github.dcendents.android-maven'
 }
 
 android {
@@ -42,28 +42,28 @@ dependencies {
     }
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            pom.groupId = "org.alee.component"
-            pom.artifactId = "skin-standard-plugin"
-            pom.version = "1.0.0"
-            repository(url: "http://192.168.21.220:8081/repository/Component/") {
-                authentication(userName: "peix", password: "peix")
-            }
-            snapshotRepository(url: "http://192.168.21.220:8081/repository/maven-snapshots") {
-                authentication(userName: "peix", password: "peix")
-            }
-        }
-    }
-}
-
-publish {
-    userOrg = 'l15040565660'  //Bintray用户名
-    repoName = 'Alee' //Bintray上创建的仓库名,如果你创建的是maven,则可以干掉这一行,否则需要指定仓库名
-    groupId = 'org.alee.component' //依赖名implementation 'x:y:z'中的x
-    artifactId = 'skin-standard-plugin' //依赖名implementation 'x:y:z'中的y
-    publishVersion = '1.1.0' //依赖名implementation 'x:y:z'中的z
-    desc = '减少代码侵入的插件包' //对这个库的描述
-    website = 'https://github.com/CoderAlee/PaintedSkin' //VCS地址,填写该项目的Github地址就好
-}
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            pom.groupId = "org.alee.component"
+//            pom.artifactId = "skin-standard-plugin"
+//            pom.version = "1.0.0"
+//            repository(url: "http://192.168.21.220:8081/repository/Component/") {
+//                authentication(userName: "peix", password: "peix")
+//            }
+//            snapshotRepository(url: "http://192.168.21.220:8081/repository/maven-snapshots") {
+//                authentication(userName: "peix", password: "peix")
+//            }
+//        }
+//    }
+//}
+//
+//publish {
+//    userOrg = 'l15040565660'  //Bintray用户名
+//    repoName = 'Alee' //Bintray上创建的仓库名,如果你创建的是maven,则可以干掉这一行,否则需要指定仓库名
+//    groupId = 'org.alee.component' //依赖名implementation 'x:y:z'中的x
+//    artifactId = 'skin-standard-plugin' //依赖名implementation 'x:y:z'中的y
+//    publishVersion = '1.1.0' //依赖名implementation 'x:y:z'中的z
+//    desc = '减少代码侵入的插件包' //对这个库的描述
+//    website = 'https://github.com/CoderAlee/PaintedSkin' //VCS地址,填写该项目的Github地址就好
+//}
