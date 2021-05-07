@@ -20,14 +20,14 @@ ext {
             javapoet                    : "com.squareup:javapoet:1.13.0",
             common                      : "com.google.auto:auto-common:0.11",
             reflex                      : "com.github.CoderAlee:Reflex:1.2.0",
-            paintedskin                 : "org.alee.component:paintedskin:3.1.2",
-            skin_standard_plugin        : "org.alee.component:skin-standard-plugin:1.1.0",
-            skin_auto_plugin            : "org.alee.component:skin-auto-plugin:1.2.0",
-            skin_constraintlayout_compat: "org.alee.component:skin-constraintlayout-compat:1.1.0",
-            typeface_plugin             : "org.alee.component:typeface-plugin:1.1.0",
-            base_compiler               : "org.alee.component:base-compiler:1.0.0",
-            skin_apa                    : "org.alee.component:skin-apa:1.0.0",
-            skin_apc                    : "org.alee.component:skin-apc:1.0.0",
+            paintedskin                 : "com.gitee.MingYu-Liu.Painted-Skin:PaintedSkin:V3.1.4",
+            skin_standard_plugin        : "com.gitee.MingYu-Liu.Painted-Skin:StandardPlugin:V3.1.4",
+            skin_auto_plugin            : "com.gitee.MingYu-Liu.Painted-Skin:AopPlugin:V3.1.4",
+            skin_constraintlayout_compat: "com.gitee.MingYu-Liu.Painted-Skin:ConstraintLayoutCompat:V3.1.4",
+            typeface_plugin             : "com.gitee.MingYu-Liu.Painted-Skin:TypefacePlugin:V3.1.4",
+            base_compiler               : "com.gitee.MingYu-Liu.Painted-Skin:Base-Compiler:V3.1.4",
+            skin_apa                    : "com.gitee.MingYu-Liu.Painted-Skin:AopPlugin-Annotation:V3.1.4",
+            skin_apc                    : "com.gitee.MingYu-Liu.Painted-Skin:AopPlugin-Compiler:V3.1.4",
     ]
 
 }

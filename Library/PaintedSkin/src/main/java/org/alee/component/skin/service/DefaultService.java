@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.alee.component.skin.BuildConfig;
 import org.alee.component.skin.collection.SparseStack;
 import org.alee.component.skin.factory2.ExpandedFactory2Manager;
 import org.alee.component.skin.pack.ILoadThemeSkinObserver;
@@ -59,6 +60,7 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
     public IThemeSkinService init(@NonNull Context context, @NonNull IOptionFactory optionFactory) {
         mContext = context;
         mOptionFactory = optionFactory;
+        PrintUtil.getInstance().printI("V3.1.5");
         addThemeSkinExecutorBuilder(new DefaultExecutorBuilder());
         switchThemeSkin(optionFactory.defaultTheme());
         return null;
