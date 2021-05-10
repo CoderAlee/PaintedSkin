@@ -58,15 +58,10 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
         if (isBadResources(ResourcesType.COLOR_STATE_LIST, resId)) {
             return requiredDefaultColorStateList(resId);
         }
-        ColorStateList temp = mResourcesBuffer.getColorStateList(resId);
-        if (isValidColorStateList(temp)) {
-            return temp;
-        }
+        ColorStateList temp = null;
         try {
             temp = getColorStateList(resId, getTheme());
-            if (isValidColorStateList(temp)) {
-                mResourcesBuffer.addColorStateList(resId, temp);
-            } else {
+            if (!isValidColorStateList(temp)) {
                 addBadResources(ResourcesType.COLOR_STATE_LIST, resId);
             }
         } catch (Throwable e) {
@@ -91,15 +86,10 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
         if (isBadResources(ResourcesType.COLOR_STATE_LIST, resourcesName)) {
             return requiredDefaultColorStateList(resourcesName);
         }
-        ColorStateList temp = mResourcesBuffer.getColorStateList(resourcesName);
-        if (isValidColorStateList(temp)) {
-            return temp;
-        }
+        ColorStateList temp = null;
         try {
             temp = getColorStateList(resourcesName, getTheme());
-            if (isValidColorStateList(temp)) {
-                mResourcesBuffer.addColorStateList(resourcesName, temp);
-            } else {
+            if (!isValidColorStateList(temp)) {
                 addBadResources(ResourcesType.COLOR_STATE_LIST, resourcesName);
             }
         } catch (Throwable e) {
@@ -248,15 +238,10 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
         if (isBadResources(ResourcesType.DRAWABLE, resId)) {
             return requiredDefaultDrawable(resId);
         }
-        Drawable temp = mResourcesBuffer.getDrawable(resId);
-        if (isValidDrawable(temp)) {
-            return temp;
-        }
+        Drawable temp = null;
         try {
             temp = getDrawable(resId, getTheme());
-            if (isValidDrawable(temp)) {
-                mResourcesBuffer.addDrawable(resId, temp);
-            } else {
+            if (!isValidDrawable(temp)) {
                 addBadResources(ResourcesType.DRAWABLE, resId);
             }
         } catch (Throwable e) {
@@ -281,15 +266,10 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
         if (isBadResources(ResourcesType.DRAWABLE, resourcesName)) {
             return requiredDefaultDrawable(resourcesName);
         }
-        Drawable temp = mResourcesBuffer.getDrawable(resourcesName);
-        if (isValidDrawable(temp)) {
-            return temp;
-        }
+        Drawable temp = null;
         try {
             temp = getDrawable(resourcesName, getTheme());
-            if (isValidDrawable(temp)) {
-                mResourcesBuffer.addDrawable(resourcesName, temp);
-            } else {
+            if (!isValidDrawable(temp)) {
                 addBadResources(ResourcesType.DRAWABLE, resourcesName);
             }
         } catch (Throwable e) {
@@ -307,15 +287,10 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
         if (isBadResources(ResourcesType.MIPMAP, resId)) {
             return requiredDefaultDrawable(resId);
         }
-        Drawable temp = mResourcesBuffer.getDrawable(resId);
-        if (isValidDrawable(temp)) {
-            return temp;
-        }
+        Drawable temp = null;
         try {
             temp = getMipmap(resId, getTheme());
-            if (isValidDrawable(temp)) {
-                mResourcesBuffer.addDrawable(resId, temp);
-            } else {
+            if (!isValidDrawable(temp)) {
                 addBadResources(ResourcesType.MIPMAP, resId);
             }
         } catch (Throwable e) {
@@ -334,15 +309,10 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
         if (isBadResources(ResourcesType.MIPMAP, resourcesName)) {
             return requiredDefaultDrawable(resourcesName);
         }
-        Drawable temp = mResourcesBuffer.getDrawable(resourcesName);
-        if (isValidDrawable(temp)) {
-            return temp;
-        }
+        Drawable temp = null;
         try {
             temp = getMipmap(resourcesName, getTheme());
-            if (isValidDrawable(temp)) {
-                mResourcesBuffer.addDrawable(resourcesName, temp);
-            } else {
+            if (!isValidDrawable(temp)) {
                 addBadResources(ResourcesType.MIPMAP, resourcesName);
             }
         } catch (Throwable e) {
@@ -366,15 +336,10 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
         if (isBadResources(ResourcesType.DRAWABLE, resId)) {
             return requiredDefaultBitmap(resId);
         }
-        Bitmap temp = mResourcesBuffer.getBitmap(resId);
-        if (isValidBitmap(temp)) {
-            return temp;
-        }
+        Bitmap temp = null;
         try {
             temp = getBitmapForDrawable(resId, getTheme());
-            if (isValidBitmap(temp)) {
-                mResourcesBuffer.addBitmap(resId, temp);
-            } else {
+            if (!isValidBitmap(temp)) {
                 addBadResources(ResourcesType.DRAWABLE, resId);
             }
         } catch (Throwable e) {
@@ -399,15 +364,10 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
         if (isBadResources(ResourcesType.DRAWABLE, resourcesName)) {
             return requiredDefaultBitmap(resourcesName);
         }
-        Bitmap temp = mResourcesBuffer.getBitmap(resourcesName);
-        if (isValidBitmap(temp)) {
-            return temp;
-        }
+        Bitmap temp = null;
         try {
             temp = getBitmapForDrawable(resourcesName, getTheme());
-            if (isValidBitmap(temp)) {
-                mResourcesBuffer.addBitmap(resourcesName, temp);
-            } else {
+            if (!isValidBitmap(temp)) {
                 addBadResources(ResourcesType.DRAWABLE, resourcesName);
             }
         } catch (Throwable e) {
@@ -448,16 +408,6 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
     }
 
     /**
-     * 校验是否为有效位图
-     *
-     * @param bitmap 位图
-     * @return true:有效
-     */
-    protected boolean isValidBitmap(Bitmap bitmap) {
-        return null != bitmap;
-    }
-
-    /**
      * 获取位图
      *
      * @param resId 原始资源id
@@ -467,6 +417,16 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
      */
     protected abstract @Nullable
     Bitmap getBitmapForDrawable(@DrawableRes int resId, Resources.Theme theme) throws Throwable;
+
+    /**
+     * 校验是否为有效位图
+     *
+     * @param bitmap 位图
+     * @return true:有效
+     */
+    protected boolean isValidBitmap(Bitmap bitmap) {
+        return null != bitmap;
+    }
 
     /**
      * 获取图片
@@ -522,16 +482,6 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
     }
 
     /**
-     * 校验图片是否有效
-     *
-     * @param drawable 图片
-     * @return true: 有效
-     */
-    protected boolean isValidDrawable(Drawable drawable) {
-        return null != drawable;
-    }
-
-    /**
      * 获取图片
      *
      * @param resId 原始资源id
@@ -541,6 +491,16 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
      */
     protected abstract @Nullable
     Drawable getDrawable(@DrawableRes int resId, Resources.Theme theme) throws Throwable;
+
+    /**
+     * 校验图片是否有效
+     *
+     * @param drawable 图片
+     * @return true: 有效
+     */
+    protected boolean isValidDrawable(Drawable drawable) {
+        return null != drawable;
+    }
 
     /**
      * 需要默认的颜色
@@ -617,16 +577,6 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
     }
 
     /**
-     * 验证是否为有效的颜色状态集合
-     *
-     * @param stateList {@link ColorStateList}
-     * @return true:有效
-     */
-    protected boolean isValidColorStateList(ColorStateList stateList) {
-        return null != stateList;
-    }
-
-    /**
      * 获取状态颜色集合
      *
      * @param resId 原始资源Id
@@ -636,6 +586,16 @@ public abstract class BaseSkinResourcesProvider implements ISkinResourcesProvide
      */
     protected abstract @Nullable
     ColorStateList getColorStateList(@ColorRes int resId, @NonNull Resources.Theme theme) throws Throwable;
+
+    /**
+     * 验证是否为有效的颜色状态集合
+     *
+     * @param stateList {@link ColorStateList}
+     * @return true:有效
+     */
+    protected boolean isValidColorStateList(ColorStateList stateList) {
+        return null != stateList;
+    }
 
     /**
      * 记录一条无法获取到的资源
