@@ -13,11 +13,11 @@
 
 |模块|说明|版本|
 |---|---|---|
-|PaintedSkin|换肤核心包|3.1.6|
-|StandardPlugin|减少代码侵入的插件包|3.1.6|
-|AutoPlugin|全自动插件包|3.1.6|
-|ConstraintLayoutCompat|ConstraintLayout换肤兼容包|3.1.6|
-|TypefacePlugin|替换字体插件|3.1.6|
+|PaintedSkin|换肤核心包|[![](https://jitpack.io/v/CoderAlee/PaintedSkin.svg)](https://jitpack.io/#CoderAlee/PaintedSkin)|
+|StandardPlugin|减少代码侵入的插件包|[![](https://jitpack.io/v/CoderAlee/PaintedSkin.svg)](https://jitpack.io/#CoderAlee/PaintedSkin)|
+|AutoPlugin|全自动插件包|[![](https://jitpack.io/v/CoderAlee/PaintedSkin.svg)](https://jitpack.io/#CoderAlee/PaintedSkin)|
+|ConstraintLayoutCompat|ConstraintLayout换肤兼容包|[![](https://jitpack.io/v/CoderAlee/PaintedSkin.svg)](https://jitpack.io/#CoderAlee/PaintedSkin)|
+|TypefacePlugin|替换字体插件|[![](https://jitpack.io/v/CoderAlee/PaintedSkin.svg)](https://jitpack.io/#CoderAlee/PaintedSkin)|
 
 ---
 
@@ -58,6 +58,11 @@
 ##### V3.1.6
 
 - [x]  移除冗余Log
+
+##### V3.1.7
+
+- [x]  修复由于缓存Drawable与ColorStateList导致得后加载资源状态异常问题
+
 
 ---
 
