@@ -1,5 +1,6 @@
 package org.alee.component.skin.page;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -38,6 +39,10 @@ abstract class BaseWindowProxy implements IWindowProxy {
     }
 
     void bindLayoutInflateFactory2(@NonNull LayoutInflater layoutInflater, @NonNull ExpandedFactory2Manager factory2Manager) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            adaptationQ(layoutInflater, factory2Manager);
+            return;
+        }
         LayoutInflater.Factory2 originalFactory2 = layoutInflater.getFactory2();
         LayoutInflaterMapping.mFactorySet.set(layoutInflater, false);
         LayoutInflaterMapping.mFactory2.set(layoutInflater, null);
@@ -50,6 +55,22 @@ abstract class BaseWindowProxy implements IWindowProxy {
             originalPrivateFactory2 = null;
         }
         layoutInflater.setFactory2(new ThemeSkinFactory2(new OriginalFactory2(originalFactory2, originalFactory2, originalPrivateFactory2, originalPrivateFactory2), factory2Manager, mEnableThemeSkinViewWarehouse));
+    }
+
+    private void adaptationQ(@NonNull LayoutInflater layoutInflater, @NonNull ExpandedFactory2Manager factory2Manager) {
+        LayoutInflater.Factory2 originalFactory2 = layoutInflater.getFactory2();
+        LayoutInflaterMapping.mFactory2.set(layoutInflater, null);
+        LayoutInflaterMapping.mFactory.set(layoutInflater, null);
+        if (originalFactory2 instanceof ThemeSkinFactory2) {
+            originalFactory2 = null;
+        }
+        LayoutInflater.Factory2 originalPrivateFactory2 = LayoutInflaterMapping.mPrivateFactory.get(layoutInflater);
+        if (originalPrivateFactory2 instanceof ThemeSkinFactory2) {
+            originalPrivateFactory2 = null;
+        }
+        ThemeSkinFactory2 factory2 = new ThemeSkinFactory2(new OriginalFactory2(originalFactory2, originalFactory2, originalPrivateFactory2, originalPrivateFactory2), factory2Manager, mEnableThemeSkinViewWarehouse);
+        LayoutInflaterMapping.mFactory2.set(layoutInflater, factory2);
+        LayoutInflaterMapping.mFactory.set(layoutInflater, factory2);
     }
 
     @Override

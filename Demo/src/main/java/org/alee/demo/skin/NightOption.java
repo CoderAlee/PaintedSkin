@@ -1,5 +1,7 @@
 package org.alee.demo.skin;
 
+import android.os.Build;
+
 import org.alee.component.skin.service.IThemeSkinOption;
 
 import java.util.LinkedHashSet;
@@ -15,7 +17,11 @@ final class NightOption implements IThemeSkinOption {
     @Override
     public LinkedHashSet<String> getStandardSkinPackPath() {
         LinkedHashSet<String> set = new LinkedHashSet<>();
-        set.add("/sdcard/night.skin");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            set.add("/storage/emulated/0/Android/data/org.alee.demo.skin/files/Documents/night.skin");
+        } else {
+            set.add("/sdcard/night.skin");
+        }
         return set;
     }
 }
