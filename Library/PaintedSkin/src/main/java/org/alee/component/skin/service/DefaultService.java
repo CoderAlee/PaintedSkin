@@ -60,7 +60,7 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
     public IThemeSkinService init(@NonNull Context context, @NonNull IOptionFactory optionFactory) {
         mContext = context;
         mOptionFactory = optionFactory;
-        PrintUtil.getInstance().printI("V3.1.8");
+        PrintUtil.getInstance().printI(BuildConfig.VERSION_NAME);
         addThemeSkinExecutorBuilder(new DefaultExecutorBuilder());
         switchThemeSkin(optionFactory.defaultTheme());
         return null;

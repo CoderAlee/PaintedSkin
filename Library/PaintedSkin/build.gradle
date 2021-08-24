@@ -19,7 +19,11 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            buildConfigField "String", "VERSION_NAME", "\"${LOCAL_VERSION_NAME}\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "VERSION_NAME", "\"${LOCAL_VERSION_NAME}\""
         }
     }
     compileOptions {
