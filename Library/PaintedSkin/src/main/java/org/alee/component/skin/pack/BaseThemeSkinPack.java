@@ -98,14 +98,14 @@ abstract class BaseThemeSkinPack implements IThemeSkinPack {
     @Nullable
     @Override
     public final ColorStateList getColorStateList(int resId) {
-        ColorStateList temp = null;
+        ColorStateList temp;
         if (isAvailable()) {
             temp = mSkinResourcesProvider.getColorStateList(resId);
             if (null != temp) {
                 return temp;
             }
         }
-        return null == mUnderpinThemeSkinPack ? temp : mUnderpinThemeSkinPack.getColorStateList(resId);
+        return null == mUnderpinThemeSkinPack ? null : mUnderpinThemeSkinPack.getColorStateList(resId);
     }
 
     /**
@@ -117,14 +117,14 @@ abstract class BaseThemeSkinPack implements IThemeSkinPack {
     @Nullable
     @Override
     public final ColorStateList getColorStateList(@NonNull String... resName) {
-        ColorStateList temp = null;
+        ColorStateList temp;
         if (isAvailable()) {
             temp = mSkinResourcesProvider.getColorStateList(resName);
             if (null != temp) {
                 return temp;
             }
         }
-        return null == mUnderpinThemeSkinPack ? temp : mUnderpinThemeSkinPack.getColorStateList(resName);
+        return null == mUnderpinThemeSkinPack ? null : mUnderpinThemeSkinPack.getColorStateList(resName);
     }
 
     /**
@@ -172,14 +172,14 @@ abstract class BaseThemeSkinPack implements IThemeSkinPack {
     @Nullable
     @Override
     public final Drawable getDrawable(int resId) {
-        Drawable drawable = null;
+        Drawable drawable;
         if (isAvailable()) {
             drawable = mSkinResourcesProvider.getDrawable(resId);
             if (null != drawable) {
                 return drawable;
             }
         }
-        return null == mUnderpinThemeSkinPack ? drawable : mUnderpinThemeSkinPack.getDrawable(resId);
+        return null == mUnderpinThemeSkinPack ? null : mUnderpinThemeSkinPack.getDrawable(resId);
     }
 
     /**
@@ -191,40 +191,40 @@ abstract class BaseThemeSkinPack implements IThemeSkinPack {
     @Nullable
     @Override
     public final Drawable getDrawable(String... resName) {
-        Drawable drawable = null;
+        Drawable drawable;
         if (isAvailable()) {
             drawable = mSkinResourcesProvider.getDrawable(resName);
             if (null != drawable) {
                 return drawable;
             }
         }
-        return null == mUnderpinThemeSkinPack ? drawable : mUnderpinThemeSkinPack.getDrawable(resName);
+        return null == mUnderpinThemeSkinPack ? null : mUnderpinThemeSkinPack.getDrawable(resName);
     }
 
     @Nullable
     @Override
     public final Drawable getMipmap(int resId) {
-        Drawable drawable = null;
+        Drawable drawable;
         if (isAvailable()) {
             drawable = mSkinResourcesProvider.getMipmap(resId);
             if (null != drawable) {
                 return drawable;
             }
         }
-        return null == mUnderpinThemeSkinPack ? drawable : mUnderpinThemeSkinPack.getMipmap(resId);
+        return null == mUnderpinThemeSkinPack ? null : mUnderpinThemeSkinPack.getMipmap(resId);
     }
 
     @Nullable
     @Override
     public final Drawable getMipmap(String... resName) {
-        Drawable drawable = null;
+        Drawable drawable;
         if (isAvailable()) {
             drawable = mSkinResourcesProvider.getMipmap(resName);
             if (null != drawable) {
                 return drawable;
             }
         }
-        return null == mUnderpinThemeSkinPack ? drawable : mUnderpinThemeSkinPack.getDrawable(resName);
+        return null == mUnderpinThemeSkinPack ? null : mUnderpinThemeSkinPack.getMipmap(resName);
     }
 
     /**
@@ -236,14 +236,14 @@ abstract class BaseThemeSkinPack implements IThemeSkinPack {
     @Nullable
     @Override
     public final Bitmap getBitmapForDrawable(int resId) {
-        Bitmap bitmap = null;
+        Bitmap bitmap;
         if (isAvailable()) {
             bitmap = mSkinResourcesProvider.getBitmapForDrawable(resId);
             if (null != bitmap) {
                 return bitmap;
             }
         }
-        return null == mUnderpinThemeSkinPack ? bitmap : mUnderpinThemeSkinPack.getBitmapForDrawable(resId);
+        return null == mUnderpinThemeSkinPack ? null : mUnderpinThemeSkinPack.getBitmapForDrawable(resId);
     }
 
     /**
@@ -255,14 +255,14 @@ abstract class BaseThemeSkinPack implements IThemeSkinPack {
     @Nullable
     @Override
     public final Bitmap getBitmapForDrawable(String... resName) {
-        Bitmap bitmap = null;
+        Bitmap bitmap;
         if (isAvailable()) {
             bitmap = mSkinResourcesProvider.getBitmapForDrawable(resName);
             if (null != bitmap) {
                 return bitmap;
             }
         }
-        return null == mUnderpinThemeSkinPack ? bitmap : mUnderpinThemeSkinPack.getBitmapForDrawable(resName);
+        return null == mUnderpinThemeSkinPack ? null : mUnderpinThemeSkinPack.getBitmapForDrawable(resName);
     }
 
     /**
