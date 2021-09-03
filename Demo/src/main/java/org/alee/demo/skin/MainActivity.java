@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinO
     }
 
     @Override
-    public void onThemeSkinSwitch() {
-        mLinearLayout.post(() -> mLinearLayout.setBackgroundColor(ThemeSkinService.getInstance().getCurrentThemeSkinPack().getColor(R.color.black)));
+    public void onThemeSkinSwitchRunOnUiThread() {
+        mLinearLayout.setBackgroundColor(ThemeSkinService.getInstance().getCurrentThemeSkinPack().getColor(R.color.black));
     }
 }

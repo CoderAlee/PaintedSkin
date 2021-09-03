@@ -68,7 +68,9 @@
 - [x]  修复由于Android Q及更高版本中限制非SDK接口访问导致的初始化崩溃问题
 - [x]  适配Android Q及更高版本文件目录分区访问
 
+##### V3.2.0
 
+- [x]  `ISwitchThemeSkinObserver`增加`onThemeSkinSwitchRunOnUiThread` 接口
 ---
 
 ## 框架实现原理
