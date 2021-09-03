@@ -6,12 +6,13 @@ ext {
             targetSdkVersion = 30,
             versionCode = LOCAL_VERSION_CODE as Integer,
             versionName = LOCAL_VERSION_NAME,
-            buildToolsVersion = "30.0.1",
+            buildToolsVersion = "31.0.0",
     ]
 
     Official_Library = [
-            appcompat       : "androidx.appcompat:appcompat:1.1.0",
-            constraintlayout: "androidx.constraintlayout:constraintlayout:1.1.3",
+            appcompat       : "androidx.appcompat:appcompat:1.3.1",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:2.0.4",
+            material        : "com.google.android.material:material:1.3.0",
     ]
 
     Tripartite_Library = [
