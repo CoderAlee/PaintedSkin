@@ -5,12 +5,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import org.alee.component.skin.executor.SkinElement;
 import org.alee.component.skin.page.WindowManager;
 import org.alee.component.skin.service.ISwitchThemeSkinObserver;
 import org.alee.component.skin.service.ThemeSkinService;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinObserver {
     private int mTheme = 0;
@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinO
             ThemeSkinService.getInstance().switchThemeSkin(mTheme);
         });
         onThemeSkinSwitch();
+
+        findViewById(R.id.txt_label_bkgtint).setOnClickListener(v -> {
+
+        });
     }
 
     @Override

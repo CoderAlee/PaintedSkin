@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@mipmap/bg_main">
@@ -16,37 +18,27 @@
             android:id="@+id/tv_test1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:text="测试普通颜色"
             android:textColor="@color/black"
-            android:textSize="36sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="36sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="20dp"
             android:clickable="true"
             android:enabled="true"
-            android:text="测试可变颜色"
+            android:text="测试点击可变颜色"
             android:textColor="@color/text"
-            android:textSize="36sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="36sp" />
 
         <LinearLayout
             android:id="@+id/ll_test1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bg_test9_selector"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,29 +56,35 @@
             android:layout_width="108dp"
             android:layout_height="138dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/icon_setting"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_test1" />
+            android:src="@mipmap/icon_setting" />
+
         <LinearLayout
             android:id="@+id/lly_root"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_setting"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/txt_label_bkgtint"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bkg_corner"
+            android:backgroundTint="@color/text"
+            android:padding="10dp"
+            android:text="BackGroundTint"
+            android:textColor="@color/black"
+            android:textSize="38sp" />
+
         <Button
+            android:layout_marginTop="20dp"
             android:id="@+id/btn_switch"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
             android:background="@drawable/bg_button"
             android:text="换肤"
             android:textColor="@color/black"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lly_root" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textSize="28sp" />
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>

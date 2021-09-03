@@ -5,9 +5,6 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RestrictTo;
-
 import org.alee.component.skin.R;
 import org.alee.component.skin.executor.BasicViewSkinExecutorFactory;
 import org.alee.component.skin.executor.ISkinExecutor;
@@ -17,6 +14,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
 
 /**********************************************************
  *
@@ -77,6 +77,19 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public static final String ATTRIBUTE_BUTTON = "button";
+
+    /**
+     * 换肤支持的属性 背景染色
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static final String ATTRIBUTE_BKG_TINT = "backgroundTint";
+
+    /**
+     * 换肤支持的属性 前景染色
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static final String ATTRIBUTE_FRG_TINT = "foregroundTint";
+
     private static final Map<Integer, String> SUPPORT_ATTR = new HashMap<>();
 
     static {
@@ -90,6 +103,8 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_divider, ATTRIBUTE_LIST_VIEW_DIVIDER);
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_src, ATTRIBUTE_SRC);
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_button, ATTRIBUTE_BUTTON);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_backgroundTint, ATTRIBUTE_BKG_TINT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_foregroundTint, ATTRIBUTE_FRG_TINT);
     }
 
     /**
