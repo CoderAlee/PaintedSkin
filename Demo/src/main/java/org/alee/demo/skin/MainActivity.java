@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinO
         findViewById(R.id.txt_label_bkgtint).setOnClickListener(v -> {
 
         });
+
+        findViewById(R.id.icon_frg).setOnClickListener(v -> {
+
+        });
     }
 
     @Override

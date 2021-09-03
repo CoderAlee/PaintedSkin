@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#EEE8AA</color>
+
+    <color name="common_frg">#CE93D8</color>
+    <color name="common_frg_press">#BA68C8</color>
 </resources>

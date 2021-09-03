@@ -90,6 +90,12 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public static final String ATTRIBUTE_FRG_TINT = "foregroundTint";
 
+    /**
+     * 换肤支持的属性 染色
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static final String ATTRIBUTE_TINT = "tint";
+
     private static final Map<Integer, String> SUPPORT_ATTR = new HashMap<>();
 
     static {
@@ -105,6 +111,8 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_button, ATTRIBUTE_BUTTON);
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_backgroundTint, ATTRIBUTE_BKG_TINT);
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_foregroundTint, ATTRIBUTE_FRG_TINT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_tint, ATTRIBUTE_TINT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_tint, ATTRIBUTE_TINT);
     }
 
     /**
