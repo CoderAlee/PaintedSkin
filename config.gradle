@@ -6,7 +6,7 @@ ext {
             targetSdkVersion = 30,
             versionCode = LOCAL_VERSION_CODE as Integer,
             versionName = LOCAL_VERSION_NAME,
-            buildToolsVersion = "31.0.0",
+            buildToolsVersion = "30.0.1",
     ]
 
     Official_Library = [
