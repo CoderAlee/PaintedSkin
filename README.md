@@ -71,6 +71,10 @@
 ##### V3.2.0
 
 - [x]  `ISwitchThemeSkinObserver`增加`onThemeSkinSwitchRunOnUiThread` 接口
+
+##### V3.3.2
+
+- [x]  支持`tint`属性换肤
 ---
 
 ## 框架实现原理
