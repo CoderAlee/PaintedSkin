@@ -1,5 +1,5 @@
 apply plugin: 'java-library'
-apply plugin: 'maven-publish'
+apply plugin: 'com.github.dcendents.android-maven'
 dependencies {
     api rootProject.ext.Tripartite_Library["auto_service"]
     api rootProject.ext.Tripartite_Library["javapoet"]
