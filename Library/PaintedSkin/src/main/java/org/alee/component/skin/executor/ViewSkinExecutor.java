@@ -10,7 +10,9 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BACKGROUND;
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BKG_TINT;
 import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_FOREGROUND;
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_FRG_TINT;
 
 /**********************************************************
  *
@@ -35,6 +37,12 @@ public class ViewSkinExecutor<T extends View> extends BaseSkinExecutor<T> {
                 } else {
                     applyColor(view, colorStateList.getDefaultColor(), attrName);
                 }
+                break;
+            case ATTRIBUTE_BKG_TINT:
+                view.setBackgroundTintList(colorStateList);
+                break;
+            case ATTRIBUTE_FRG_TINT:
+                view.setForegroundTintList(colorStateList);
                 break;
             default:
                 break;
