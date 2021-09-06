@@ -1,7 +1,6 @@
 apply plugin: 'java-library'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 dependencies {
-    compileOnly rootProject.ext.Official_Library["appcompat"]
     api rootProject.ext.Tripartite_Library["auto_service"]
     api rootProject.ext.Tripartite_Library["javapoet"]
     api rootProject.ext.Tripartite_Library["common"]

@@ -11,5 +11,9 @@
         <attr name="android:divider" />
         <attr name="android:button" />
         <attr name="android:progressDrawable" />
+        <attr name="android:backgroundTint" />
+        <attr name="android:foregroundTint" />
+        <attr name="tint" />
+        <attr name="android:tint" />
     </declare-styleable>
 </resources>

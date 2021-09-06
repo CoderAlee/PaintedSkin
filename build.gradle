@@ -6,13 +6,11 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://jitpack.io' }
         maven {	url 'https://plugins.gradle.org/m2/'}
+        gradlePluginPortal()
         mavenCentral()
-        maven { url 'https://maven.google.com' }
-        jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0"
-//        classpath "org.aspectj:aspectjtools:${aspectj_tools}"
+        classpath 'com.android.tools.build:gradle:7.0.2'
         classpath "com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10"
         classpath 'com.github.panpf.bintray-publish:bintray-publish:1.0.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
@@ -25,9 +23,8 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://jitpack.io' }
         maven {	url 'https://plugins.gradle.org/m2/'}
+        gradlePluginPortal()
         mavenCentral()
-        maven { url 'https://maven.google.com' }
-        jcenter()
     }
     tasks.withType(Javadoc) {
         options.addStringOption('Xdoclint:none', '-quiet')

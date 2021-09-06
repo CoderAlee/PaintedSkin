@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BasicSupportAttr">
+        <attr name="android:background" />
+        <attr name="android:foreground" />
+        <attr name="android:textColor" />
+        <attr name="android:textColorHint" />
+        <attr name="android:textColorHighlight" />
+        <attr name="android:textColorLink" />
+        <attr name="android:src" />
+        <attr name="android:divider" />
+        <attr name="android:button" />
+        <attr name="android:progressDrawable" />
+    </declare-styleable>
+</resources>

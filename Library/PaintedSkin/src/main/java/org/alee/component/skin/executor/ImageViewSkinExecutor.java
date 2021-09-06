@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_TINT;
+
 /**********************************************************
  *
  * @author: MY.Liu
@@ -36,6 +38,9 @@ public class ImageViewSkinExecutor<T extends ImageView> extends ViewSkinExecutor
                 } else {
                     applyColor(view, colorStateList.getDefaultColor(), attrName);
                 }
+                break;
+            case ATTRIBUTE_TINT:
+                view.setImageTintList(colorStateList);
                 break;
             default:
                 break;
