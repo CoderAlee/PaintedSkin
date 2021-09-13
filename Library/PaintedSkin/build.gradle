@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.library'
-    id 'maven'
-    id 'com.github.dcendents.android-maven'
+    id 'maven-publish'
 }
 
 android {
@@ -41,6 +40,20 @@ android {
 dependencies {
     compileOnly rootProject.ext.Official_Library["appcompat"]
     compileOnly rootProject.ext.Tripartite_Library["reflex"]
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.CoderAlee'
+                artifactId = 'PaintedSkin'
+                version = '3.3.3'
+            }
+        }
+    }
 }
 
 //uploadArchives {
