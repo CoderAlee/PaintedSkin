@@ -11,12 +11,15 @@ compileJava {
     targetCompatibility = '1.8'
 }
 
-//publish {
-//    userOrg = 'l15040565660'  //Bintray用户名
-//    repoName = 'Alee' //Bintray上创建的仓库名,如果你创建的是maven,则可以干掉这一行,否则需要指定仓库名
-//    groupId = 'org.alee.component' //依赖名implementation 'x:y:z'中的x
-//    artifactId = 'base-compiler' //依赖名implementation 'x:y:z'中的y
-//    publishVersion = '1.0.0' //依赖名implementation 'x:y:z'中的z
-//    desc = '注解解析器基础封装' //对这个库的描述
-//    website = 'https://github.com/CoderAlee/PaintedSkin' //VCS地址,填写该项目的Github地址就好
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'org.alee.component'
+//                artifactId = 'base-compiler'
+//                version = '2.0.0'
+//            }
+//        }
+//    }
 //}
