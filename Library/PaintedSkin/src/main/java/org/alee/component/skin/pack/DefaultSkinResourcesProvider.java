@@ -57,12 +57,6 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
         return BitmapFactory.decodeResource(getThemeSkinResources(), resId);
     }
 
-    @Nullable
-    @Override
-    protected Drawable getMipmap(int resId, Resources.Theme theme) throws Throwable {
-        return getDrawable(resId, theme);
-    }
-
     /**
      * 获取图片
      *
@@ -74,6 +68,9 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
     @Nullable
     @Override
     protected Drawable getDrawable(int resId, Resources.Theme theme) throws Throwable {
+        if (!isValidResourcesId(resId)) {
+            return requiredDefaultDrawable(resId);
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return getThemeSkinResources().getDrawable(resId, theme);
         } else {
@@ -128,7 +125,7 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
     @Nullable
     @Override
     protected Drawable getMipmap(@Nullable String resName, Resources.Theme theme) throws Throwable {
-        return getMipmap(getTargetResourcesId(ResourcesType.MIPMAP, resName), theme);
+        return getDrawable(getTargetResourcesId(ResourcesType.MIPMAP, resName), theme);
     }
 
     @Override
