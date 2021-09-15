@@ -75,6 +75,10 @@
 ##### V3.3.2
 
 - [x]  支持`tint`属性换肤
+
+##### V3.3.3
+
+- [x]  修改`artifactId`，并修复一些已知问题
 ---
 
 ## 框架实现原理
@@ -138,15 +142,15 @@ dependencies {
 	// 依赖的反射库
  	implementation 'com.github.CoderAlee:Reflex:1.2.0'
  	// 核心库
-    implementation 'com.github.CoderAlee.PaintedSkin:PaintedSkin:TAG'
-	implementation 'com.github.CoderAlee.PaintedSkin:StandardPlugin:TAG'
+    implementation 'com.github.CoderAlee.PaintedSkin:painted-skin:TAG'
+	implementation 'com.github.CoderAlee.PaintedSkin:standard-plugin:TAG'
 	// StandardPlugin 与 AutoPlugin 只需添加一个
-	annotationProcessor 'com.github.CoderAlee.PaintedSkin:AopPlugin:TAG'
-	implementation 'com.github.CoderAlee.PaintedSkin:AopPlugin:TAG'
+	annotationProcessor 'com.github.CoderAlee.PaintedSkin:auto-plugin:TAG'
+	implementation 'com.github.CoderAlee.PaintedSkin:auto-plugin:TAG'
 	//如果项目中的ConstraintLayout需要换肤则引入
-	implementation 'com.github.CoderAlee.PaintedSkin:ConstraintLayoutCompat:TAG'
+	implementation 'com.github.CoderAlee.PaintedSkin:constraintlayout-compat:TAG'
 	// 需要替换字体库时引入
-	implementation 'com.github.CoderAlee.PaintedSkin:TypefacePlugin:TAG'
+	implementation 'com.github.CoderAlee.PaintedSkin:typeface-plugin:TAG'
     ...
 }
 ```
