@@ -87,11 +87,18 @@
             android:textSize="38sp"
             app:tint="@color/frg_test" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:background="@color/yellow"
+            android:layout_height="wrap_content">
         <LinearLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:paddingBottom="20dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -115,7 +122,7 @@
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:layout_marginTop="20dp"

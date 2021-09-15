@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinO
     }
 
     private void updateFace() {
-        mOutFace.setImageDrawable(ThemeSkinService.getInstance().getCurrentThemeSkinPack().getMipmap(R.drawable.outline_face));
-        mOutFaceName.setImageDrawable(ThemeSkinService.getInstance().getCurrentThemeSkinPack().getMipmap("outline_face"));
+        mOutFace.setImageDrawable(ThemeSkinService.getInstance().getCurrentThemeSkinPack().getDrawable(R.drawable.outline_face));
+        mOutFaceName.setImageDrawable(ThemeSkinService.getInstance().getCurrentThemeSkinPack().getDrawable("outline_face"));
         mOutAr.setImageDrawable(ThemeSkinService.getInstance().getCurrentThemeSkinPack().getMipmap(R.mipmap.outline_view_in_ar));
         mOutArName.setImageDrawable(ThemeSkinService.getInstance().getCurrentThemeSkinPack().getMipmap("outline_view_in_ar"));
     }
