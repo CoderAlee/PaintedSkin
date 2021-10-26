@@ -4,9 +4,8 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import org.alee.component.skin.util.task.TaskQueue;
-import org.alee.component.skin.util.task.template.ITask;
-import org.alee.component.skin.util.task.template.ITaskQueue;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiFunction;
 
 /**********************************************************
  *
@@ -15,28 +14,28 @@ import org.alee.component.skin.util.task.template.ITaskQueue;
  * @description: xxxx
  *
  *********************************************************/
-final class LoadThemeSkinQueue {
+final class LoadThemeSkinQueue24 {
     private final Context mContext;
+    private CompletableFuture<Boolean> mCompletableFuture;
     private IThemeSkinPack mThemeSkinPack;
     private ILoadThemeSkinObserver mLoadThemeSkinObserver;
-    private ITaskQueue mTaskQueue;
 
-    LoadThemeSkinQueue(@NonNull Context context) {
+    LoadThemeSkinQueue24(@NonNull Context context) {
         mContext = context;
     }
 
     void addTask(@NonNull BaseThemeSkinPack skinPack) {
-        if (null == mTaskQueue) {
-            mTaskQueue = new TaskQueue().beginTask(new LoadThemeSkinTask(skinPack, mContext));
+        if (null == mCompletableFuture) {
+            mCompletableFuture = CompletableFuture.supplyAsync(new LoadThemeSkinTask24(skinPack, mContext));
             return;
         }
-        mTaskQueue.then(new DependentTask(skinPack, mContext));
+        mCompletableFuture = mCompletableFuture.handle(new DependentTask(skinPack, mContext));
     }
 
     void performTask(@NonNull IThemeSkinPack skinPack, ILoadThemeSkinObserver observer) {
         mThemeSkinPack = skinPack;
         mLoadThemeSkinObserver = observer;
-        mTaskQueue.execute().whenComplete(success -> {
+        mCompletableFuture.whenComplete((aBoolean, throwable) -> {
             if (null == mLoadThemeSkinObserver) {
                 return;
             }
@@ -44,7 +43,7 @@ final class LoadThemeSkinQueue {
         });
     }
 
-    private static final class DependentTask implements ITask {
+    private static final class DependentTask implements BiFunction<Boolean, Throwable, Boolean> {
         private final BaseThemeSkinPack mThemeSkinPack;
         private final Context mContext;
 
@@ -53,15 +52,9 @@ final class LoadThemeSkinQueue {
             mContext = context;
         }
 
-        /**
-         * 执行任务
-         *
-         * @return 是否执行成功
-         * @throws Throwable 一切异常
-         */
         @Override
-        public boolean doWork() throws Throwable {
-            return new LoadThemeSkinTask(mThemeSkinPack, mContext).doWork();
+        public Boolean apply(Boolean aBoolean, Throwable throwable) {
+            return new LoadThemeSkinTask24(mThemeSkinPack, mContext).get();
         }
     }
 }

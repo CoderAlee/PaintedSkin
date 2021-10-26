@@ -13,9 +13,9 @@ import android.util.LruCache;
 import androidx.annotation.NonNull;
 
 import org.alee.component.skin.util.PrintUtil;
-import org.alee.component.skin.util.task.template.ITask;
 
 import java.io.File;
+import java.util.function.Supplier;
 
 /**********************************************************
  *
@@ -24,7 +24,7 @@ import java.io.File;
  * @description: 主题皮肤加载任务
  *
  *********************************************************/
-final class LoadThemeSkinTask implements ITask {
+final class LoadThemeSkinTask24 implements Supplier<Boolean> {
 
     private static final LruCache<String, ISkinResourcesProvider> CACHE = new LruCache<>(1 << 5);
 
@@ -32,19 +32,18 @@ final class LoadThemeSkinTask implements ITask {
 
     private final Context mContext;
 
-    LoadThemeSkinTask(@NonNull BaseThemeSkinPack themeSkinPack, @NonNull Context context) {
+    LoadThemeSkinTask24(@NonNull BaseThemeSkinPack themeSkinPack, @NonNull Context context) {
         mThemeSkinPack = themeSkinPack;
         mContext = context;
     }
 
     /**
-     * 执行任务
+     * Gets a result.
      *
-     * @return 是否执行成功
-     * @throws Throwable 一切异常
+     * @return a result
      */
     @Override
-    public boolean doWork() throws Throwable {
+    public Boolean get() {
         if (IThemeSkinPack.SkinPackType.TYPE_CUSTOMIZE == mThemeSkinPack.getSkinPackType()) {
             return true;
         }

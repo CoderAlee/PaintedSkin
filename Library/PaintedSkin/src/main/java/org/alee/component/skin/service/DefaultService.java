@@ -68,7 +68,6 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
 
     private void restoreDefaultThemeSkin() {
         ThemeSkinPackFactory.loadThemeSkinPack(mContext, this, null);
-        //        ThemeSkinPackFactoryMapping.loadThemeSkinPack.call(mContext, this, null);
     }
 
     /**

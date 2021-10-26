@@ -4,8 +4,10 @@
 ```
 [![Gitter](https://badges.gitter.im/Android-PaintedSkin/community.svg)](https://gitter.im/Android-PaintedSkin/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ![build](https://img.shields.io/badge/build-passing-green.svg)
+![](https://img.shields.io/badge/minSDK-19+-orange.svg)
 [![](https://jitpack.io/v/CoderAlee/PaintedSkin.svg)](https://jitpack.io/#CoderAlee/PaintedSkin)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
 
 ---
 
@@ -27,46 +29,9 @@
 
 - [x]   支持AndroidX.
 
-##### V3.0.1
-
-- [x]   修复无法初始化默认皮肤包问题.
-
-##### V3.0.2
-
-- [x]    剥离对于Reflex库的依赖.
-
-##### V3.0.3
-
-- [x]   减少无意义日志输出、优化对于ColorStateList的加载.
-
 ##### V3.1.0
 
 - [x]  剥离依赖，上传至公网Maven
-
-##### V3.1.1
-
-- [x]  优化动态添加换肤View设置资源时机
-
-##### V3.1.2
-
-- [x]  修复由于`onThemeSkinSwitch`函数内部逻辑错误导致换肤失败问题
-
-##### V3.1.5
-
-- [x]  JCenter移植至Jitpack
-
-##### V3.1.6
-
-- [x]  移除冗余Log
-
-##### V3.1.7
-
-- [x]  修复由于缓存Drawable与ColorStateList导致得后加载资源状态异常问题
-
-##### V3.1.8
-
-- [x]  修复由于Android Q及更高版本中限制非SDK接口访问导致的初始化崩溃问题
-- [x]  适配Android Q及更高版本文件目录分区访问
 
 ##### V3.2.0
 
@@ -76,9 +41,10 @@
 
 - [x]  支持`tint`属性换肤
 
-##### V3.3.3
 
-- [x]  修改`artifactId`，并修复一些已知问题
+##### V3.4.0
+
+- [x]  适配`minSdkVersion`至19
 ---
 
 ## 框架实现原理
