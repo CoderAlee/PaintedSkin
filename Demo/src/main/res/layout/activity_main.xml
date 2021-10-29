@@ -8,12 +8,12 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/bg_main">
+        android:background="@mipmap/bg_main"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/tv_test1"
@@ -61,10 +61,10 @@
 
         <LinearLayout
             android:id="@+id/lly_root"
-            android:orientation="vertical"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginTop="20dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical" />
 
         <TextView
             android:id="@+id/txt_label_bkgtint"
@@ -89,46 +89,56 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:background="@color/yellow"
-            android:layout_height="wrap_content">
-        <LinearLayout
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:paddingBottom="20dp"
-            android:orientation="horizontal">
+            android:background="@color/yellow">
 
-            <ImageView
-                android:id="@+id/out_face"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:paddingBottom="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/out_face_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/out_face"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/ar_face"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/out_face_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/ar_face_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/ar_face"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/ar_face_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+
+        <Button
             android:id="@+id/btn_switch"
             android:layout_width="120dp"
             android:layout_height="60dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bg_button"
             android:text="换肤"
             android:textColor="@color/black"
