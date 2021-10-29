@@ -29,6 +29,7 @@ ext {
             base_compiler               : "com.github.CoderAlee.PaintedSkin:Base-Compiler:3.1.5",
             skin_apa                    : "com.github.CoderAlee.PaintedSkin:AopPlugin-Annotation:3.1.5",
             skin_apc                    : "com.github.CoderAlee.PaintedSkin:AopPlugin-Compiler:3.1.5",
+            listAdapterHelper           : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4"
     ]
 
 }

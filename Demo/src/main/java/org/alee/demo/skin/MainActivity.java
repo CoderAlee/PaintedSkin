@@ -12,6 +12,7 @@ import org.alee.component.skin.executor.SkinElement;
 import org.alee.component.skin.page.WindowManager;
 import org.alee.component.skin.service.ISwitchThemeSkinObserver;
 import org.alee.component.skin.service.ThemeSkinService;
+import org.alee.demo.skin.cymchad.CListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,9 @@ public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinO
 
     private ImageView mOutFace, mOutAr, mOutFaceName, mOutArName;
 
-    private RecyclerView mRecyclerView;
+    private RecyclerView mBasicListView;
+
+    private RecyclerView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +37,15 @@ public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinO
         mOutAr = findViewById(R.id.ar_face);
         mOutFaceName = findViewById(R.id.out_face_name);
         mOutArName = findViewById(R.id.ar_face_name);
-        mRecyclerView = findViewById(R.id.rv);
+        mBasicListView = findViewById(R.id.rv_basic);
+        mListView = findViewById(R.id.rv_cymchad);
         mLinearLayout.removeAllViews();
         ImageView temp = new ImageView(mLinearLayout.getContext());
         temp.setLayoutParams(new LinearLayout.LayoutParams(150, 50));
         mLinearLayout.addView(temp);
         WindowManager.getInstance().getWindowProxy(this).addEnabledThemeSkinView(temp, new SkinElement("src", R.mipmap.bg_light_green));
         displayList();
+        displayCymchad();
         findViewById(R.id.btn_switch).setOnClickListener(v -> {
             mTheme = 0 == mTheme ? 1 : 0;
             ThemeSkinService.getInstance().switchThemeSkin(mTheme);
@@ -49,14 +54,25 @@ public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinO
     }
 
     private void displayList() {
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mBasicListView.setLayoutManager(new LinearLayoutManager(this));
         ListAdapter adapter = new ListAdapter();
-        mRecyclerView.setAdapter(adapter);
+        mBasicListView.setAdapter(adapter);
         List<String> temp = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            temp.add("第" + i + "条");
+            temp.add("Basic 第" + i + "条");
         }
         adapter.notifyData(temp);
+    }
+
+    private void displayCymchad() {
+        mListView.setLayoutManager(new LinearLayoutManager(this));
+        CListAdapter adapter = new CListAdapter();
+        mListView.setAdapter(adapter);
+        List<String> temp = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            temp.add("Cymchad 第" + i + "条");
+        }
+        adapter.setNewData(temp);
     }
 
     @Override
