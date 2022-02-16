@@ -17,11 +17,10 @@
 
         <TextView
             android:id="@+id/tv_test1"
+            style="@style/text.max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试普通颜色"
-            android:textColor="@color/black"
-            android:textSize="36sp" />
+            android:text="测试普通颜色" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,14 +41,14 @@
             android:orientation="horizontal">
 
             <TextView
+                style="@style/text.max"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:text="--------------- 测试.9背景 ---------------"
-                android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <ImageView
@@ -58,6 +57,11 @@
             android:layout_height="138dp"
             android:layout_marginTop="20dp"
             android:src="@mipmap/icon_setting" />
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/black"
+            android:layout_height="10dp" />
 
         <LinearLayout
             android:id="@+id/lly_root"
@@ -68,15 +72,14 @@
 
         <TextView
             android:id="@+id/txt_label_bkgtint"
+            style="@style/text.max"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             android:background="@drawable/bkg_corner"
             android:backgroundTint="@color/text"
             android:padding="10dp"
-            android:text="BackGroundTint"
-            android:textColor="@color/black"
-            android:textSize="38sp" />
+            android:text="BackGroundTint" />
 
         <ImageView
             android:id="@+id/icon_frg"

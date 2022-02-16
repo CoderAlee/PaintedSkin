@@ -52,13 +52,18 @@ final class ViewInflater {
      */
     private static final String APP_PREFIX = "android.app.";
     /**
+     * V7 兼容包
+     */
+    private static final String V7_COMPAT = "android.support.v7.widget.";
+    /**
      * View 前缀集合
      */
     private static final String[] CLASS_PREFIX_ARRAY = {
             WIDGET_PREFIX,
             VIEW_COMPAT,
             WEBKIT_PREFIX,
-            APP_PREFIX
+            APP_PREFIX,
+            V7_COMPAT
     };
     /**
      * View 构造函数参数签名
@@ -87,6 +92,7 @@ final class ViewInflater {
                     try {
                         temp = inflater.createView(name, BASICS_PREFIX, attributeSet);
                     } catch (Throwable ignored) {
+                        temp = createView(context, name, BASICS_PREFIX, attributeSet);
                     }
                 }
                 if (null == temp) {
