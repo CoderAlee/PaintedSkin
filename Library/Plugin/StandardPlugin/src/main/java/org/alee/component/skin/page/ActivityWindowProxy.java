@@ -3,6 +3,7 @@ package org.alee.component.skin.page;
 import android.content.Context;
 import android.view.LayoutInflater;
 
+import org.alee.component.skin.service.Config;
 import org.alee.component.skin.service.ThemeSkinService;
 
 /**********************************************************
@@ -20,7 +21,7 @@ final class ActivityWindowProxy extends BaseWindowProxy {
      */
     @Override
     protected boolean isApplyInInvisible() {
-        return false;
+        return Config.PerformanceMode.EXPERIENCE_FIRST == Config.getInstance().getPerformanceMode();
     }
 
 

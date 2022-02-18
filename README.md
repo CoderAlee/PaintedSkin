@@ -45,6 +45,11 @@
 ##### V3.4.0
 
 - [x]  适配`minSdkVersion`至19
+
+
+##### V3.4.2
+
+- [x]  `Config`增加性能模式，当使用体验优先时Activity将被允许在后台换肤
 ---
 
 ## 框架实现原理
@@ -156,6 +161,23 @@ public final class App extends Application {
     static {
          Config.getInstance().setEnableDebugMode(false);
          Config.getInstance().setEnableStrictMode(false);
+    }
+}
+```
+
+`PaintedSkin` 支持性能优先与体验优先：
+
+> 性能优先模式下如果触发换肤的时候部分Window处于后台或不可见时，将不会立即换肤。而是在其恢复到前台或可见时执行换肤；
+>
+> 体验优先模式下无论Window处于何种状态下都将立即执行换肤；
+
+API：
+
+```Java
+public final class App extends Application {
+    static {
+         Config.getInstance().setPerformanceMode(Config.PerformanceMode.PERFORMANCE_PRIORITY);
+          Config.getInstance().setPerformanceMode(Config.PerformanceMode.EXPERIENCE_FIRST);
     }
 }
 ```

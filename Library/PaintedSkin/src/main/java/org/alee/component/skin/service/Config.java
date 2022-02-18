@@ -33,11 +33,16 @@ public final class Config {
      * 换肤模式
      */
     private int mSkinMode;
+    /**
+     * 性能模式
+     */
+    private int mPerformanceMode;
 
     private Config() {
         mEnableDebugMode = true;
         mEnableStrictMode = false;
         mSkinMode = SkinMode.REPLACE_ALL;
+        mPerformanceMode = PerformanceMode.PERFORMANCE_PRIORITY;
         mLogger = new DefaultLogger();
     }
 
@@ -82,6 +87,14 @@ public final class Config {
         mSkinMode = skinMode;
     }
 
+    public @PerformanceMode int getPerformanceMode() {
+        return mPerformanceMode;
+    }
+
+    public void setPerformanceMode(@PerformanceMode int performanceMode) {
+        mPerformanceMode = performanceMode;
+    }
+
     @IntDef(value = {SkinMode.REPLACE_ALL, SkinMode.REPLACE_MARKED, SkinMode.DO_NOT_REPLACE})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SkinMode {
@@ -97,6 +110,19 @@ public final class Config {
          * 不替换任何
          */
         int DO_NOT_REPLACE = 2;
+    }
+
+    @IntDef(value = {PerformanceMode.PERFORMANCE_PRIORITY, PerformanceMode.EXPERIENCE_FIRST})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface PerformanceMode {
+        /**
+         * 性能优先
+         */
+        int PERFORMANCE_PRIORITY = 1;
+        /**
+         * 体验优先
+         */
+        int EXPERIENCE_FIRST = 2;
     }
 
     /**
