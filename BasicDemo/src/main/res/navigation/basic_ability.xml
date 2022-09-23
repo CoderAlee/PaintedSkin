@@ -14,6 +14,10 @@
         android:name="org.alee.demo.skin.basic.ability.image.ImageDemoPage"
         android:label="ImageDemoPage" />
     <fragment
+        android:id="@+id/listDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.list.ListDemoPage"
+        android:label="ListDemoPage" />
+    <fragment
         android:id="@+id/mainPage"
         android:name="org.alee.demo.skin.basic.ability.main.MainPage"
         android:label="MainPage"
@@ -24,6 +28,9 @@
         <action
             android:id="@+id/toImageDemoPage"
             app:destination="@id/imageDemoPage" />
+        <action
+            android:id="@+id/toListDemoPage"
+            app:destination="@id/listDemoPage" />
     </fragment>
 
 </navigation>

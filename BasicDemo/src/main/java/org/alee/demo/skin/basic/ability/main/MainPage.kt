@@ -36,6 +36,7 @@ internal class MainPage : BasePage(), View.OnClickListener {
         when (v.id) {
             R.id.btn_text_view_demo -> go(R.id.toTextDemoPage)
             R.id.btn_image_view_demo -> go(R.id.toImageDemoPage)
+            R.id.btn_list_view_demo -> go(R.id.toListDemoPage)
         }
     }
 }
