@@ -10,9 +10,13 @@ ext {
     ]
 
     Official_Library = [
-            appcompat       : "androidx.appcompat:appcompat:1.3.1",
-            constraintlayout: "androidx.constraintlayout:constraintlayout:2.0.4",
-            material        : "com.google.android.material:material:1.3.0",
+            appcompat                : "androidx.appcompat:appcompat:1.3.1",
+            constraintlayout         : "androidx.constraintlayout:constraintlayout:2.0.4",
+            material                 : "com.google.android.material:material:1.4.0",
+            "navigation-runtime-ktx" : "androidx.navigation:navigation-runtime-ktx:2.3.2",
+            "navigation-fragment-ktx": "androidx.navigation:navigation-fragment-ktx:2.3.2",
+            "navigation-ui-ktx"      : "androidx.navigation:navigation-ui-ktx:2.3.2",
+            core_ktx                 : "androidx.core:core-ktx:1.6.0",
     ]
 
     Tripartite_Library = [
@@ -21,10 +25,10 @@ ext {
             javapoet                    : "com.squareup:javapoet:1.13.0",
             common                      : "com.google.auto:auto-common:0.11",
             reflex                      : "com.github.CoderAlee:Reflex:1.2.0",
-            paintedskin                 : "com.github.CoderAlee.PaintedSkin:painted-skin:3.3.3",
-            skin_standard_plugin        : "com.github.CoderAlee.PaintedSkin:standard-plugin:3.3.3",
-            skin_auto_plugin            : "com.github.CoderAlee.PaintedSkin:auto-plugin:3.3.3",
-            skin_constraintlayout_compat: "com.github.CoderAlee.PaintedSkin:constraintlayout-compat:3.3.3",
+            paintedskin                 : "com.github.CoderAlee.PaintedSkin:painted-skin:3.4.2",
+            skin_standard_plugin        : "com.github.CoderAlee.PaintedSkin:standard-plugin:3.4.2",
+            skin_auto_plugin            : "com.github.CoderAlee.PaintedSkin:auto-plugin:3.4.2",
+            skin_constraintlayout_compat: "com.github.CoderAlee.PaintedSkin:constraintlayout-compat:3.4.2",
             typeface_plugin             : "com.github.CoderAlee.PaintedSkin:TypefacePlugin:3.1.5",
             base_compiler               : "com.github.CoderAlee.PaintedSkin:Base-Compiler:3.1.5",
             skin_apa                    : "com.github.CoderAlee.PaintedSkin:AopPlugin-Annotation:3.1.5",

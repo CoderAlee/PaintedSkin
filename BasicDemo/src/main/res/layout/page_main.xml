@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CommonBg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/tp_12">
+
+        <TextView
+            android:id="@+id/btn_text_view_demo"
+            style="@style/BigBtn.PrimaryBg"
+            android:layout_height="@dimen/tp_40"
+            android:layout_gravity="center"
+            android:paddingHorizontal="@dimen/tp_12"
+            android:text="@string/main_btn_text_view" />
+
+        <TextView
+            android:id="@+id/btn_image_view_demo"
+            style="@style/BigBtn.PrimaryBg"
+            android:layout_height="@dimen/tp_40"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:paddingHorizontal="@dimen/tp_12"
+            android:text="@string/main_btn_image_view" />
+
+        <TextView
+            android:id="@+id/btn_list_view_demo"
+            style="@style/BigBtn.PrimaryBg"
+            android:layout_height="@dimen/tp_40"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:paddingHorizontal="@dimen/tp_12"
+            android:text="@string/main_btn_list_view" />
+
+        <TextView
+            android:id="@+id/btn_tint_demo"
+            style="@style/BigBtn.PrimaryBg"
+            android:layout_height="@dimen/tp_40"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:paddingHorizontal="@dimen/tp_12"
+            android:text="@string/main_btn_tint" />
+
+        <TextView
+            android:id="@+id/btn_dynamic_view_demo"
+            style="@style/BigBtn.PrimaryBg"
+            android:layout_height="@dimen/tp_40"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:paddingHorizontal="@dimen/tp_12"
+            android:text="@string/main_btn_dynamic_view" />
+
+        <TextView
+            android:id="@+id/btn_third_part_list_view_demo"
+            style="@style/BigBtn.PrimaryBg"
+            android:layout_height="@dimen/tp_40"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:paddingHorizontal="@dimen/tp_12"
+            android:text="@string/main_btn_third_part_list_view" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/basic_ability"
+    app:startDestination="@id/mainPage">
+    <fragment
+        android:id="@+id/textDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.text.TextDemoPage"
+        android:label="TextDemoPage"
+        tools:layout="@layout/page_text_demo" />
+    <fragment
+        android:id="@+id/imageDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.image.ImageDemoPage"
+        android:label="ImageDemoPage" />
+    <fragment
+        android:id="@+id/mainPage"
+        android:name="org.alee.demo.skin.basic.ability.main.MainPage"
+        android:label="MainPage"
+        tools:layout="@layout/page_main">
+        <action
+            android:id="@+id/toTextDemoPage"
+            app:destination="@id/textDemoPage" />
+        <action
+            android:id="@+id/toImageDemoPage"
+            app:destination="@id/imageDemoPage" />
+    </fragment>
+
+</navigation>

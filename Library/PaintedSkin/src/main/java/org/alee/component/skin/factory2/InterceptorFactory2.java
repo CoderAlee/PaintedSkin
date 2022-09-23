@@ -47,7 +47,7 @@ abstract class InterceptorFactory2 extends BaseFactory2 {
         if (null != temp) {
             distinguishEnableSkin(temp, attributeSet);
         }else {
-            PrintUtil.getInstance().printD("未能成功创建 [ " + name + " ]");
+            PrintUtil.getInstance().printD("ExpandedFactory2Manager 未能成功创建 [ " + name + " ]");
         }
         return temp;
     }

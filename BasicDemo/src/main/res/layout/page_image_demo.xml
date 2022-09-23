@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CommonBg"
+    android:padding="@dimen/tp_12">
+
+    <org.alee.demo.skin.basic.ability.widget.BackButton
+        android:id="@+id/btn_back"
+        style="@style/BackBtn.Wrapper"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tp_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                style="@style/text.Caption1.WhiteHigh"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tp_40"
+                android:layout_marginStart="@dimen/tp_20"
+                android:layout_marginEnd="@dimen/tp_20"
+                android:background="@drawable/selector_bg_primary_button"
+                android:gravity="center"
+                android:text="背景色" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tp_40"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/tp_20"
+                android:layout_marginTop="@dimen/tp_12"
+                android:layout_marginEnd="@dimen/tp_20"
+                android:background="@mipmap/bg_light_blue"
+                android:src="@mipmap/bg_dark_blue" />
+
+            <TextView
+                style="@style/text.Caption1.WhiteHigh"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tp_40"
+                android:layout_marginTop="@dimen/tp_12"
+                android:background="@mipmap/bg_test_9"
+                android:gravity="center"
+                android:text=".9 图片" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CommonBg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/tp_12">
+
+        <org.alee.demo.skin.basic.ability.widget.BackButton
+            android:id="@+id/btn_back"
+            style="@style/BackBtn.Wrapper" />
+
+        <TextView
+            style="@style/text.Headline1.Bold.BlackHigh"
+            android:layout_gravity="center"
+            android:text="通过Style 设置TextColor" />
+
+        <TextView
+            style="@style/text.Headline1.Bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:text="xml 中设置TextColor"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            style="@style/text.Headline1.Bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:hint="Text Color Hint"
+            android:textColorHint="@color/text_black_disabled" />
+
+        <EditText
+            android:id="@+id/tv_highlight"
+            style="@style/text.Headline1.Bold.BlackHigh"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:text="Text Color Highlight"
+            android:textColorHighlight="@color/text_error" />
+
+        <TextView
+            android:id="@+id/tv_link"
+            style="@style/text.Headline1.Bold.BlackHigh"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:gravity="center"
+            android:maxLines="2"
+            android:singleLine="false"
+            android:text="https://baidu.com"
+            android:textColorLink="@color/text_secondary" />
+
+        <TextView
+            android:id="@+id/tv_spannable"
+            style="@style/text.Headline1.Bold.BlackHigh"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            tools:text="通过Spannable设置颜色" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

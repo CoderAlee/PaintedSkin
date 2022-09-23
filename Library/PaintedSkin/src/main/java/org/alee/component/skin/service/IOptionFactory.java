@@ -1,5 +1,7 @@
 package org.alee.component.skin.service;
 
+import androidx.annotation.Nullable;
+
 /**********************************************************
  *
  * @author: MY.Liu
@@ -11,5 +13,6 @@ public interface IOptionFactory {
 
     int defaultTheme();
 
+    @Nullable
     IThemeSkinOption requireOption(int theme);
 }

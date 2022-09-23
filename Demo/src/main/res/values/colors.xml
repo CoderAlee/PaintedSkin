@@ -1,14 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="yellow">#EEE8AA</color>
 
-    <color name="common_frg">#CE93D8</color>
-    <color name="common_frg_press">#BA68C8</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="primary_main">#FF0091FF</color>
+    <color name="primary_50">#FFFEFEFE</color>
+    <color name="primary_100">#FFADDBFF</color>
+    <color name="primary_200">#FF72C0FD</color>
+    <color name="primary_300">#FF39A8FD</color>
+    <color name="primary_400">#FF0091FF</color>
+    <color name="primary_500">#FF1A81CF</color>
+    <color name="primary_600">#FF276CA1</color>
+    <color name="primary_700">#FF2B5474</color>
+    <color name="primary_750">#260091FF</color>
+    <color name="primary_800">#FF223848</color>
+    <color name="primary_900">#120091FF</color>
+    <color name="primary_56">#8F0091FF</color>
+
+    <color name="secondary_main">#FF00C6FF</color>
+    <color name="secondary_50">#FFD3F5FE</color>
+    <color name="secondary_100">#FFBAF0FF</color>
+    <color name="secondary_200">#FF7EE2FF</color>
+    <color name="secondary_300">#FF4ED7FF</color>
+    <color name="secondary_400">#FF00C6FF</color>
+    <color name="secondary_500">#FF1093D3</color>
+    <color name="secondary_600">#FF0B73A7</color>
+    <color name="secondary_700">#FF083850</color>
+    <color name="secondary_800">#FF031E2B</color>
+
+    <color name="white_50">#08FFFFFF</color>
+    <color name="white_100">#12FFFFFF</color>
+    <color name="white_200">#2B7EE2FF</color>
+    <color name="white_300">#5CFFFFFF</color>
+    <color name="white_400">#8FFFFFFF</color>
+    <color name="white_500">#B3FFFFFF</color>
+    <color name="white_600">#CCFFFFFF</color>
+    <color name="white_700">#E3FFFFFF</color>
+    <color name="white_800">#FFFFFFFF</color>
+    <color name="white_900">#08000000</color>
+
+
+    <color name="black_50">#08000000</color>
+    <color name="black_75">#BF000000</color>
+    <color name="black_85">#D9000000</color>
+    <color name="black_100">#12000000</color>
+    <color name="black_200">#2B000000</color>
+    <color name="black_300">#5C000000</color>
+    <color name="black_400">#8F000000</color>
+    <color name="black_500">#B3000000</color>
+    <color name="black_600">#CC000000</color>
+    <color name="black_700">#E3000000</color>
+    <color name="black_800">#FF000000</color>
+
+    <color name="gray_b100">#FF18181A</color>
+    <color name="gray_b200">#FF323233</color>
+    <color name="gray_b300">#FF4F5365</color>
+    <color name="gray_b400">#FF969699</color>
+    <color name="gray_b500">#FFE4EAF1</color>
+    <color name="gray_b600">#FFD8D8D8</color>
+
+    <color name="text_white_high">@color/white_700</color>
+    <color name="text_white_medium">@color/white_400</color>
+    <color name="text_white_disabled">@color/white_300</color>
+    <color name="text_black_high">@color/black_700</color>
+    <color name="text_black_medium">@color/black_400</color>
+    <color name="text_black_disabled">@color/black_300</color>
+    <color name="text_primary">#E30091FF</color>
+    <color name="text_secondary">#E300C6FF</color>
+    <color name="text_error">#E3FF5C4D</color>
+    <color name="text_prompt">#E3F5C131</color>
+    <color name="text_correct">#E346C771</color>
+
+    <color name="button_disable">#FFEDEDED</color>
+    <color name="button_warning_normal">#2BFF5C4D</color>
+    <color name="button_warning_press">#FFEDD4D2</color>
+    <color name="button_warning_normal_stroke">#FFFF6E61</color>
+    <color name="button_press_blue">#FFD4EDFF</color>
+
+    <color name="bg_stroke_color">#FF8B8888</color>
+    <color name="bg_stroke_disable_color">#FFDCDCDC</color>
+    <color name="bg_stroke_blue_color">#FF0091FF</color>
+
+    <color name="icon_available">@color/gray_b300</color>
 </resources>

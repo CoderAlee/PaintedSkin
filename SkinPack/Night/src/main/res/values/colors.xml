@@ -1,11 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="teal_200">#6495ED</color>
-    <color name="teal_700">#0000FF</color>
-    <color name="black">#FFFFFFFF</color>
-    <color name="white">#FF000000</color>
-    <color name="yellow">#FFA500</color>
 
-    <color name="common_frg">#7B1FA2</color>
-    <color name="common_frg_press">#6A1B9A</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="primary_main">@color/primary_400</color>
+    <color name="primary_50">#ECEAEE</color>
+    <color name="primary_100">#D9D4DD</color>
+    <color name="primary_200">#C7C0CC</color>
+    <color name="primary_300">#B5ABBB</color>
+    <color name="primary_400">#A397AB</color>
+    <color name="primary_500">#91849B</color>
+    <color name="primary_600">#776D7F</color>
+    <color name="primary_700">#5F5665</color>
+    <color name="primary_750">#47414B</color>
+    <color name="primary_800">#302D33</color>
+
+
+    <color name="secondary_main">@color/secondary_400</color>
+    <color name="secondary_50">#FDE6F5</color>
+    <color name="secondary_100">#FBCCEC</color>
+    <color name="secondary_200">#F7B2E2</color>
+    <color name="secondary_300">#F298D8</color>
+    <color name="secondary_400">#ED7CCF</color>
+    <color name="secondary_500">#E65DC5</color>
+    <color name="secondary_600">#BC4EA1</color>
+    <color name="secondary_700">#93407F</color>
+    <color name="secondary_800">#6D325E</color>
+
+    <color name="white_50">#08000000</color>
+    <color name="white_100">#12000000</color>
+    <color name="white_200">#2B000000</color>
+    <color name="white_300">#5C000000</color>
+    <color name="white_400">#8F000000</color>
+    <color name="white_500">#B3000000</color>
+    <color name="white_600">#CC000000</color>
+    <color name="white_700">#E3000000</color>
+    <color name="white_800">#FF000000</color>
+
+
+    <color name="black_50">#08FFFFFF</color>
+    <color name="black_100">#12FFFFFF</color>
+    <color name="black_200">#2B7EE2FF</color>
+    <color name="black_300">#5CFFFFFF</color>
+    <color name="black_400">#8FFFFFFF</color>
+    <color name="black_500">#B3FFFFFF</color>
+    <color name="black_600">#CCFFFFFF</color>
+    <color name="black_700">#E3FFFFFF</color>
+    <color name="black_800">#FFFFFFFF</color>
+
+    <color name="gray_b100">#FFDDBA</color>
+    <color name="gray_b200">#FFCC99</color>
+    <color name="gray_b300">#FFBB77</color>
+    <color name="gray_b400">#FFAA55</color>
+    <color name="gray_b500">#FF992E</color>
+    <color name="gray_b600">#D07E29</color>
+
+    <color name="text_white_high">@color/white_700</color>
+    <color name="text_white_medium">@color/white_400</color>
+    <color name="text_white_disabled">@color/white_300</color>
+    <color name="text_black_high">@color/black_700</color>
+    <color name="text_black_medium">@color/black_400</color>
+    <color name="text_black_disabled">@color/black_300</color>
+    <color name="text_primary">@color/primary_main</color>
+    <color name="text_secondary">@color/secondary_main</color>
+    <color name="text_error">#898A7E</color>
+    <color name="text_prompt">#389FA6</color>
+    <color name="text_correct">#7C6D88</color>
+
+    <color name="button_disable">#2EA23B</color>
+    <color name="button_warning_normal">#214F22</color>
+    <color name="button_warning_press">#6DFF75</color>
+    <color name="button_warning_normal_stroke">#6FDD71</color>
+    <color name="button_press_blue">#7ECC7C</color>
+
+    <color name="bg_stroke_color">#89BA86</color>
+    <color name="bg_stroke_disable_color">#91A98F</color>
+    <color name="bg_stroke_blue_color">@color/primary_300</color>
+
+    <color name="icon_available">@color/gray_b300</color>
 </resources>

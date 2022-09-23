@@ -80,6 +80,7 @@ final class ViewInflater {
      * @param context      上下文
      * @param name         view名称
      * @param attributeSet 属性集
+     *
      * @return 结果
      */
     @Nullable
@@ -117,7 +118,7 @@ final class ViewInflater {
             PrintUtil.getInstance().printE(e);
         }
         if (null == temp) {
-            PrintUtil.getInstance().printD("未能成功创建 [ " + name + " ]");
+            PrintUtil.getInstance().printD("ViewInflater内部未能成功创建 [ " + name + " ]");
         }
         return temp;
     }

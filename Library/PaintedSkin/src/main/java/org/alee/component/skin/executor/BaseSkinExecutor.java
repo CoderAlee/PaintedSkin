@@ -10,7 +10,9 @@ import androidx.annotation.NonNull;
 
 import org.alee.component.skin.exception.ApplySkinException;
 import org.alee.component.skin.pack.ResourcesType;
+import org.alee.component.skin.service.Config;
 import org.alee.component.skin.service.ThemeSkinService;
+import org.alee.component.skin.util.ThreadUtils;
 
 /**********************************************************
  *
@@ -33,6 +35,7 @@ public abstract class BaseSkinExecutor<T extends View> implements ISkinExecutor 
      * 执行皮肤替换工作
      *
      * @param view 需要替换皮肤的View
+     *
      * @throws ApplySkinException 换肤时出现的异常
      */
     @Override
@@ -44,7 +47,14 @@ public abstract class BaseSkinExecutor<T extends View> implements ISkinExecutor 
             if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
                 applyThemeSkin((T) view, mElement);
             } else {
-                view.post(new MainRunnable<>((T) view, mElement, this));
+                Runnable runnable = new MainRunnable<>((T) view, mElement, this);
+                // 此处需要注意 Handler.post 与View.post的区别
+                // 使用View.post 由于非当前页面的View还没有AttachedToWindow,所以runnable 会被delay到 View AttachedToWindow
+                if (Config.PerformanceMode.EXPERIENCE_FIRST == Config.getInstance().getPerformanceMode()) {
+                    ThreadUtils.postOnMainThread(runnable);
+                } else {
+                    view.post(runnable);
+                }
             }
         } catch (Throwable e) {
             throw new ApplySkinException(view, mElement, e);

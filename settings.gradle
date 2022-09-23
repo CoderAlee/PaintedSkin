@@ -1,4 +1,7 @@
-include ':Demo'
+include ':App:Shell'
+project(':App:Shell').projectDir = new File(settingsDir, '/Shell')
+include ':App:BasicDemo'
+project(':App:BasicDemo').projectDir = new File(settingsDir, '/BasicDemo')
 include ':SkinPack:Night'
 project(':SkinPack:Night').projectDir = new File(settingsDir, '/SkinPack/Night')
 if (CITING_THE_SOURCE_CODE.toBoolean()){
