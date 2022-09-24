@@ -36,7 +36,7 @@ internal class ListViewAdapter(private val data: List<String>) : BaseAdapter() {
 
     private class Item(convertView: View?, context: Context) {
 
-        val rootView = convertView ?: LayoutInflater.from(context).inflate(R.layout.layout_list_view_item, null)
+        val rootView: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.layout_list_view_item, null)
 
         private val mContentTv = rootView.findViewById<TextView>(R.id.txt_content)
 

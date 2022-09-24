@@ -54,7 +54,13 @@ class DynamicDemoPage : BasePage() {
             mDynamicViewGroup.TextView {
                 layout_width = wrap_content
                 layout_height = wrap_content
+                // FixMe 以下三种形式都可以设置文本颜色并将其托管给换肤框架维护
+//                skinTextColor(R.color.white_800)
+//                addEnabledThemeSkinView(this, SkinElement(DefaultExecutorBuilder.ATTRIBUTE_TEXT_COLOR, R.color.white_800))
                 text_color = R.color.white_800
+                // FixMe 以下三种形式都可以设置背景并将其托管给换肤框架维护
+//                skinBackground(R.drawable.selector_bg_primary_button)
+//                addEnabledThemeSkinView(this, SkinElement(DefaultExecutorBuilder.ATTRIBUTE_BACKGROUND,R.drawable.selector_bg_primary_button))
                 background_drawable = R.drawable.selector_bg_primary_button
                 padding_horizontal = R.dimen.tp_12
                 padding_vertical = R.dimen.tp_12
@@ -69,7 +75,13 @@ class DynamicDemoPage : BasePage() {
             layout_height = R.dimen.tp_36
             margin_top = R.dimen.tp_12
             padding = R.dimen.tp_6
+            // FixMe 以下三种形式都可以设置背景 并将其托管给换肤框架维护
+//            skinBackground(R.color.secondary_400)
+//            addEnabledThemeSkinView(this, SkinElement(DefaultExecutorBuilder.ATTRIBUTE_BACKGROUND, R.color.secondary_400))
             background_color = R.color.secondary_400
+            // FixMe 以下三种形式都可以设置icon 并将其托管给换肤框架维护
+//            skinSrc(R.mipmap.outline_view_in_ar)
+//            addEnabledThemeSkinView(this, SkinElement(DefaultExecutorBuilder.ATTRIBUTE_SRC, R.mipmap.outline_view_in_ar))
             src = R.mipmap.outline_view_in_ar
         }
     }

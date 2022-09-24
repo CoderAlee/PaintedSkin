@@ -84,7 +84,7 @@ class ListDemoPage : BasePage(), OnItemClickListener {
     }
 
     override fun onThemeSkinSwitch() {
-        // 此处是为了处理 通过DividerItemDecoration设置的分割线样式
+        // FixMe 此处是为了处理 通过DividerItemDecoration设置的分割线样式
         mRecyclerViewDecoration.setDrawable(R.drawable.shape_list_divider.drawableResource!!)
         mRecyclerView.requestLayout()
     }
