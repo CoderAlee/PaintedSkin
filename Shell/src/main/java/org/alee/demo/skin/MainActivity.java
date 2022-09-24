@@ -55,13 +55,13 @@ public class MainActivity extends AppCompatActivity implements ISwitchThemeSkinO
 
     private void displayList() {
         mBasicListView.setLayoutManager(new LinearLayoutManager(this));
-        ListAdapter adapter = new ListAdapter();
-        mBasicListView.setAdapter(adapter);
-        List<String> temp = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            temp.add("Basic 第" + i + "条");
-        }
-        adapter.notifyData(temp);
+        //        ListAdapter adapter = new ListAdapter();
+        //        mBasicListView.setAdapter(adapter);
+        //        List<String> temp = new ArrayList<>();
+        //        for (int i = 0; i < 20; i++) {
+        //            temp.add("Basic 第" + i + "条");
+        //        }
+        //        adapter.notifyData(temp);
     }
 
     private void displayCymchad() {

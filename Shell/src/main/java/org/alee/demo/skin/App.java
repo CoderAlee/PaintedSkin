@@ -6,6 +6,7 @@ import org.alee.component.skin.compat.ConstraintLayoutCompat;
 import org.alee.component.skin.page.WindowManager;
 import org.alee.component.skin.service.Config;
 import org.alee.demo.skin.basic.ability.SkinOptionFactory;
+import org.alee.demo.skin.basic.ability.util.ResourceExtKt;
 import org.alee.demo.skin.compat.BackButtonCompat;
 import org.alee.demo.skin.compat.NestedScrollViewCompat;
 
@@ -29,5 +30,6 @@ public final class App extends Application {
     public void onCreate() {
         super.onCreate();
         WindowManager.getInstance().init(this, new SkinOptionFactory());
+        ResourceExtKt.context = getApplicationContext();
     }
 }

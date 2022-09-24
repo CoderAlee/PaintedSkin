@@ -6,5 +6,12 @@
     <string name="main_btn_tint">Tint 属性 Demo</string>
     <string name="main_btn_third_part_list_view">第三方RecyclerView Demo</string>
     <string name="main_btn_dynamic_view">动态添加View Demo</string>
+    <string name="main_btn_custom_attr">第三方View 或自定义属性 Demo</string>
+    <string name="main_btn_skin_enable">在XML中标记不支持换肤的View Demo</string>
+    <string name="main_btn_festive_skin">节日皮肤 Demo</string>
     <string name="switch_skin">换肤</string>
+    <string name="list_demo_recycler_item_nam">名称----%1$s</string>
+    <string name="list_demo_recycler_item_address">地址----%1$s</string>
+    <string name="list_demo_toast">列表中的第%1$s被点击了</string>
+    <string name="dynamic_add_view_content">我是&#160;No·%1$s&#160;个动态添加的View </string>
 </resources>

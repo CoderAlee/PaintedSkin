@@ -12,13 +12,15 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="@dimen/tp_0"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_back">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/tp_12">
 
             <TextView
                 style="@style/text.Caption1.BlackHigh"
@@ -29,11 +31,32 @@
             <ListView
                 android:id="@+id/list_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/tp_520"
                 android:layout_marginTop="@dimen/tp_12"
+                android:divider="@drawable/shape_list_divider"
+                android:dividerHeight="@dimen/tp_2"
+                android:entries="@array/chicken_soup"
                 android:overScrollMode="never"
                 android:scrollbars="none"
                 tools:layout_height="@dimen/tp_100" />
+
+            <TextView
+                style="@style/text.Caption1.BlackHigh"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/tp_12"
+                android:text="GridView↓" />
+
+            <GridView
+                android:id="@+id/grid_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tp_500"
+                android:layout_marginTop="@dimen/tp_12"
+                android:divider="@drawable/shape_list_divider"
+                android:horizontalSpacing="10dp"
+                android:numColumns="5"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:verticalSpacing="10dp" />
 
             <TextView
                 style="@style/text.Caption1.BlackHigh"

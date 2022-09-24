@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/tp_12"
         android:layout_marginBottom="@dimen/tp_12"
+        android:backgroundTint="@color/primary_50"
         android:contentDescription="@string/switch_skin"
         android:tint="@color/primary_main"
         app:borderWidth="0dp"

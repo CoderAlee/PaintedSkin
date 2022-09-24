@@ -18,6 +18,14 @@
         android:name="org.alee.demo.skin.basic.ability.list.ListDemoPage"
         android:label="ListDemoPage" />
     <fragment
+        android:id="@+id/tintDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.tint.TintDemoPage"
+        android:label="TintDemoPage" />
+    <fragment
+        android:id="@+id/dynamicDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.dynamic.DynamicDemoPage"
+        android:label="DynamicDemoPage" />
+    <fragment
         android:id="@+id/mainPage"
         android:name="org.alee.demo.skin.basic.ability.main.MainPage"
         android:label="MainPage"
@@ -31,6 +39,12 @@
         <action
             android:id="@+id/toListDemoPage"
             app:destination="@id/listDemoPage" />
+        <action
+            android:id="@+id/toTintDemoPage"
+            app:destination="@id/tintDemoPage" />
+        <action
+            android:id="@+id/toDynamicDemoPage"
+            app:destination="@id/dynamicDemoPage" />
     </fragment>
 
 </navigation>

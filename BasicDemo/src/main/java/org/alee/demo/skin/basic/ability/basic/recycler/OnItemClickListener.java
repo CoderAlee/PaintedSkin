@@ -1,4 +1,4 @@
-package org.alee.demo.skin.rv;
+package org.alee.demo.skin.basic.ability.basic.recycler;
 
 import android.view.View;
 

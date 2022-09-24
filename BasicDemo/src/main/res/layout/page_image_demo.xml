@@ -50,6 +50,17 @@
                 android:gravity="center"
                 android:text=".9 图片" />
 
+            <Button
+                android:id="@+id/btn_business"
+                style="@style/text.Button1.BlackHigh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/tp_12"
+                android:paddingHorizontal="@dimen/tp_12"
+                android:paddingVertical="@dimen/tp_12"
+                android:text="根据业务使用不动的背景" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

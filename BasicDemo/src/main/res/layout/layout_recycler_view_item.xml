@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/tp_72">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/tp_20"
+        android:layout_height="@dimen/tp_20"
+        android:layout_marginStart="@dimen/tp_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_common_location_offline"
+        app:tint="@color/black_400" />
+
+    <TextView
+        android:id="@+id/txt_name"
+        style="@style/text.Body1.BlackHigh"
+        android:layout_width="@dimen/tp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/tp_10"
+        android:layout_marginEnd="@dimen/tp_12"
+        app:layout_constraintBottom_toTopOf="@id/txt_address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="温控技术大厦" />
+
+    <TextView
+        android:id="@+id/txt_address"
+        style="@style/text.Body2.BlackMedium"
+        android:layout_width="@dimen/tp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tp_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/txt_name"
+        app:layout_constraintStart_toStartOf="@id/txt_name"
+        app:layout_constraintTop_toBottomOf="@id/txt_name"
+        tools:text="1.6公里 | 北京市海淀区中…" />
+</androidx.constraintlayout.widget.ConstraintLayout>
