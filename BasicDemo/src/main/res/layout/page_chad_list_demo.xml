@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CommonBg">
+
+    <org.alee.demo.skin.basic.ability.widget.BackButton
+        android:id="@+id/btn_back"
+        style="@style/BackBtn.Wrapper"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list"
+        android:layout_width="@dimen/tp_240"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/tp_12"
+        android:paddingVertical="@dimen/tp_12"
+        android:background="@drawable/shape_bg_black_100_corners_tp_12"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

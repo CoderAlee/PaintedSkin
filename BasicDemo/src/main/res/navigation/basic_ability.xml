@@ -26,6 +26,22 @@
         android:name="org.alee.demo.skin.basic.ability.dynamic.DynamicDemoPage"
         android:label="DynamicDemoPage" />
     <fragment
+        android:id="@+id/chadListDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.thirdpart.list.ChadListDemoPage"
+        android:label="ChadListDemoPage" />
+    <fragment
+        android:id="@+id/skinEnableDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.enable.SkinEnableDemoPage"
+        android:label="SkinEnableDemoPage" />
+    <fragment
+        android:id="@+id/festiveSkinDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.festive.FestiveSkinDemoPage"
+        android:label="FestiveSkinDemoPage" />
+    <fragment
+        android:id="@+id/thirdPartViewAttrDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.thirdpart.view.ViewAndAttrDemoPage"
+        android:label="ThirdPartViewAttrDemoPage" />
+    <fragment
         android:id="@+id/mainPage"
         android:name="org.alee.demo.skin.basic.ability.main.MainPage"
         android:label="MainPage"
@@ -45,6 +61,18 @@
         <action
             android:id="@+id/toDynamicDemoPage"
             app:destination="@id/dynamicDemoPage" />
+        <action
+            android:id="@+id/toChadListDemoPage"
+            app:destination="@id/chadListDemoPage" />
+        <action
+            android:id="@+id/toSkinEnableDemoPage"
+            app:destination="@id/skinEnableDemoPage" />
+        <action
+            android:id="@+id/toFestiveSkinDemoPage"
+            app:destination="@id/festiveSkinDemoPage" />
+        <action
+            android:id="@+id/toThirdPartViewAttrDemoPage"
+            app:destination="@id/thirdPartViewAttrDemoPage" />
     </fragment>
 
 </navigation>

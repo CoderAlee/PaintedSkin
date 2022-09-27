@@ -1,7 +1,7 @@
 package org.alee.demo.skin.basic.ability
 
-import android.os.Build
 import org.alee.component.skin.service.IThemeSkinOption
+import org.alee.demo.skin.basic.ability.util.loadBoolean
 
 /**
  * 夜色模式配置
@@ -14,20 +14,15 @@ import org.alee.component.skin.service.IThemeSkinOption
  */
 internal class NightOption : IThemeSkinOption {
 
-    private companion object {
-
-        private const val NIGHT_SKIN_PACK_NAME = "night.skin"
-
-        private val SKIN_PACK_PATH = LinkedHashSet<String>().apply {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                add("/storage/emulated/0/Android/data/org.alee.demo.skin/files/Documents/$NIGHT_SKIN_PACK_NAME")
-            } else {
-                add("/sdcard/$NIGHT_SKIN_PACK_NAME")
+    override fun getStandardSkinPackPath(): LinkedHashSet<String> {
+        return LinkedHashSet<String>().apply {
+            // 基础黑夜皮肤包
+            add(SKIN_PACK_PATH + NIGHT_SKIN_PACK_NAME)
+        }.apply {
+            // 春节皮肤包
+            if (USE_SPRING_FESTIVAL_SKIN.loadBoolean(false)) {
+                add(SKIN_PACK_PATH + SPRING_FESTIVAL_SKIN_PACK_NAME)
             }
         }
-    }
-
-    override fun getStandardSkinPackPath(): LinkedHashSet<String> {
-        return SKIN_PACK_PATH
     }
 }

@@ -26,6 +26,6 @@ public interface IExpandedFactory2 {
      * @param attrs        {@link AttributeSet}
      * @return 生成的View
      */
-    @NonNull
+    @Nullable
     View onCreateView(@Nullable View originalView, @Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs);
 }

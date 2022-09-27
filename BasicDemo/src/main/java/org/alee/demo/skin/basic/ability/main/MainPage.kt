@@ -30,6 +30,9 @@ internal class MainPage : BasePage(), View.OnClickListener {
         findView<View>(R.id.btn_tint_demo).setOnClickListener(this)
         findView<View>(R.id.btn_dynamic_view_demo).setOnClickListener(this)
         findView<View>(R.id.btn_third_part_list_view_demo).setOnClickListener(this)
+        findView<View>(R.id.btn_custom_attr_demo).setOnClickListener(this)
+        findView<View>(R.id.btn_skin_enable_demo).setOnClickListener(this)
+        findView<View>(R.id.btn_festive_skin_demo).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -39,6 +42,10 @@ internal class MainPage : BasePage(), View.OnClickListener {
             R.id.btn_list_view_demo -> go(R.id.toListDemoPage)
             R.id.btn_tint_demo -> go(R.id.toTintDemoPage)
             R.id.btn_dynamic_view_demo -> go(R.id.toDynamicDemoPage)
+            R.id.btn_third_part_list_view_demo -> go(R.id.toChadListDemoPage)
+            R.id.btn_custom_attr_demo -> go(R.id.toThirdPartViewAttrDemoPage)
+            R.id.btn_skin_enable_demo -> go(R.id.toSkinEnableDemoPage)
+            R.id.btn_festive_skin_demo -> go(R.id.toFestiveSkinDemoPage)
         }
     }
 }

@@ -87,7 +87,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/tp_12"
             android:paddingHorizontal="@dimen/tp_12"
-            android:text="@string/main_btn_skin_enable" />
+            android:text="@string/main_btn_festive_skin" />
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

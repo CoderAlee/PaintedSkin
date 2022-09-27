@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.GridView
 import android.widget.ListView
-import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.ToastUtils
 import org.alee.demo.skin.basic.ability.R
 import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
 import org.alee.demo.skin.basic.ability.basic.recycler.OnItemClickListener
@@ -20,7 +20,7 @@ import org.alee.demo.skin.basic.ability.util.lazyInUI
 import org.alee.demo.skin.basic.ability.util.stringResource
 
 /**
- * 摘要
+ * 各类列表换肤Demo
  *
  * <p> 详细描述
  *
@@ -90,6 +90,6 @@ class ListDemoPage : BasePage(), OnItemClickListener {
     }
 
     private fun Int.showToast() {
-        Toast.makeText(context, R.string.list_demo_toast.stringResource(this), Toast.LENGTH_SHORT).show()
+        ToastUtils.showShort(R.string.list_demo_toast.stringResource(this))
     }
 }

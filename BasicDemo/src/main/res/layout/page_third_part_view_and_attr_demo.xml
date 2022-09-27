@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CommonBg">
+
+    <org.alee.demo.skin.basic.ability.widget.BackButton
+        android:id="@+id/btn_back"
+        style="@style/BackBtn.Wrapper"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tp_0"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/tp_12"
+            android:paddingBottom="@dimen/tp_12">
+
+            <TextView
+                style="@style/text.Caption1.BlackHigh"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/tp_6"
+                android:text="第三方View自定义属性换肤↓" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/tp_96"
+                android:layout_height="@dimen/tp_96"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/tp_12"
+                android:padding="@dimen/tp_6"
+                android:src="@mipmap/icon_yuanyuan"
+                app:civ_border_color="@color/black_800"
+                app:civ_border_width="@dimen/tp_2"
+                app:civ_circle_background_color="@color/primary_main" />
+
+            <TextView
+                style="@style/text.Caption1.BlackHigh"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/tp_12"
+                android:text="代码创建的第三方View自定义属性换肤↓" />
+
+            <FrameLayout
+                android:id="@+id/fl_root"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/tp_12" />
+
+            <TextView
+                style="@style/text.Caption1.BlackHigh"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/tp_12"
+                android:text="自定义View及自定义属性换肤↓" />
+
+            <org.alee.demo.skin.basic.ability.widget.CustomView
+                android:id="@+id/custom_view"
+                android:layout_width="@dimen/tp_300"
+                android:layout_height="@dimen/tp_400"
+                android:layout_gravity="center"
+                android:background="@color/gray_b400"
+                android:textColor="@color/selector_default_btn_text_color"
+                app:icon="@mipmap/bdd"
+                app:point_color="@color/primary_main"
+                app:rectangle_color="@color/button_warning_normal_stroke" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

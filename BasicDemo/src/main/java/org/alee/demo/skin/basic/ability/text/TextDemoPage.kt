@@ -12,7 +12,7 @@ import org.alee.demo.skin.basic.ability.util.colorResource
 import org.alee.demo.skin.basic.ability.util.spannableString
 
 /**
- * 摘要
+ * 文本 换肤 Demo
  *
  * <p> 详细描述
  *

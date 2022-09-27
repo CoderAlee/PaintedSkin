@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/text.Body1.Bold.BlackHigh"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/tp_44"
+    android:background="@drawable/shape_bg_white_corners_tp_10"
+    android:gravity="center" />

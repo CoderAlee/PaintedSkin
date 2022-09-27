@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.alee.component.skin.executor.ISkinExecutor;
 import org.alee.component.skin.executor.SkinElement;
@@ -24,8 +25,10 @@ public interface IThemeSkinExecutorBuilder {
      *
      * @param context      {@link Context}
      * @param attributeSet {@link AttributeSet}
+     *
      * @return {@link SkinElement}
      */
+    @Nullable
     Set<SkinElement> parse(@NonNull Context context, @NonNull AttributeSet attributeSet);
 
     /**
@@ -33,8 +36,10 @@ public interface IThemeSkinExecutorBuilder {
      *
      * @param view    需要换肤的View
      * @param element 需要执行的元素
+     *
      * @return {@link ISkinExecutor}
      */
+    @NonNull
     ISkinExecutor requireSkinExecutor(@NonNull View view, @NonNull SkinElement element);
 
     /**
@@ -42,6 +47,7 @@ public interface IThemeSkinExecutorBuilder {
      *
      * @param view     View
      * @param attrName 属性名称
+     *
      * @return true: 支持
      */
     boolean isSupportAttr(@NonNull View view, @NonNull String attrName);

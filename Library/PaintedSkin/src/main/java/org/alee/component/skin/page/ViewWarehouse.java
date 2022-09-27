@@ -13,6 +13,9 @@ import org.alee.component.skin.parser.ThemeSkinExecutorBuilderManager;
 import org.alee.component.skin.util.ObjectMemoryAddress;
 import org.alee.component.skin.util.PrintUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**********************************************************
  *
  * @author: MY.Liu
@@ -87,16 +90,35 @@ final class ViewWarehouse implements IEnableThemeSkinViewWarehouse {
     public void applyThemeSkin() {
         PrintUtil.getInstance().printD("开始换肤,待换肤View数量：" + mViewStack.size());
         synchronized (mViewStack) {
+            List<Integer> needRemoveList = new ArrayList();
             for (int i = mViewStack.size() - 1; i >= 0; i--) {
                 EnabledThemeSkinView view = mViewStack.valueAt(i);
                 if (null == view) {
+                    needRemoveList.add(mViewStack.keyAt(i));
                     continue;
                 }
                 if (!view.isValid()) {
+                    needRemoveList.add(mViewStack.keyAt(i));
                     continue;
                 }
                 view.applyThemeSkin();
             }
+            removeInvalidData(needRemoveList);
+        }
+    }
+
+    /**
+     * 移除无效的元素
+     *
+     * @param needRemoveKeys 需要被移除的元素 Key List
+     */
+    private void removeInvalidData(List<Integer> needRemoveKeys) {
+        if (0 >= needRemoveKeys.size()) {
+            return;
+        }
+        PrintUtil.getInstance().printD("发现已被回收的View：" + needRemoveKeys.size() + " 个，已将其从框架内移除");
+        for (int key : needRemoveKeys) {
+            mViewStack.remove(key);
         }
     }
 

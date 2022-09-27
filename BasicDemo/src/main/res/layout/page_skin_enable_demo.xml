@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CommonBg">
+
+    <org.alee.demo.skin.basic.ability.widget.BackButton
+        android:id="@+id/btn_back"
+        style="@style/BackBtn.Wrapper"
+        skin:enable="false"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/btn_unavailable"
+        style="@style/BigBtn.PrimaryBg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tp_40"
+        android:layout_marginStart="@dimen/tp_100"
+        android:layout_marginTop="@dimen/tp_12"
+        android:layout_marginEnd="@dimen/tp_100"
+        android:text="不支持换肤的View"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        skin:enable="false" />
+
+    <TextView
+        style="@style/BigBtn.PrimaryBg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tp_40"
+        android:layout_marginStart="@dimen/tp_100"
+        android:layout_marginTop="@dimen/tp_12"
+        android:layout_marginEnd="@dimen/tp_100"
+        android:text="支持换肤的View"
+        app:layout_constraintTop_toBottomOf="@id/btn_unavailable" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

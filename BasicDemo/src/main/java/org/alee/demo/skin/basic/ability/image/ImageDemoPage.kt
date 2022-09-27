@@ -10,7 +10,7 @@ import org.alee.demo.skin.basic.ability.util.bindView
 import org.alee.demo.skin.basic.ability.util.drawableResource
 
 /**
- * 摘要
+ * 各类Icon、背景图片、.9 换肤Demo
  *
  * <p> 详细描述
  *

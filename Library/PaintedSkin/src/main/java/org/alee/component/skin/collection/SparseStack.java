@@ -71,6 +71,10 @@ public final class SparseStack<T> {
         return get(Integer.parseInt(mKeyStack.get(index)));
     }
 
+    public synchronized int keyAt(int index) {
+        return Integer.parseInt(mKeyStack.get(index));
+    }
+
     public synchronized boolean contains(int key) {
         return mKeyStack.contains(String.valueOf(key));
     }

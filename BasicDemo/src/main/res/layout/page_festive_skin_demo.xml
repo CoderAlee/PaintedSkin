@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CommonBg">
+
+    <org.alee.demo.skin.basic.ability.widget.BackButton
+        android:id="@+id/btn_back"
+        style="@style/BackBtn.Wrapper"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txt_content"
+        style="@style/text.Body2.BlackHigh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/tp_6"
+        android:maxLines="100"
+        android:paddingHorizontal="@dimen/tp_12"
+        android:singleLine="false"
+        android:text="节日皮肤有两种实现方案：\n
+        1.应用内大部分资源都会发生变化 \n
+        2.应用内少部分图标或颜色发生变化 "
+        app:layout_constraintBottom_toTopOf="@id/btn_open_festival_mode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btn_open_festival_mode"
+        style="@style/BigBtn.PrimaryBg"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/tp_24"
+        android:paddingHorizontal="@dimen/tp_12"
+        android:paddingVertical="@dimen/tp_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_content"
+        tools:text="开启节日模式" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

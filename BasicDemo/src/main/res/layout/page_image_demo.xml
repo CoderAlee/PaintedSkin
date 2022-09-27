@@ -59,7 +59,7 @@
                 android:layout_marginTop="@dimen/tp_12"
                 android:paddingHorizontal="@dimen/tp_12"
                 android:paddingVertical="@dimen/tp_12"
-                android:text="根据业务使用不动的背景" />
+                android:text="根据业务使用不同的背景" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

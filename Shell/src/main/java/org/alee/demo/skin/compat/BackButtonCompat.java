@@ -7,7 +7,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.widget.NestedScrollView;
 
 import org.alee.component.skin.factory2.IExpandedFactory2;
 import org.alee.component.skin.service.ThemeSkinService;
@@ -31,7 +30,7 @@ public final class BackButtonCompat {
     private static class BackButtonFactory implements IExpandedFactory2 {
 
         /**
-         * {@link NestedScrollView} 类名
+         * {@link BackButton} 类名
          */
         private final static String CLASS_NAME = BackButton.class.getName();
 

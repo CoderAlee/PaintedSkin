@@ -129,7 +129,7 @@ public final class ThemeSkinExecutorBuilderManager {
                 continue;
             }
             ISkinExecutor executor = temp.requireSkinExecutor(view, element);
-            if (null == element) {
+            if (null == executor) {
                 continue;
             }
             return executor;

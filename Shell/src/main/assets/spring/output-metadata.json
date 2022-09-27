@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "org.alee.demo.skin.pack.springfestival",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 342,
+      "versionName": "3.4.2",
+      "outputFile": "SpringFestival.skin"
+    }
+  ],
+  "elementType": "File"
+}

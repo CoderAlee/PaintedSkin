@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import org.alee.component.skin.service.ThemeSkinService
 import org.alee.demo.skin.basic.ability.basic.activity.ScopedActivity
+import org.alee.demo.skin.basic.ability.util.loadBoolean
 import org.alee.demo.skin.basic.ability.util.setVector
 
 /**
@@ -21,6 +22,9 @@ internal class BasicAbilityActivity : ScopedActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basic_ability_demo)
+        if (USE_SPRING_FESTIVAL_SKIN.loadBoolean(false)) {
+            SkinOptionFactory.MODE_DAY.switchSkin()
+        }
         findViewById<View>(R.id.btn_switch_skin).apply {
             isSelected = false
             setOnClickListener(this@BasicAbilityActivity::onSwitchBtnClicked)

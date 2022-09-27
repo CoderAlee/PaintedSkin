@@ -4,7 +4,7 @@ import org.alee.demo.skin.basic.ability.R
 import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
 
 /**
- * 摘要
+ * Tint 属性 Demo
  *
  * <p> 详细描述
  *

@@ -1,6 +1,5 @@
 package org.alee.demo.skin.basic.ability.util
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -8,6 +7,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import com.blankj.utilcode.util.Utils
 import org.alee.component.skin.service.ThemeSkinService
 
 /**
@@ -21,17 +21,14 @@ import org.alee.component.skin.service.ThemeSkinService
  */
 
 
-lateinit var context: Context
-
-
 val @receiver:StringRes Int.stringResource: String
-    get() = context.resources.getString(this)
+    get() = Utils.getApp().baseContext.resources.getString(this)
 
 fun @receiver:StringRes Int.stringResource(vararg formats: Any?): String {
     if (formats.isEmpty()) {
         return stringResource
     }
-    return context.resources.getString(this, *formats)
+    return Utils.getApp().baseContext.resources.getString(this, *formats)
 }
 
 /**
@@ -65,13 +62,13 @@ val @receiver:ColorRes Int.colorDrawable
  * 通过id获取距离
  */
 val @receiver:DimenRes Int.dimenResource
-    get() = context.resources.getDimensionPixelSize(this)
+    get() = Utils.getApp().baseContext.resources.getDimensionPixelSize(this)
 
 
 /**
  * 通过id 获取float距离
  */
 val @receiver:DimenRes Int.floatDimenResource
-    get() = context.resources.getDimension(this)
+    get() = Utils.getApp().baseContext.resources.getDimension(this)
 
 

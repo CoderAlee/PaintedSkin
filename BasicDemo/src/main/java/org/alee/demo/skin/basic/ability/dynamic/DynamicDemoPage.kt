@@ -22,7 +22,7 @@ import org.alee.demo.skin.basic.ability.util.layout.wrap_content
 import org.alee.demo.skin.basic.ability.util.stringResource
 
 /**
- * 摘要
+ * 动态创建View 换肤Demo
  *
  * <p> 详细描述
  *

@@ -33,7 +33,8 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            outputFileName = "night.skin"
+            outputFileName = "Night.skin"
+            variant.packageApplication.outputDirectory = new File("../../Shell/src/main/assets/night/")
         }
     }
 }

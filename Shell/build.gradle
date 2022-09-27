@@ -39,7 +39,6 @@ dependencies {
     implementation rootProject.ext.Official_Library["constraintlayout"]
     implementation rootProject.ext.Official_Library["material"]
     implementation rootProject.ext.Tripartite_Library["reflex"]
-    implementation rootProject.ext.Tripartite_Library["listAdapterHelper"]
     implementation project(path: ':App:BasicDemo')
     if (CITING_THE_SOURCE_CODE.toBoolean()) {
         implementation project(path: ':Library:PaintedSkin')
