@@ -26,6 +26,10 @@ import org.alee.demo.skin.basic.ability.util.saveBoolean
  */
 class FestiveSkinDemoPage : BasePage() {
 
+    private companion object {
+        private const val SECOND = 1000L
+    }
+
     private val mBtn by bindView<TextView>(R.id.btn_open_festival_mode)
 
     /**
@@ -36,6 +40,7 @@ class FestiveSkinDemoPage : BasePage() {
 
     override fun onBindViewValue(savedInstanceState: Bundle?) {
         super.onBindViewValue(savedInstanceState)
+        // 从缓存中读取是否需要加载春节皮肤
         updateBtnText(USE_SPRING_FESTIVAL_SKIN.loadBoolean(false), false)
     }
 
@@ -46,13 +51,18 @@ class FestiveSkinDemoPage : BasePage() {
         }
     }
 
+    /**
+     * 更新按钮文言并存储是否加载春节皮肤的状态
+     * @param state Boolean true: 加载节日皮肤
+     * @param relaunch Boolean true:重启
+     */
     private fun updateBtnText(state: Boolean, relaunch: Boolean = true) {
         USE_SPRING_FESTIVAL_SKIN.saveBoolean(state)
         mBtn.text = if (state) "退出春节七天乐" else "进入春节七天乐"
         if (relaunch) {
             lifecycleScope.launch(Dispatchers.Default) {
                 ToastUtils.showLong("App即将重启")
-                delay(1000)
+                delay(SECOND)
                 AppUtils.relaunchApp(true)
             }
         }

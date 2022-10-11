@@ -13,9 +13,9 @@ import org.alee.component.skin.service.ThemeSkinService;
 import org.alee.demo.skin.basic.ability.widget.BackButton;
 
 /**
- * 摘要
+ * 返回按钮适兼容
  *
- * <p> 详细描述
+ * <p> 换肤框架无法创建自定义View，需要通过实现{@link IExpandedFactory2} 接口使框架兼容自定义View的创建，否则无法通过XML进行换肤。
  *
  * @author MingYu.Liu
  * created in 2022/9/23

@@ -1,16 +1,117 @@
 package org.alee.demo.skin.basic.ability.thirdpart.view
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import org.alee.component.skin.executor.ISkinExecutor
 import org.alee.component.skin.executor.SkinElement
+import org.alee.component.skin.executor.ViewSkinExecutor
+import org.alee.component.skin.factory2.IExpandedFactory2
 import org.alee.component.skin.parser.IThemeSkinExecutorBuilder
+import org.alee.component.skin.service.ThemeSkinService
 import org.alee.demo.skin.basic.ability.R
 import org.alee.demo.skin.basic.ability.widget.CustomView
 
 /**
- * 摘要
+ * 自定义View兼容
+ *
+ * <p> 详细描述
+ *
+ * @author MingYu.Liu
+ * created in 2022/10/11
+ *
+ */
+
+internal fun customViewCompatible() {
+    //FIXME 第三方View、自定义View 需要添加适配器。否则换肤框架无法创建View实例
+    ThemeSkinService.getInstance().createViewInterceptor.add(CustomViewFactory())
+    // FIXME 第三方View、自定义View 的自定义属性如果需要换肤，需要由使用者通过实现IThemeSkinExecutorBuilder 为框架提供自己的换肤执行器
+    ThemeSkinService.getInstance().addThemeSkinExecutorBuilder(CustomViewSkinExecutorBuilder())
+}
+
+
+/**
+ * 自定义View孵化工厂
+ *
+ * <p> 详细描述
+ *
+ * @author MingYu.Liu
+ * created in 2022/9/27
+ *
+ */
+private class CustomViewFactory : IExpandedFactory2 {
+
+    private companion object {
+        /**
+         * [CustomView] 类名
+         */
+        private val CLASS_NAME = CustomView::class.java.name
+    }
+
+
+    /**
+     * 创建View
+     *
+     * @param originalView 上一个IExpandedFactory生成的View
+     * @param parent       父View
+     * @param name         名称
+     * @param context      [Context]
+     * @param attrs        [AttributeSet]
+     * @return 生成的View
+     */
+    override fun onCreateView(
+        originalView: View?, parent: View?, name: String,
+        context: Context, attrs: AttributeSet
+    ): View? {
+        return if (CLASS_NAME == name) CustomView(context, attrs) else originalView
+    }
+}
+
+/**
+ * 自定义View 自定义属性换肤执行器
+ *
+ * <p> 详细描述
+ *
+ * @author MingYu.Liu
+ * created in 2022/9/27
+ *
+ */
+private class CustomViewSkinExecutor(fullElement: SkinElement) : ViewSkinExecutor<CustomView>(fullElement) {
+
+    override fun applyColor(view: CustomView, colorStateList: ColorStateList, attrName: String) {
+        super.applyColor(view, colorStateList, attrName)
+        when (attrName) {
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_POINT_COLOR -> view.pointColor = colorStateList.defaultColor
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_CIRCLE_COLOR -> view.circleBorderColor = colorStateList.defaultColor
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_RECTANGLE_COLOR -> view.rectangleFillColor = colorStateList.defaultColor
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_TEXT_COLOR -> view.textColor = colorStateList
+        }
+    }
+
+    override fun applyColor(view: CustomView, color: Int, attrName: String) {
+        super.applyColor(view, color, attrName)
+        when (attrName) {
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_POINT_COLOR -> view.pointColor = color
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_CIRCLE_COLOR -> view.circleBorderColor = color
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_RECTANGLE_COLOR -> view.rectangleFillColor = color
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_TEXT_COLOR -> view.textColor = ColorStateList.valueOf(color)
+        }
+    }
+
+    override fun applyDrawable(view: CustomView, drawable: Drawable, attrName: String) {
+        super.applyDrawable(view, drawable, attrName)
+        when (attrName) {
+            CustomViewSkinExecutorBuilder.ATTRIBUTE_ICON -> view.icon = drawable
+        }
+    }
+
+}
+
+
+/**
+ * 自定义View换肤执行器构建者
  *
  * <p> 详细描述
  *

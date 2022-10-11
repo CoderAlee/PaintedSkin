@@ -5,6 +5,9 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
+
 import org.alee.component.skin.R;
 import org.alee.component.skin.executor.BasicViewSkinExecutorFactory;
 import org.alee.component.skin.executor.ISkinExecutor;
@@ -14,9 +17,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RestrictTo;
 
 /**********************************************************
  *
@@ -96,6 +96,41 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public static final String ATTRIBUTE_TINT = "tint";
 
+    /**
+     * 换肤支持的属性 TextView左侧图片
+     */
+    public static final String ATTRIBUTE_DRAWABLE_LEFT = "drawableLeft";
+
+    /**
+     * 换肤支持的属性 TextView左侧图片
+     */
+    public static final String ATTRIBUTE_DRAWABLE_START = "drawableStart";
+
+    /**
+     * 换肤支持的属性 TextView顶部图片
+     */
+    public static final String ATTRIBUTE_DRAWABLE_TOP = "drawableTop";
+
+    /**
+     * 换肤支持的属性 TextView右侧图片
+     */
+    public static final String ATTRIBUTE_DRAWABLE_RIGHT = "drawableRight";
+
+    /**
+     * 换肤支持的属性 TextView右侧图片
+     */
+    public static final String ATTRIBUTE_DRAWABLE_END = "drawableEnd";
+
+    /**
+     * 换肤支持的属性 TextView底部图片
+     */
+    public static final String ATTRIBUTE_DRAWABLE_BOTTOM = "drawableBottom";
+
+    /**
+     * 换肤支持的属性 TextView内部图片染色
+     */
+    public static final String ATTRIBUTE_DRAWABLE_TINT = "drawableTint";
+
     private static final Map<Integer, String> SUPPORT_ATTR = new HashMap<>();
 
     static {
@@ -113,6 +148,20 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_foregroundTint, ATTRIBUTE_FRG_TINT);
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_tint, ATTRIBUTE_TINT);
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_tint, ATTRIBUTE_TINT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_drawableLeft, ATTRIBUTE_DRAWABLE_LEFT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_drawableStart, ATTRIBUTE_DRAWABLE_START);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_drawableTop, ATTRIBUTE_DRAWABLE_TOP);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_drawableRight, ATTRIBUTE_DRAWABLE_RIGHT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_drawableEnd, ATTRIBUTE_DRAWABLE_END);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_drawableBottom, ATTRIBUTE_DRAWABLE_BOTTOM);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_android_drawableTint, ATTRIBUTE_DRAWABLE_TINT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableLeftCompat, ATTRIBUTE_DRAWABLE_LEFT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableStartCompat, ATTRIBUTE_DRAWABLE_START);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableTopCompat, ATTRIBUTE_DRAWABLE_TOP);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableRightCompat, ATTRIBUTE_DRAWABLE_RIGHT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableEndCompat, ATTRIBUTE_DRAWABLE_END);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableBottomCompat, ATTRIBUTE_DRAWABLE_BOTTOM);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableTint, ATTRIBUTE_DRAWABLE_TINT);
     }
 
     /**
@@ -120,6 +169,7 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
      *
      * @param context      {@link Context}
      * @param attributeSet {@link AttributeSet}
+     *
      * @return {@link SkinElement}
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -151,6 +201,7 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
      *
      * @param view    需要换肤的View
      * @param element 需要执行的元素
+     *
      * @return {@link ISkinExecutor}
      */
     @Override
@@ -164,6 +215,7 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
      *
      * @param view     View
      * @param attrName 属性名称
+     *
      * @return true: 支持
      */
     @Override

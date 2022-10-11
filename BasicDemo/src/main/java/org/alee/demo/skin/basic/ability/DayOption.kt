@@ -4,7 +4,7 @@ import org.alee.component.skin.service.IThemeSkinOption
 import org.alee.demo.skin.basic.ability.util.loadBoolean
 
 /**
- * 摘要
+ * 白天模式配置
  *
  * <p> 详细描述
  *

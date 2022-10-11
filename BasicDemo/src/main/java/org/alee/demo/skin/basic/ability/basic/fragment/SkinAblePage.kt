@@ -4,30 +4,31 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import org.alee.component.skin.service.ThemeSkinService
 import org.alee.demo.skin.basic.ability.basic.template.IThemeSkinAble
-import org.alee.demo.skin.basic.ability.util.logI
 
 /**
- * 摘要
+ * 支持换肤能力的Fragment
  *
- * <p> 详细描述
+ * <p> 此处没有在基类实现[IThemeSkinAble] 接口。而是由子类自己决定是否需要实现[IThemeSkinAble],这样更加灵活一些。
  *
  * @author MingYu.Liu
  * created in 2022/9/13
  *
  */
-abstract class SkinAblePage : Fragment(), IThemeSkinAble {
-
+abstract class SkinAblePage : Fragment() {
+    /**
+     * 在附着到Window后判断如果子类实现了[IThemeSkinAble] 则注册主题切换观察者
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        ThemeSkinService.getInstance().subscribeSwitchThemeSkin(this)
+        if (this is IThemeSkinAble) {
+            ThemeSkinService.getInstance().subscribeSwitchThemeSkin(this)
+        }
     }
 
     override fun onDetach() {
-        ThemeSkinService.getInstance().unsubscribeSwitchThemeSkin(this)
+        if (this is IThemeSkinAble) {
+            ThemeSkinService.getInstance().unsubscribeSwitchThemeSkin(this)
+        }
         super.onDetach()
-    }
-
-    override fun onThemeSkinSwitchRunOnUiThread() {
-        "${this::javaClass.name} received switch theme skin command".logI()
     }
 }

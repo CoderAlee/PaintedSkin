@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.ViewGroup
 import de.hdodenhof.circleimageview.CircleImageView
 import org.alee.component.skin.executor.SkinElement
-import org.alee.component.skin.service.ThemeSkinService
 import org.alee.demo.skin.basic.ability.R
 import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
 import org.alee.demo.skin.basic.ability.util.dimenResource
@@ -29,12 +28,8 @@ class ViewAndAttrDemoPage : BasePage() {
 
     private companion object {
         init {
-            //FIXME 第三方View、自定义View 需要添加适配器。否则换肤框架无法创建View实例
-            ThemeSkinService.getInstance().createViewInterceptor.add(CircleImageViewFactory())
-            ThemeSkinService.getInstance().createViewInterceptor.add(CustomViewFactory())
-            // FIXME 第三方View、自定义View 的自定义属性如果需要换肤，需要由使用者通过实现IThemeSkinExecutorBuilder 为框架提供自己的换肤执行器
-            ThemeSkinService.getInstance().addThemeSkinExecutorBuilder(CircleImageViewSkinExecutorBuilder())
-            ThemeSkinService.getInstance().addThemeSkinExecutorBuilder(CustomViewSkinExecutorBuilder())
+            circleImageViewCompatible()
+            customViewCompatible()
         }
     }
 

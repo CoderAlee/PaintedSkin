@@ -1,13 +1,106 @@
 package org.alee.demo.skin.basic.ability.thirdpart.view
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.View
 import de.hdodenhof.circleimageview.CircleImageView
 import org.alee.component.skin.executor.ISkinExecutor
 import org.alee.component.skin.executor.SkinElement
+import org.alee.component.skin.executor.ViewSkinExecutor
+import org.alee.component.skin.factory2.IExpandedFactory2
 import org.alee.component.skin.parser.IThemeSkinExecutorBuilder
+import org.alee.component.skin.service.ThemeSkinService
 import org.alee.demo.skin.basic.ability.R
+
+/**
+ * 第三方View兼容器
+ *
+ * <p> 详细描述
+ *
+ * @author MingYu.Liu
+ * created in 2022/10/11
+ *
+ */
+
+internal fun circleImageViewCompatible() {
+    //FIXME 第三方View、自定义View 需要添加适配器。否则换肤框架无法创建View实例
+    ThemeSkinService.getInstance().createViewInterceptor.add(CircleImageViewFactory())
+    // FIXME 第三方View、自定义View 的自定义属性如果需要换肤，需要由使用者通过实现IThemeSkinExecutorBuilder 为框架提供自己的换肤执行器
+    ThemeSkinService.getInstance().addThemeSkinExecutorBuilder(CircleImageViewSkinExecutorBuilder())
+}
+
+
+/**
+ * 自定义View构造工厂
+ *
+ * <p> 详细描述
+ *
+ * @author MingYu.Liu
+ * created in 2022/9/27
+ *
+ */
+private class CircleImageViewFactory : IExpandedFactory2 {
+
+    private companion object {
+        /**
+         * [CircleImageView] 类名
+         */
+        private val CLASS_NAME = CircleImageView::class.java.name
+    }
+
+
+    /**
+     * 创建View
+     *
+     * @param originalView 上一个IExpandedFactory生成的View
+     * @param parent       父View
+     * @param name         名称
+     * @param context      [Context]
+     * @param attrs        [AttributeSet]
+     * @return 生成的View
+     */
+    override fun onCreateView(
+        originalView: View?, parent: View?, name: String, context: Context, attrs: AttributeSet
+    ): View? {
+        return if (CLASS_NAME == name) CircleImageView(context, attrs) else originalView
+    }
+}
+
+
+/**
+ * 第三方View 换肤执行器
+ *
+ * <p> 需要注意 继承关系。所有执行器都应最少继承于ViewSkinExecutor。有ViewSkinExecutor 来提供background等属性的换肤能力
+ *
+ * @author MingYu.Liu
+ * created in 2022/9/27
+ *
+ */
+private class CircleImageViewSkinExecutor(fullElement: SkinElement) : ViewSkinExecutor<CircleImageView>(fullElement) {
+
+    override fun applyColor(view: CircleImageView, color: Int, attrName: String) {
+        // FIXME 需要注意调用super，来保证父类所支持执行的属性能够官服成功。
+        super.applyColor(view, color, attrName)
+        when (attrName) {
+            CircleImageViewSkinExecutorBuilder.ATTRIBUTE_BORDER_COLOR -> view.borderColor = color
+            CircleImageViewSkinExecutorBuilder.ATTRIBUTE_BACKGROUND_COLOR -> view.circleBackgroundColor = color
+        }
+
+    }
+
+    // FIXME 如果不想支持 ColorStateList 可以不实现此函数
+    override fun applyColor(view: CircleImageView, colorStateList: ColorStateList, attrName: String) {
+        // FIXME 需要注意调用super，来保证父类所支持执行的属性能够官服成功。
+        super.applyColor(view, colorStateList, attrName)
+        when (attrName) {
+            CircleImageViewSkinExecutorBuilder.ATTRIBUTE_BORDER_COLOR -> view.borderColor = colorStateList.defaultColor
+            CircleImageViewSkinExecutorBuilder.ATTRIBUTE_BACKGROUND_COLOR ->
+                view.circleBackgroundColor = colorStateList.defaultColor
+        }
+    }
+}
+
 
 /**
  * 自定义View换肤属性执行器构造器

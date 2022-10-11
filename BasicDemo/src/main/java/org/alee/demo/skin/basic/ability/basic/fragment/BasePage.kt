@@ -9,12 +9,14 @@ import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import org.alee.demo.skin.basic.ability.basic.template.IUIProcess
+import org.alee.demo.skin.basic.ability.exception.ViewLostException
 import org.alee.demo.skin.basic.ability.util.getOrPut
 
 /**
- * 摘要
+ * Fragment 基类
  *
- * <p> 详细描述
+ * <p> 1.为了减少对View状态的存储，在onCreateView时缓存了根View
+ * <p> 2.实现[IUIProcess]接口，在Fragment原有生命周期调用。拓展出更加符合UI的生命周期
  *
  * @author MingYu.Liu
  * created in 2022/9/13
@@ -87,13 +89,19 @@ abstract class BasePage : SkinAblePage(), IUIProcess {
      * @param viewId Int
      * @return E
      */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(ViewLostException::class)
     fun <E : View> findView(@IdRes viewId: Int): E {
         val view: View = mViewCache.getOrPut(viewId) {
             mFragmentContainerView?.findViewById(viewId)
-        } ?: throw RuntimeException("not find view by id [ $viewId ]")
+        } ?: throw ViewLostException(viewId)
         return view as E
     }
 
+    /**
+     * 当页面重新进入时被调用
+     * @param bundle Bundle?
+     */
     protected open fun onReEnter(bundle: Bundle?) {
     }
 

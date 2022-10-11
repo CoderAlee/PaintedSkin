@@ -6,7 +6,7 @@ import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
 import org.alee.demo.skin.basic.ability.util.go
 
 /**
- * 摘要
+ * 主页
  *
  * <p> 详细描述
  *

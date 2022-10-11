@@ -15,5 +15,19 @@
         <attr name="android:foregroundTint" />
         <attr name="tint" />
         <attr name="android:tint" />
+        <attr name="android:drawableLeft" />
+        <attr name="android:drawableStart" />
+        <attr name="android:drawableTop" />
+        <attr name="android:drawableRight" />
+        <attr name="android:drawableEnd" />
+        <attr name="android:drawableBottom" />
+        <attr name="android:drawableTint" />
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableStartCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableEndCompat" />
+        <attr name="drawableBottomCompat" />
+        <attr name="drawableTint" />
     </declare-styleable>
 </resources>

@@ -1,5 +1,6 @@
 package org.alee.demo.skin.basic.ability.list.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,7 @@ import android.widget.TextView
 import org.alee.demo.skin.basic.ability.R
 
 /**
- * 摘要
+ * 网格适配器
  *
  * <p> 详细描述
  *
@@ -34,6 +35,7 @@ class GridViewAdapter(private val data: List<String>) : BaseAdapter() {
 
     private class Item(convertView: View?, context: Context) {
 
+        @SuppressLint("InflateParams")
         val rootView: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.layout_grid_view_item, null)
 
         private val mContentTv = rootView.findViewById<TextView>(R.id.txt_content)

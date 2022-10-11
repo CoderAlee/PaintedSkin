@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CommonBg">
 
@@ -57,5 +58,38 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/tp_12"
             tools:text="通过Spannable设置颜色" />
+
+        <TextView
+            style="@style/text.Headline1.Bold.BlackHigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tp_12"
+            android:drawablePadding="@dimen/tp_6"
+            android:gravity="center"
+            android:padding="@dimen/tp_20"
+            android:text="drawable xxx 属性"
+            app:drawableBottomCompat="@mipmap/icon_arrow_bottom"
+            app:drawableEndCompat="@mipmap/icon_arrow_right"
+            app:drawableStartCompat="@mipmap/icon_arrow_left"
+            app:drawableTopCompat="@mipmap/icon_arrow_top"
+            tools:drawableBottom="@mipmap/icon_arrow_bottom"
+            tools:drawableEnd="@mipmap/icon_arrow_right"
+            tools:drawableStart="@mipmap/icon_arrow_left"
+            tools:drawableTop="@mipmap/icon_arrow_top" />
+
+        <TextView
+            style="@style/text.Headline1.Bold.BlackHigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tp_12"
+            android:drawablePadding="@dimen/tp_6"
+            android:gravity="center"
+            android:padding="@dimen/tp_20"
+            android:text="drawable Tint"
+            app:drawableEndCompat="@mipmap/icon_arrow_right"
+            app:drawableStartCompat="@mipmap/icon_arrow_left"
+            app:drawableTint="@color/primary_main"
+            tools:drawableEnd="@mipmap/icon_arrow_right"
+            tools:drawableStart="@mipmap/icon_arrow_left" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

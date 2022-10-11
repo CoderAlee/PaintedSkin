@@ -6,6 +6,7 @@ import org.alee.component.skin.pack.IThemeSkinPack.SkinPackType
 import org.alee.component.skin.service.ThemeSkinService
 import org.alee.demo.skin.basic.ability.R
 import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
+import org.alee.demo.skin.basic.ability.basic.template.IThemeSkinAble
 import org.alee.demo.skin.basic.ability.util.bindView
 import org.alee.demo.skin.basic.ability.util.drawableResource
 
@@ -18,7 +19,7 @@ import org.alee.demo.skin.basic.ability.util.drawableResource
  * created in 2022/9/14
  *
  */
-class ImageDemoPage : BasePage() {
+class ImageDemoPage : BasePage(), IThemeSkinAble {
 
     private val mBusinessBtn by bindView<View>(R.id.btn_business)
 
@@ -32,6 +33,9 @@ class ImageDemoPage : BasePage() {
         updateBackgroundByBusiness()
     }
 
+    /**
+     * 实现此函数并在函数被调用后处理换肤逻辑
+     */
     override fun onThemeSkinSwitchRunOnUiThread() {
         updateBackgroundByBusiness()
     }

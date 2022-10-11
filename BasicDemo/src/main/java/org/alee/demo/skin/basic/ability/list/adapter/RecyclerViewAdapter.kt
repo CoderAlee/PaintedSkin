@@ -9,7 +9,7 @@ import org.alee.demo.skin.basic.ability.basic.recycler.OnItemClickListener
 import org.alee.demo.skin.basic.ability.util.stringResource
 
 /**
- * 摘要
+ * RecyclerView 适配器
  *
  * <p> 详细描述
  *

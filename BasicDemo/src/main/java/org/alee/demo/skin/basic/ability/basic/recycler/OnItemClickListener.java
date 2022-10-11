@@ -2,13 +2,14 @@ package org.alee.demo.skin.basic.ability.basic.recycler;
 
 import android.view.View;
 
-/**********************************************************
+/**
+ * RecyclerView Item 点击监听
  *
- * @author: MY.Liu
- * @date: 2021/3/11
- * @description: xxxx
+ * <p> 详细描述
  *
- *********************************************************/
+ * @author MingYu.Liu
+ * created in 2021/10/28
+ */
 public interface OnItemClickListener {
     /**
      * item点击事件回调

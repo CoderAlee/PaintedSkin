@@ -30,21 +30,7 @@ internal class ChadListAdapter : BaseQuickAdapter<Int, BaseViewHolder>(0) {
         private const val TYPE_DELETE = 0x1001
     }
 
-    class Item(parent: ViewGroup) : BaseViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.layout_chad_list_item, parent, false)) {
 
-        fun bindData(number: Int) {
-            (itemView as? TextView)?.text = number.toString()
-        }
-    }
-
-    /**
-     * Implement this method and use the helper to adapt the view to the given item.
-     *
-     * 实现此方法，并使用 helper 完成 item 视图的操作
-     *
-     * @param helper A fully initialized helper.
-     * @param item   The item that needs to be displayed.
-     */
     override fun convert(holder: BaseViewHolder, item: Int) {
         if (holder is Item) {
             holder.bindData(item)
@@ -68,6 +54,15 @@ internal class ChadListAdapter : BaseQuickAdapter<Int, BaseViewHolder>(0) {
         scaleType = scale_center
         background_drawable = R.drawable.shape_bg_black_200_corners_tp_10
         this src R.drawable.ic_keyboard_ic_delete
+    }
+
+    private class Item(parent: ViewGroup) : BaseViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.layout_chad_list_item, parent, false)
+    ) {
+
+        fun bindData(number: Int) {
+            (itemView as? TextView)?.text = number.toString()
+        }
     }
 }
 

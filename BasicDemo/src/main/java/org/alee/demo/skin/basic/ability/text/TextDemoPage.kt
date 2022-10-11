@@ -6,6 +6,7 @@ import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import org.alee.demo.skin.basic.ability.R
 import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
+import org.alee.demo.skin.basic.ability.basic.template.IThemeSkinAble
 import org.alee.demo.skin.basic.ability.util.append
 import org.alee.demo.skin.basic.ability.util.bindView
 import org.alee.demo.skin.basic.ability.util.colorResource
@@ -20,7 +21,7 @@ import org.alee.demo.skin.basic.ability.util.spannableString
  * created in 2022/9/13
  *
  */
-class TextDemoPage : BasePage() {
+class TextDemoPage : BasePage(), IThemeSkinAble {
 
     private val mSpannableView by bindView<TextView>(R.id.tv_spannable)
 
@@ -38,6 +39,7 @@ class TextDemoPage : BasePage() {
     }
 
     override fun onThemeSkinSwitchRunOnUiThread() {
+        // FIXME 动态设置的字体颜色，需要在主题发生变化后重新设置一次
         setSpannableText()
     }
 

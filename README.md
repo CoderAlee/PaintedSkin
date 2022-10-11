@@ -55,6 +55,11 @@
 ##### V3.5.0
 
 - [x]  修复换肤时卡顿问题、修复统计换肤View数量不正确问题
+
+
+##### V3.5.1
+
+- [x]  增加对`android:drawablexxx` 与 `drawablexxxCompat` 的属性支持
 ---
 
 ## 框架实现原理

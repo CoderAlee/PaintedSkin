@@ -5,10 +5,10 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import org.alee.component.skin.service.ThemeSkinService
 import org.alee.demo.skin.basic.ability.basic.template.IThemeSkinAble
-import java.util.*
+import java.util.Objects
 
 /**
- * 摘要
+ * RecyclerView Adapter 基类
  *
  * <p> 详细描述
  *
@@ -35,6 +35,7 @@ abstract class BaseRecyclerAdapter<DATA, HOLDER : BaseHolder<DATA>>(
      *
      * @param view item
      */
+    @Suppress("UNCHECKED_CAST")
     protected fun bindClickListener(view: View) {
         view.setOnClickListener {
             (mListener ?: this).run {
@@ -193,7 +194,9 @@ abstract class BaseRecyclerAdapter<DATA, HOLDER : BaseHolder<DATA>>(
         }
     }
 
-    override fun onItemClick(view: View?, position: Int) {}
+    override fun onItemClick(view: View?, position: Int) {
+        // ignored
+    }
 
     override fun onBindViewHolder(holder: HOLDER, position: Int) {
         holder.itemView.tag = getItem(position)

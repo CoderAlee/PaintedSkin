@@ -4,7 +4,7 @@ import org.alee.component.skin.service.IOptionFactory
 import org.alee.component.skin.service.IThemeSkinOption
 
 /**
- * 摘要
+ * 主题皮肤配置工厂
  *
  * <p> 详细描述
  *

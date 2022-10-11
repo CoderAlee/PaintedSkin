@@ -11,6 +11,7 @@ import com.blankj.utilcode.util.ToastUtils
 import org.alee.demo.skin.basic.ability.R
 import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
 import org.alee.demo.skin.basic.ability.basic.recycler.OnItemClickListener
+import org.alee.demo.skin.basic.ability.basic.template.IThemeSkinAble
 import org.alee.demo.skin.basic.ability.list.adapter.GridViewAdapter
 import org.alee.demo.skin.basic.ability.list.adapter.ListViewAdapter
 import org.alee.demo.skin.basic.ability.list.adapter.RecyclerViewAdapter
@@ -28,10 +29,13 @@ import org.alee.demo.skin.basic.ability.util.stringResource
  * created in 2022/9/23
  *
  */
-class ListDemoPage : BasePage(), OnItemClickListener {
+class ListDemoPage : BasePage(), OnItemClickListener, IThemeSkinAble {
 
     private val mRecyclerView by bindView<RecyclerView>(R.id.rv_list)
 
+    /**
+     * RecyclerView 的装饰器 此处用作绘制item分割线
+     */
     private val mRecyclerViewDecoration by lazyInUI {
         DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
             setDrawable(R.drawable.shape_list_divider.drawableResource!!)
@@ -69,7 +73,7 @@ class ListDemoPage : BasePage(), OnItemClickListener {
         layoutManager = LinearLayoutManager(context)
         addItemDecoration(mRecyclerViewDecoration)
         adapter = RecyclerViewAdapter(this@ListDemoPage).apply {
-            notifyData(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+            notifyData((1..10).toList())
         }
     }
 

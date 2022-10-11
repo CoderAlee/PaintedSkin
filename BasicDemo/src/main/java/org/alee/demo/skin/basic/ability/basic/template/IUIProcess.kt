@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 
 /**
- * 摘要
+ * 通过模板收敛UI处理代码
  *
  * <p> 详细描述
  *

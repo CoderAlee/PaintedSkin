@@ -5,13 +5,15 @@ import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import org.alee.component.skin.service.ISwitchThemeSkinObserver
 import org.alee.component.skin.service.ThemeSkinService
+import org.alee.demo.skin.basic.ability.exception.ViewLostException
 
 /**
- * 摘要
+ * RecyclerView Item 基类
  *
  * <p> 详细描述
  *
@@ -20,7 +22,7 @@ import org.alee.component.skin.service.ThemeSkinService
  *
  */
 abstract class BaseHolder<DATA>(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    companion object {
+    private companion object {
         /**
          * Tag - key
          */
@@ -30,7 +32,7 @@ abstract class BaseHolder<DATA>(itemView: View) : RecyclerView.ViewHolder(itemVi
     /**
      * [Context]
      */
-    private val mContext: Context = itemView.context
+    protected val mContext: Context = itemView.context
 
     /**
      * 所有注册的view
@@ -56,9 +58,8 @@ abstract class BaseHolder<DATA>(itemView: View) : RecyclerView.ViewHolder(itemVi
      * 设置部分view的默认属性
      */
     protected open fun bindViewDefaultValues() {
-        val rootView = getRootView()
-        if (rootView is ISwitchThemeSkinObserver) {
-            ThemeSkinService.getInstance().subscribeSwitchThemeSkin(rootView)
+        if (this is ISwitchThemeSkinObserver) {
+            ThemeSkinService.getInstance().subscribeSwitchThemeSkin(this)
         }
     }
 
@@ -78,20 +79,17 @@ abstract class BaseHolder<DATA>(itemView: View) : RecyclerView.ViewHolder(itemVi
      * @param <E>    类型
      * @return view
     </E> */
-    protected fun <E : View> findView(viewId: Int): E {
+    @Suppress("UNCHECKED_CAST")
+    protected fun <E : View> findView(@IdRes viewId: Int): E {
         var view = mViewCache[viewId]
         if (null == view) {
-            view = getRootView().findViewById(viewId)
+            view = itemView.findViewById(viewId)
             mViewCache.put(viewId, view)
         }
         if (null == view) {
-            throw RuntimeException("未找到View,id$viewId")
+            throw ViewLostException(viewId)
         }
-        return view!! as E
-    }
-
-    fun getRootView(): View {
-        return itemView
+        return view as E
     }
 
     /**
@@ -100,15 +98,12 @@ abstract class BaseHolder<DATA>(itemView: View) : RecyclerView.ViewHolder(itemVi
      * @param data 要绑定的数据
      */
     fun bindTag(data: DATA) {
-        getRootView().setTag(KEY_TAG, data)
+        itemView.setTag(KEY_TAG, data)
     }
 
+    @Suppress("UNCHECKED_CAST")
     fun getDefaultTag(): DATA? {
-        val tag = getRootView().getTag(KEY_TAG) ?: return null
+        val tag = itemView.getTag(KEY_TAG) ?: return null
         return tag as DATA
-    }
-
-    protected fun getContext(): Context {
-        return mContext
     }
 }
