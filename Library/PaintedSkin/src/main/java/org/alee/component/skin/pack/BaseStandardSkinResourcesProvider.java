@@ -96,6 +96,7 @@ abstract class BaseStandardSkinResourcesProvider extends BaseSkinResourcesProvid
      * 获取资源名称
      *
      * @param resId 资源id
+     *
      * @return name
      */
     protected final String getResourceName(@AnyRes int resId) throws Throwable {
@@ -107,6 +108,7 @@ abstract class BaseStandardSkinResourcesProvider extends BaseSkinResourcesProvid
      *
      * @param type          资源类型
      * @param resourcesName 资源名称
+     *
      * @return id
      */
     protected int getTargetResourcesId(@ResourcesType.Constraint String type, @NonNull String resourcesName) {
@@ -114,6 +116,11 @@ abstract class BaseStandardSkinResourcesProvider extends BaseSkinResourcesProvid
             return -1;
         }
         return mThemeSkinResources.getIdentifier(resourcesName, type, mResourcesPackageName);
+    }
+
+    @NonNull
+    protected Context getContext() {
+        return mResourcesContext;
     }
 
 }

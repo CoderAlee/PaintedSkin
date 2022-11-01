@@ -1,6 +1,7 @@
 package org.alee.component.skin.util.task;
 
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
 
@@ -12,7 +13,7 @@ import java.util.concurrent.Executors;
  * @author PG.Xie
  * created on 2020/8/12
  */
-class TaskPool {
+final class TaskPool {
 
     private final Executor mTaskPool;
 
@@ -20,12 +21,16 @@ class TaskPool {
         mTaskPool = pool;
     }
 
+    public static TaskPool main() {
+        return MainHolder._INSTANCE;
+    }
+
     /**
      * 创建一个串行的单线程的任务池，单例
      *
      * @return
      */
-    public static final TaskPool sequential() {
+    public static TaskPool sequential() {
         return SingleHolder._INSTANCE;
     }
 
@@ -34,7 +39,7 @@ class TaskPool {
      *
      * @return
      */
-    public static final TaskPool concurrent() {
+    public static TaskPool concurrent() {
         return MultiHolder._INSTANCE;
     }
 
@@ -42,9 +47,10 @@ class TaskPool {
      * 创建一个自定义的任务池，非单例，没调用一次该函数，均创建一个新的任务池
      *
      * @param pool
+     *
      * @return
      */
-    public static final TaskPool custom(Executor pool) {
+    public static TaskPool custom(Executor pool) {
         return new TaskPool(pool);
     }
 
@@ -145,4 +151,32 @@ class TaskPool {
         public static final TaskPool _INSTANCE = new TaskPool(Executors.newCachedThreadPool());
     }
 
+    private static final class MainHolder {
+        public static final TaskPool _INSTANCE = new TaskPool(MainExecutor.get());
+    }
+
+    private static class MainExecutor implements Executor {
+
+        Handler mHandler = new Handler(Looper.getMainLooper());
+
+        private MainExecutor() {
+        }
+
+        public static final MainExecutor get() {
+            return MainExecutorHolder._INSTANCE;
+        }
+
+        @Override
+        public void execute(Runnable command) {
+            mHandler.post(command);
+        }
+
+        private static final class MainExecutorHolder {
+            public static final MainExecutor _INSTANCE = new MainExecutor();
+        }
+    }
+
 }
+
+
+

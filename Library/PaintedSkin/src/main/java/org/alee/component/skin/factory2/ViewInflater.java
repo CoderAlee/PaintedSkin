@@ -95,6 +95,9 @@ final class ViewInflater {
                     } catch (Throwable ignored) {
                         temp = createView(context, name, BASICS_PREFIX, attributeSet);
                     }
+                    if (null == temp) {
+                        temp = new View(context, attributeSet);
+                    }
                 }
                 if (null == temp) {
                     for (String prefix : CLASS_PREFIX_ARRAY) {

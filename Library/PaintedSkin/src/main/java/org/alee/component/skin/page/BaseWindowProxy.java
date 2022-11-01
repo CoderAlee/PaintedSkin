@@ -110,6 +110,11 @@ abstract class BaseWindowProxy implements IWindowProxy {
      */
     protected abstract boolean isApplyInInvisible();
 
+    @Override
+    protected void finalize() {
+        onDestroy();
+    }
+
     final void onDestroy() {
         ThemeSkinService.getInstance().unsubscribeSwitchThemeSkin(this);
         mEnableThemeSkinViewWarehouse.gc();

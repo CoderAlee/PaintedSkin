@@ -5,12 +5,12 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
 
 /**********************************************************
  *
@@ -48,7 +48,9 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
      *
      * @param resId 原始资源id
      * @param theme 主题
+     *
      * @return 位图
+     *
      * @throws Throwable 任何异常
      */
     @Nullable
@@ -62,7 +64,9 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
      *
      * @param resId 原始资源id
      * @param theme 主题
+     *
      * @return 图片
+     *
      * @throws Throwable 任何异常
      */
     @Nullable
@@ -71,11 +75,19 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
         if (!isValidResourcesId(resId)) {
             return requiredDefaultDrawable(resId);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return getThemeSkinResources().getDrawable(resId, theme);
-        } else {
-            return getThemeSkinResources().getDrawable(resId);
+        Drawable result = null;
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                result = getThemeSkinResources().getDrawable(resId, theme);
+            } else {
+                result = getThemeSkinResources().getDrawable(resId);
+            }
+        } catch (Exception ignored) {
         }
+        if (null == result) {
+            result = AppCompatResources.getDrawable(getContext(), resId);
+        }
+        return result;
     }
 
     /**
@@ -83,7 +95,9 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
      *
      * @param resId 原始资源id
      * @param theme 主题
+     *
      * @return 色值
+     *
      * @throws Throwable 任何异常
      */
     @Nullable
@@ -101,17 +115,27 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
      *
      * @param resId 原始资源Id
      * @param theme 主题
+     *
      * @return {@link ColorStateList}
+     *
      * @throws Throwable
      */
     @Nullable
     @Override
     protected ColorStateList getColorStateList(int resId, @NonNull Resources.Theme theme) throws Throwable {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return getThemeSkinResources().getColorStateList(resId, theme);
-        } else {
-            return getThemeSkinResources().getColorStateList(resId);
+        ColorStateList result = null;
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                result = getThemeSkinResources().getColorStateList(resId, theme);
+            } else {
+                result = getThemeSkinResources().getColorStateList(resId);
+            }
+        } catch (Exception ignored) {
         }
+        if (null == result) {
+            result = AppCompatResources.getColorStateList(getContext(), resId);
+        }
+        return result;
     }
 
     /**
@@ -119,7 +143,9 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
      *
      * @param resName 资源名
      * @param theme   主题
+     *
      * @return {@link Drawable}
+     *
      * @throws Throwable 任何异常
      */
     @Nullable
@@ -128,20 +154,10 @@ final class DefaultSkinResourcesProvider extends BaseStandardSkinResourcesProvid
         return getDrawable(getTargetResourcesId(ResourcesType.MIPMAP, resName), theme);
     }
 
-    @Override
-    protected Drawable requiredDefaultDrawable(String resName) {
-        return new ColorDrawable(0);
-    }
-
     @Nullable
     @Override
     protected Drawable getDrawable(@Nullable String resName, Resources.Theme theme) throws Throwable {
         return getDrawable(getTargetResourcesId(ResourcesType.DRAWABLE, resName), theme);
-    }
-
-    @Override
-    protected Drawable requiredDefaultDrawable(int resId) {
-        return new ColorDrawable(0);
     }
 
 }

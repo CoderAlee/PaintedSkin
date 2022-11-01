@@ -73,7 +73,7 @@ public final class TaskQueue implements ITaskQueue {
         if (mTaskQueue.isEmpty()) {
             return this;
         }
-        TaskPool.concurrent().post(this::_execute);
+        TaskPool.main().post(this::_execute);
         return this;
     }
 

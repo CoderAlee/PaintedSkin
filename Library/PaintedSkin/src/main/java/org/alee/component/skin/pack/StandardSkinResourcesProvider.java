@@ -10,6 +10,7 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
 
 /**********************************************************
  *
@@ -28,7 +29,9 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
      *
      * @param resourcesName 原始资源名称
      * @param theme         主题
+     *
      * @return {@link ColorStateList}
+     *
      * @throws Throwable
      */
     @Nullable
@@ -38,11 +41,19 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
         if (!isValidResourcesId(resourcesId)) {
             return null;
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return getThemeSkinResources().getColorStateList(resourcesId, theme);
-        } else {
-            return getThemeSkinResources().getColorStateList(resourcesId);
+        ColorStateList result = null;
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                result = getThemeSkinResources().getColorStateList(resourcesId, theme);
+            } else {
+                result = getThemeSkinResources().getColorStateList(resourcesId);
+            }
+        } catch (Exception ignored) {
         }
+        if (null == result) {
+            result = AppCompatResources.getColorStateList(getContext(), resourcesId);
+        }
+        return result;
     }
 
     /**
@@ -50,7 +61,9 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
      *
      * @param resName 资源名称
      * @param theme   主题
+     *
      * @return 色值
+     *
      * @throws Throwable 任何异常
      */
     @Nullable
@@ -72,7 +85,9 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
      *
      * @param resName 资源名称
      * @param theme   主题
+     *
      * @return 位图
+     *
      * @throws Throwable 任何异常
      */
     @Nullable
@@ -90,7 +105,9 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
      *
      * @param resName 资源名
      * @param theme   主题
+     *
      * @return {@link Drawable}
+     *
      * @throws Throwable 任何异常
      */
     @Nullable
@@ -112,7 +129,9 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
      *
      * @param resName 资源名
      * @param theme   主题
+     *
      * @return {@link Drawable}
+     *
      * @throws Throwable 任何异常
      */
     @Nullable
@@ -122,10 +141,18 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
         if (!isValidResourcesId(resourcesId)) {
             return null;
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return getThemeSkinResources().getDrawable(resourcesId, theme);
-        } else {
-            return getThemeSkinResources().getDrawable(resourcesId);
+        Drawable result = null;
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                result = getThemeSkinResources().getDrawable(resourcesId, theme);
+            } else {
+                result = getThemeSkinResources().getDrawable(resourcesId);
+            }
+        } catch (Exception ignored) {
         }
+        if (null == result) {
+            result = AppCompatResources.getDrawable(getContext(), resourcesId);
+        }
+        return result;
     }
 }

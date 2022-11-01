@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import org.alee.component.skin.collection.SparseStack;
+import org.alee.component.skin.exception.ApplySkinException;
 import org.alee.component.skin.executor.ISkinExecutor;
 import org.alee.component.skin.executor.SkinElement;
 import org.alee.component.skin.parser.ThemeSkinExecutorBuilderManager;
@@ -39,7 +40,11 @@ final class ViewWarehouse implements IEnableThemeSkinViewWarehouse {
             skinView.addSkinExecutor(executor);
             mViewStack.put(ObjectMemoryAddress.getAddress(view), skinView);
         }
-        executor.execute(view);
+        try {
+            executor.execute(view);
+        } catch (ApplySkinException e) {
+            PrintUtil.getInstance().printE(e);
+        }
     }
 
     /**

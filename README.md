@@ -60,6 +60,11 @@
 ##### V3.5.1
 
 - [x]  增加对`android:drawablexxx` 与 `drawablexxxCompat` 的属性支持
+
+
+##### V3.5.2
+
+- [x]  增强对Android低版本使用矢量图的兼容,同时移除默认皮肤包获取不到Drawable时提供默认颜色逻辑.
 ---
 
 ## 框架实现原理

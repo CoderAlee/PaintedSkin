@@ -1,5 +1,10 @@
 package org.alee.component.skin.executor;
 
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BACKGROUND;
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BKG_TINT;
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_FOREGROUND;
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_FRG_TINT;
+
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.ColorStateListDrawable;
@@ -8,11 +13,6 @@ import android.os.Build;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-
-import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BACKGROUND;
-import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BKG_TINT;
-import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_FOREGROUND;
-import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_FRG_TINT;
 
 /**********************************************************
  *
@@ -39,10 +39,14 @@ public class ViewSkinExecutor<T extends View> extends BaseSkinExecutor<T> {
                 }
                 break;
             case ATTRIBUTE_BKG_TINT:
-                view.setBackgroundTintList(colorStateList);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    view.setBackgroundTintList(colorStateList);
+                }
                 break;
             case ATTRIBUTE_FRG_TINT:
-                view.setForegroundTintList(colorStateList);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    view.setForegroundTintList(colorStateList);
+                }
                 break;
             default:
                 break;
@@ -58,6 +62,16 @@ public class ViewSkinExecutor<T extends View> extends BaseSkinExecutor<T> {
             case ATTRIBUTE_FOREGROUND:
                 applyDrawable(view, new ColorDrawable(color), attrName);
                 break;
+            case ATTRIBUTE_BKG_TINT:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    view.setBackgroundTintList(ColorStateList.valueOf(color));
+                }
+                break;
+            case ATTRIBUTE_FRG_TINT:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    view.setForegroundTintList(ColorStateList.valueOf(color));
+                }
+                break;
             default:
                 break;
         }
@@ -71,7 +85,9 @@ public class ViewSkinExecutor<T extends View> extends BaseSkinExecutor<T> {
                 view.setBackground(drawable);
                 break;
             case ATTRIBUTE_FOREGROUND:
-                view.setForeground(drawable);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    view.setForeground(drawable);
+                }
                 break;
             default:
                 break;
