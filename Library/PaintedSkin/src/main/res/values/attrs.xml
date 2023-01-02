@@ -29,5 +29,6 @@
         <attr name="drawableEndCompat" />
         <attr name="drawableBottomCompat" />
         <attr name="drawableTint" />
+        <attr name="srcCompat" />
     </declare-styleable>
 </resources>

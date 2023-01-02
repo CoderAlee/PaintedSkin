@@ -162,6 +162,7 @@ public final class DefaultExecutorBuilder implements IThemeSkinExecutorBuilder {
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableEndCompat, ATTRIBUTE_DRAWABLE_END);
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableBottomCompat, ATTRIBUTE_DRAWABLE_BOTTOM);
         SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_drawableTint, ATTRIBUTE_DRAWABLE_TINT);
+        SUPPORT_ATTR.put(R.styleable.BasicSupportAttr_srcCompat, ATTRIBUTE_SRC);
     }
 
     /**
