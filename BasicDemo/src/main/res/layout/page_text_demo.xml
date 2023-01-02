@@ -91,5 +91,17 @@
             app:drawableTint="@color/primary_main"
             tools:drawableEnd="@mipmap/icon_arrow_right"
             tools:drawableStart="@mipmap/icon_arrow_left" />
+
+        <TextView
+            android:id="@+id/tv_drawable"
+            style="@style/text.Headline1.Bold.BlackHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/tp_120"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/tp_12"
+            android:drawablePadding="@dimen/tp_6"
+            android:gravity="center"
+            app:drawableTint="@color/secondary_main"
+            android:text="代码设置Drawable" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

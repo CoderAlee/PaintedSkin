@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.alee.demo.skin.basic.ability.R
-import org.alee.demo.skin.basic.ability.USE_SPRING_FESTIVAL_SKIN
+import org.alee.demo.skin.basic.ability.KEY_USE_SPRING_FESTIVAL_SKIN
 import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
 import org.alee.demo.skin.basic.ability.util.bindView
 import org.alee.demo.skin.basic.ability.util.loadBoolean
@@ -41,13 +41,13 @@ class FestiveSkinDemoPage : BasePage() {
     override fun onBindViewValue(savedInstanceState: Bundle?) {
         super.onBindViewValue(savedInstanceState)
         // 从缓存中读取是否需要加载春节皮肤
-        updateBtnText(USE_SPRING_FESTIVAL_SKIN.loadBoolean(false), false)
+        updateBtnText(KEY_USE_SPRING_FESTIVAL_SKIN.loadBoolean(false), false)
     }
 
 
     override fun onBindViewListener() {
         mBtn.setOnClickListener {
-            updateBtnText(USE_SPRING_FESTIVAL_SKIN.loadBoolean(false).not())
+            updateBtnText(KEY_USE_SPRING_FESTIVAL_SKIN.loadBoolean(false).not())
         }
     }
 
@@ -57,7 +57,7 @@ class FestiveSkinDemoPage : BasePage() {
      * @param relaunch Boolean true:重启
      */
     private fun updateBtnText(state: Boolean, relaunch: Boolean = true) {
-        USE_SPRING_FESTIVAL_SKIN.saveBoolean(state)
+        KEY_USE_SPRING_FESTIVAL_SKIN.saveBoolean(state)
         mBtn.text = if (state) "退出春节七天乐" else "进入春节七天乐"
         if (relaunch) {
             lifecycleScope.launch(Dispatchers.Default) {

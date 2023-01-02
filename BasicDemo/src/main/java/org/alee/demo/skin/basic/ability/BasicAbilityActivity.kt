@@ -6,6 +6,8 @@ import android.widget.ImageView
 import org.alee.component.skin.service.ThemeSkinService
 import org.alee.demo.skin.basic.ability.basic.activity.ScopedActivity
 import org.alee.demo.skin.basic.ability.util.loadBoolean
+import org.alee.demo.skin.basic.ability.util.loadInt
+import org.alee.demo.skin.basic.ability.util.saveInt
 import org.alee.demo.skin.basic.ability.util.setVector
 
 /**
@@ -22,12 +24,14 @@ internal class BasicAbilityActivity : ScopedActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basic_ability_demo)
-        if (USE_SPRING_FESTIVAL_SKIN.loadBoolean(false)) {
+        if (KEY_USE_SPRING_FESTIVAL_SKIN.loadBoolean(false)) {
             SkinOptionFactory.MODE_DAY.switchSkin()
         }
+        val day = KEY_THEME.loadInt(SkinOptionFactory.MODE_DEFAULT) != SkinOptionFactory.MODE_NIGHT
         findViewById<View>(R.id.btn_switch_skin).apply {
-            isSelected = false
+            isSelected = day
             setOnClickListener(this@BasicAbilityActivity::onSwitchBtnClicked)
+            callOnClick()
         }
     }
 
@@ -37,7 +41,10 @@ internal class BasicAbilityActivity : ScopedActivity() {
         imageView?.apply {
             setVector(if (isSelected) R.drawable.ic_day else R.drawable.ic_night, R.color.primary_main)
         }
-        (if (view.isSelected) SkinOptionFactory.MODE_NIGHT else SkinOptionFactory.MODE_DAY).switchSkin()
+        (if (view.isSelected) SkinOptionFactory.MODE_NIGHT else SkinOptionFactory.MODE_DAY).run {
+            KEY_THEME.saveInt(this)
+            switchSkin()
+        }
 
     }
 

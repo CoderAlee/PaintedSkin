@@ -20,7 +20,7 @@ internal class NightOption : IThemeSkinOption {
             add(SKIN_PACK_PATH + NIGHT_SKIN_PACK_NAME)
         }.apply {
             // 春节皮肤包
-            if (USE_SPRING_FESTIVAL_SKIN.loadBoolean(false)) {
+            if (KEY_USE_SPRING_FESTIVAL_SKIN.loadBoolean(false)) {
                 add(SKIN_PACK_PATH + SPRING_FESTIVAL_SKIN_PACK_NAME)
             }
         }

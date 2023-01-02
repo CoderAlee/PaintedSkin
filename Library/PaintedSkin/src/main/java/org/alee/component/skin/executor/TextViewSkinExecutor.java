@@ -83,29 +83,68 @@ public class TextViewSkinExecutor<T extends TextView> extends ViewSkinExecutor<T
     @Override
     protected void applyDrawable(@NonNull T view, @NonNull Drawable drawable, @NonNull String attrName) {
         super.applyDrawable(view, drawable, attrName);
+        Drawable[] drawables = view.getCompoundDrawables();
+        Drawable old;
         switch (attrName) {
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_LEFT:
-                view.setCompoundDrawablesWithIntrinsicBounds(drawable, view.getCompoundDrawables()[1], loadEndDrawable(view), view.getCompoundDrawables()[3]);
+                old = drawables[0];
+                if (null != old) {
+                    drawable.setBounds(old.getBounds());
+                    view.setCompoundDrawables(drawable, drawables[1], loadEndDrawable(view), drawables[3]);
+                } else {
+                    view.setCompoundDrawablesWithIntrinsicBounds(drawable, drawables[1], loadEndDrawable(view), drawables[3]);
+                }
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_START:
-                view.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, view.getCompoundDrawablesRelative()[1], loadEndDrawable(view), view.getCompoundDrawablesRelative()[3]);
+                old = drawables[0];
+                if (null != old) {
+                    drawable.setBounds(old.getBounds());
+                    view.setCompoundDrawablesRelative(drawable, drawables[1], loadEndDrawable(view), drawables[3]);
+                } else {
+                    view.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, drawables[1], loadEndDrawable(view), drawables[3]);
+                }
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_TOP:
-                view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), drawable, loadEndDrawable(view), view.getCompoundDrawablesRelative()[3]);
+                old = drawables[1];
+                if (null != old) {
+                    drawable.setBounds(old.getBounds());
+                    view.setCompoundDrawablesRelative(loadStartDrawable(view), drawable, loadEndDrawable(view), drawables[3]);
+                } else {
+                    view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), drawable, loadEndDrawable(view), drawables[3]);
+                }
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_RIGHT:
-                view.setCompoundDrawablesWithIntrinsicBounds(loadStartDrawable(view), view.getCompoundDrawables()[1], drawable, view.getCompoundDrawables()[3]);
+                old = drawables[2];
+                if (null != old) {
+                    drawable.setBounds(old.getBounds());
+                    view.setCompoundDrawables(loadStartDrawable(view), drawables[1], drawable, drawables[3]);
+                } else {
+                    view.setCompoundDrawablesWithIntrinsicBounds(loadStartDrawable(view), drawables[1], drawable, drawables[3]);
+                }
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_END:
-                view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), view.getCompoundDrawables()[1], drawable, view.getCompoundDrawables()[3]);
+                old = drawables[2];
+                if (null != old) {
+                    drawable.setBounds(old.getBounds());
+                    view.setCompoundDrawablesRelative(loadStartDrawable(view), drawables[1], drawable, drawables[3]);
+                } else {
+                    view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), drawables[1], drawable, drawables[3]);
+                }
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_BOTTOM:
-                view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), view.getCompoundDrawables()[1], loadEndDrawable(view), drawable);
+                old = drawables[3];
+                if (null != old) {
+                    drawable.setBounds(old.getBounds());
+                    view.setCompoundDrawablesRelative(loadStartDrawable(view), drawables[1], loadEndDrawable(view), drawable);
+                } else {
+                    view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), drawables[1], loadEndDrawable(view), drawable);
+                }
                 break;
             default:
                 break;
         }
     }
+
 
     private Drawable loadEndDrawable(TextView view) {
         Drawable drawable = view.getCompoundDrawablesRelative()[2];

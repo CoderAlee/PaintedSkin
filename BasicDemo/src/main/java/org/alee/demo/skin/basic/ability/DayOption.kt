@@ -15,7 +15,7 @@ import org.alee.demo.skin.basic.ability.util.loadBoolean
 internal class DayOption : IThemeSkinOption {
 
     override fun getStandardSkinPackPath(): LinkedHashSet<String>? {
-        if (USE_SPRING_FESTIVAL_SKIN.loadBoolean(false)) {
+        if (KEY_USE_SPRING_FESTIVAL_SKIN.loadBoolean(false)) {
             return LinkedHashSet<String>().apply { add(SKIN_PACK_PATH + SPRING_FESTIVAL_SKIN_PACK_NAME) }
         }
         return null

@@ -17,7 +17,12 @@ import java.io.File
 /**
  * KV - KEY - 节日模式
  */
-internal const val USE_SPRING_FESTIVAL_SKIN = "Spring Festival Mode"
+internal const val KEY_USE_SPRING_FESTIVAL_SKIN = "Spring Festival Mode"
+
+/**
+ * KV - KEY - 当前主题
+ */
+internal const val KEY_THEME = "Theme"
 
 /**
  * 应用存储空间根路径

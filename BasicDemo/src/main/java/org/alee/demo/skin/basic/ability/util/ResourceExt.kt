@@ -35,7 +35,7 @@ fun @receiver:StringRes Int.stringResource(vararg formats: Any?): String {
  * 通过id获取图片资源
  */
 val @receiver:DrawableRes Int.drawableResource: Drawable?
-    get() = ThemeSkinService.getInstance().currentThemeSkinPack.getDrawable(this) ?: mipmapDrawable
+    get() = mipmapDrawable ?: ThemeSkinService.getInstance().currentThemeSkinPack.getDrawable(this)
 
 val @receiver:DrawableRes Int.mipmapDrawable: Drawable?
     get() = ThemeSkinService.getInstance().currentThemeSkinPack.getMipmap(this)
