@@ -10,7 +10,6 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
 
 /**********************************************************
  *
@@ -41,19 +40,11 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
         if (!isValidResourcesId(resourcesId)) {
             return null;
         }
-        ColorStateList result = null;
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                result = getThemeSkinResources().getColorStateList(resourcesId, theme);
-            } else {
-                result = getThemeSkinResources().getColorStateList(resourcesId);
-            }
-        } catch (Exception ignored) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getThemeSkinResources().getColorStateList(resourcesId, theme);
+        } else {
+            return getThemeSkinResources().getColorStateList(resourcesId);
         }
-        if (null == result) {
-            result = AppCompatResources.getColorStateList(getContext(), resourcesId);
-        }
-        return result;
     }
 
     /**
@@ -141,18 +132,10 @@ final class StandardSkinResourcesProvider extends BaseStandardSkinResourcesProvi
         if (!isValidResourcesId(resourcesId)) {
             return null;
         }
-        Drawable result = null;
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                result = getThemeSkinResources().getDrawable(resourcesId, theme);
-            } else {
-                result = getThemeSkinResources().getDrawable(resourcesId);
-            }
-        } catch (Exception ignored) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return getThemeSkinResources().getDrawable(resourcesId, theme);
+        } else {
+            return getThemeSkinResources().getDrawable(resourcesId);
         }
-        if (null == result) {
-            result = AppCompatResources.getDrawable(getContext(), resourcesId);
-        }
-        return result;
     }
 }
