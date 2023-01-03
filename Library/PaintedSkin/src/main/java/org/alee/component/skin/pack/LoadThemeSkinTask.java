@@ -41,11 +41,15 @@ final class LoadThemeSkinTask implements ITask {
      * 执行任务
      *
      * @return 是否执行成功
+     *
      * @throws Throwable 一切异常
      */
     @Override
     public boolean doWork() throws Throwable {
         if (IThemeSkinPack.SkinPackType.TYPE_CUSTOMIZE == mThemeSkinPack.getSkinPackType()) {
+            return true;
+        }
+        if (mThemeSkinPack.isAvailable()) {
             return true;
         }
         String path = mThemeSkinPack.getName();

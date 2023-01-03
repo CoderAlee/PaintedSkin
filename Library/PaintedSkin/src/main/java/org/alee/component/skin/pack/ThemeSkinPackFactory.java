@@ -19,21 +19,24 @@ import java.util.List;
  *********************************************************/
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 public final class ThemeSkinPackFactory {
+
+    private static final BaseThemeSkinPack DEFAULT_PACK = new DefaultThemeSkinPack();
+
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public static void loadThemeSkinPack(@NonNull Context context, ILoadThemeSkinObserver observer, List<String> pathList) {
+        initDefaultPack(context);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             _24(context, observer, pathList);
             return;
         }
         TaskQueueManager.getInstance().cancelAll();
-        LoadThemeSkinQueue queue = new LoadThemeSkinQueue(context);
-        BaseThemeSkinPack defaultPack = new DefaultThemeSkinPack();
-        queue.addTask(defaultPack);
         if (null == pathList) {
-            queue.performTask(defaultPack, observer);
+            observer.onLoadCompleted(DEFAULT_PACK);
             return;
         }
-        BaseThemeSkinPack underpinPack = defaultPack;
+        LoadThemeSkinQueue queue = new LoadThemeSkinQueue(context);
+        queue.addTask(DEFAULT_PACK);
+        BaseThemeSkinPack underpinPack = DEFAULT_PACK;
         for (String path : pathList) {
             underpinPack = new StandardThemeSkinPack(path, underpinPack);
             queue.addTask(underpinPack);
@@ -41,16 +44,21 @@ public final class ThemeSkinPackFactory {
         queue.performTask(underpinPack, observer);
     }
 
+    private static void initDefaultPack(Context context) {
+        if (DEFAULT_PACK.isAvailable()) {
+            return;
+        }
+        DEFAULT_PACK.onReady(new DefaultSkinResourcesProvider(context));
+    }
 
     private static void _24(@NonNull Context context, ILoadThemeSkinObserver observer, List<String> pathList) {
         LoadThemeSkinQueue24 queue = new LoadThemeSkinQueue24(context);
-        BaseThemeSkinPack defaultPack = new DefaultThemeSkinPack();
-        queue.addTask(defaultPack);
         if (null == pathList) {
-            queue.performTask(defaultPack, observer);
+            observer.onLoadCompleted(DEFAULT_PACK);
             return;
         }
-        BaseThemeSkinPack underpinPack = defaultPack;
+        queue.addTask(DEFAULT_PACK);
+        BaseThemeSkinPack underpinPack = DEFAULT_PACK;
         for (String path : pathList) {
             underpinPack = new StandardThemeSkinPack(path, underpinPack);
             queue.addTask(underpinPack);
