@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
  * @author PG.Xie
  * created on 2020/8/12
  */
-final class TaskPool {
+public final class TaskPool {
 
     private final Executor mTaskPool;
 
