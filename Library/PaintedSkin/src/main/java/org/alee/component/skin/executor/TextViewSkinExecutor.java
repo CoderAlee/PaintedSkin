@@ -7,11 +7,11 @@ import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_TE
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.TextViewCompat;
 
 import org.alee.component.skin.parser.DefaultExecutorBuilder;
 
@@ -28,6 +28,19 @@ public class TextViewSkinExecutor<T extends TextView> extends ViewSkinExecutor<T
 
     public TextViewSkinExecutor(@NonNull SkinElement fullElement) {
         super(fullElement);
+    }
+
+    /**
+     * 重新为TextViewCompoundDrawables设置Tint，避免出现先设置了Tint后设置TextViewCompoundDrawables导致的Tint失效问题
+     *
+     * @param view View
+     */
+    private void resetCompoundDrawablesTint(T view) {
+        ColorStateList tint = TextViewCompat.getCompoundDrawableTintList(view);
+        if (null == tint) {
+            return;
+        }
+        applyColor(view, tint, DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_TINT);
     }
 
     @Override
@@ -47,9 +60,7 @@ public class TextViewSkinExecutor<T extends TextView> extends ViewSkinExecutor<T
                 view.setLinkTextColor(colorStateList);
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_TINT:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    view.setCompoundDrawableTintList(colorStateList);
-                }
+                TextViewCompat.setCompoundDrawableTintList(view, colorStateList);
                 break;
             default:
                 break;
@@ -83,62 +94,25 @@ public class TextViewSkinExecutor<T extends TextView> extends ViewSkinExecutor<T
     @Override
     protected void applyDrawable(@NonNull T view, @NonNull Drawable drawable, @NonNull String attrName) {
         super.applyDrawable(view, drawable, attrName);
-        Drawable[] drawables = view.getCompoundDrawables();
-        Drawable old;
+        Drawable[] drawables = TextViewCompat.getCompoundDrawablesRelative(view);
         switch (attrName) {
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_LEFT:
-                old = drawables[0];
-                if (null != old) {
-                    drawable.setBounds(old.getBounds());
-                    view.setCompoundDrawables(drawable, drawables[1], loadEndDrawable(view), drawables[3]);
-                } else {
-                    view.setCompoundDrawablesWithIntrinsicBounds(drawable, drawables[1], loadEndDrawable(view), drawables[3]);
-                }
-                break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_START:
-                old = drawables[0];
-                if (null != old) {
-                    drawable.setBounds(old.getBounds());
-                    view.setCompoundDrawablesRelative(drawable, drawables[1], loadEndDrawable(view), drawables[3]);
-                } else {
-                    view.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, drawables[1], loadEndDrawable(view), drawables[3]);
-                }
+                inheritOriginalProperty(drawable, drawables[0]);
+                setCompoundDrawables(view, drawable, drawables[1], drawables[2], drawables[3]);
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_TOP:
-                old = drawables[1];
-                if (null != old) {
-                    drawable.setBounds(old.getBounds());
-                    view.setCompoundDrawablesRelative(loadStartDrawable(view), drawable, loadEndDrawable(view), drawables[3]);
-                } else {
-                    view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), drawable, loadEndDrawable(view), drawables[3]);
-                }
+                inheritOriginalProperty(drawable, drawables[1]);
+                setCompoundDrawables(view, drawables[0], drawable, drawables[2], drawables[3]);
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_RIGHT:
-                old = drawables[2];
-                if (null != old) {
-                    drawable.setBounds(old.getBounds());
-                    view.setCompoundDrawables(loadStartDrawable(view), drawables[1], drawable, drawables[3]);
-                } else {
-                    view.setCompoundDrawablesWithIntrinsicBounds(loadStartDrawable(view), drawables[1], drawable, drawables[3]);
-                }
-                break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_END:
-                old = drawables[2];
-                if (null != old) {
-                    drawable.setBounds(old.getBounds());
-                    view.setCompoundDrawablesRelative(loadStartDrawable(view), drawables[1], drawable, drawables[3]);
-                } else {
-                    view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), drawables[1], drawable, drawables[3]);
-                }
+                inheritOriginalProperty(drawable, drawables[2]);
+                setCompoundDrawables(view, drawables[0], drawables[1], drawable, drawables[3]);
                 break;
             case DefaultExecutorBuilder.ATTRIBUTE_DRAWABLE_BOTTOM:
-                old = drawables[3];
-                if (null != old) {
-                    drawable.setBounds(old.getBounds());
-                    view.setCompoundDrawablesRelative(loadStartDrawable(view), drawables[1], loadEndDrawable(view), drawable);
-                } else {
-                    view.setCompoundDrawablesRelativeWithIntrinsicBounds(loadStartDrawable(view), drawables[1], loadEndDrawable(view), drawable);
-                }
+                inheritOriginalProperty(drawable, drawables[3]);
+                setCompoundDrawables(view, drawables[0], drawables[1], drawables[2], drawable);
                 break;
             default:
                 break;
@@ -146,14 +120,33 @@ public class TextViewSkinExecutor<T extends TextView> extends ViewSkinExecutor<T
     }
 
 
-    private Drawable loadEndDrawable(TextView view) {
-        Drawable drawable = view.getCompoundDrawablesRelative()[2];
-        return null == drawable ? view.getCompoundDrawables()[2] : drawable;
+    /**
+     * 使Drawable 继承原有Drawable 的部分属性
+     *
+     * @param newDrawable 新的Drawable
+     * @param oldDrawable 旧的Drawable
+     */
+    private void inheritOriginalProperty(Drawable newDrawable, @Nullable Drawable oldDrawable) {
+        if (null == oldDrawable) {
+            newDrawable.setBounds(0, 0, newDrawable.getIntrinsicWidth(), newDrawable.getIntrinsicHeight());
+        } else {
+            newDrawable.setBounds(oldDrawable.getBounds());
+            newDrawable.setState(oldDrawable.getState());
+        }
     }
 
-    @Nullable
-    private Drawable loadStartDrawable(TextView view) {
-        Drawable drawable = view.getCompoundDrawablesRelative()[0];
-        return null == drawable ? view.getCompoundDrawables()[0] : drawable;
+    /**
+     * 以兼容的方式设置TextViewCompoundDrawables
+     *
+     * @param view   View
+     * @param left   左侧Drawable
+     * @param top    顶部Drawable
+     * @param right  右侧Drawable
+     * @param bottom 底部Drawable
+     */
+    private void setCompoundDrawables(T view, Drawable left, Drawable top, Drawable right, Drawable bottom) {
+        TextViewCompat.setCompoundDrawablesRelative(view, left, top, right, bottom);
+        resetCompoundDrawablesTint(view);
     }
+
 }
