@@ -1,5 +1,7 @@
 package org.alee.component.skin.executor;
 
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_TINT;
+
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.ColorStateListDrawable;
@@ -8,8 +10,7 @@ import android.os.Build;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-
-import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_TINT;
+import androidx.core.widget.ImageViewCompat;
 
 /**********************************************************
  *
@@ -40,7 +41,7 @@ public class ImageViewSkinExecutor<T extends ImageView> extends ViewSkinExecutor
                 }
                 break;
             case ATTRIBUTE_TINT:
-                view.setImageTintList(colorStateList);
+                ImageViewCompat.setImageTintList(view, colorStateList);
                 break;
             default:
                 break;

@@ -1,5 +1,7 @@
 package org.alee.component.skin.executor;
 
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_LIST_VIEW_DIVIDER;
+
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.ColorStateListDrawable;
@@ -8,8 +10,6 @@ import android.os.Build;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-
-import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_LIST_VIEW_DIVIDER;
 
 /**********************************************************
  *

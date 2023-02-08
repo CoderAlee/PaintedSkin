@@ -1,15 +1,15 @@
 package org.alee.component.skin.executor;
 
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BUTTON;
+
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.ColorStateListDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
-
-import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BUTTON;
 
 /**********************************************************
  *
@@ -18,10 +18,10 @@ import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_BU
  * @description: xxxx
  *
  *********************************************************/
-public class CheckBoxSkinExecutor<T extends CheckBox> extends TextViewSkinExecutor<T> {
+public class CompoundButtonSkinExecutor<T extends CompoundButton> extends TextViewSkinExecutor<T> {
 
 
-    public CheckBoxSkinExecutor(@NonNull SkinElement fullElement) {
+    public CompoundButtonSkinExecutor(@NonNull SkinElement fullElement) {
         super(fullElement);
     }
 

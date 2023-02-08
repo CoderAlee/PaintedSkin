@@ -2,6 +2,7 @@ package org.alee.component.skin.executor;
 
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -26,8 +27,8 @@ public final class BasicViewSkinExecutorFactory {
             return new ImageViewSkinExecutor<>(element);
         } else if (view instanceof ProgressBar) {
             return new ProgressBarSkinExecutor<>(element);
-        } else if (view instanceof CheckBox) {
-            return new CheckBoxSkinExecutor<>(element);
+        } else if (view instanceof CompoundButton) {
+            return new CompoundButtonSkinExecutor<>(element);
         } else if (view instanceof TextView) {
             return new TextViewSkinExecutor<>(element);
         } else if (view instanceof ListView) {

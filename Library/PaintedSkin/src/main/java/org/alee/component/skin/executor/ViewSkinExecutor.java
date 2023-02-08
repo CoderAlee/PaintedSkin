@@ -13,6 +13,7 @@ import android.os.Build;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
 
 /**********************************************************
  *
@@ -39,9 +40,7 @@ public class ViewSkinExecutor<T extends View> extends BaseSkinExecutor<T> {
                 }
                 break;
             case ATTRIBUTE_BKG_TINT:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    view.setBackgroundTintList(colorStateList);
-                }
+                ViewCompat.setBackgroundTintList(view, colorStateList);
                 break;
             case ATTRIBUTE_FRG_TINT:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -63,14 +62,8 @@ public class ViewSkinExecutor<T extends View> extends BaseSkinExecutor<T> {
                 applyDrawable(view, new ColorDrawable(color), attrName);
                 break;
             case ATTRIBUTE_BKG_TINT:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    view.setBackgroundTintList(ColorStateList.valueOf(color));
-                }
-                break;
             case ATTRIBUTE_FRG_TINT:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    view.setForegroundTintList(ColorStateList.valueOf(color));
-                }
+                applyColor(view, ColorStateList.valueOf(color), attrName);
                 break;
             default:
                 break;
@@ -82,7 +75,7 @@ public class ViewSkinExecutor<T extends View> extends BaseSkinExecutor<T> {
     protected void applyDrawable(@NonNull T view, @NonNull Drawable drawable, @NonNull String attrName) {
         switch (attrName) {
             case ATTRIBUTE_BACKGROUND:
-                view.setBackground(drawable);
+                ViewCompat.setBackground(view, drawable);
                 break;
             case ATTRIBUTE_FOREGROUND:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

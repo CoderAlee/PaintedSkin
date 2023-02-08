@@ -1,5 +1,7 @@
 package org.alee.component.skin.executor;
 
+import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_PROGRESS_DRAWABLE;
+
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.ColorStateListDrawable;
@@ -8,8 +10,6 @@ import android.os.Build;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
-
-import static org.alee.component.skin.parser.DefaultExecutorBuilder.ATTRIBUTE_PROGRESS_DRAWABLE;
 
 /**********************************************************
  *
@@ -32,8 +32,8 @@ public class ProgressBarSkinExecutor<T extends ProgressBar> extends ViewSkinExec
             case ATTRIBUTE_PROGRESS_DRAWABLE:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     applyDrawable(view, new ColorStateListDrawable(colorStateList), attrName);
-                }else {
-                    applyColor(view,colorStateList.getDefaultColor(),attrName);
+                } else {
+                    applyColor(view, colorStateList.getDefaultColor(), attrName);
                 }
                 break;
             default:
