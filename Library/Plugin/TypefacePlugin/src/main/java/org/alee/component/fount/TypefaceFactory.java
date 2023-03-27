@@ -1,7 +1,6 @@
 package org.alee.component.fount;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
@@ -32,17 +31,19 @@ final class TypefaceFactory implements IExpandedFactory2 {
     @NonNull
     @Override
     public View onCreateView(@Nullable View originalView, @Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-         if (originalView instanceof TextView) {
+        if (originalView instanceof TextView) {
             TextView textView = ((TextView) originalView);
             if (TypefacePlugin.getInstance().isTypefaceEnable()) {
-                Typeface typeface = textView.getTypeface();
-                if (typeface != null && typeface.getStyle() == Typeface.BOLD) {
-                    textView.setTypeface(TypefacePlugin.getInstance().getTypeface(), Typeface.BOLD);
-                } else {
+                Typeface originalTypeface = textView.getTypeface();
+                if (null != originalTypeface) {
+                    textView.setTypeface(TypefacePlugin.getInstance().getTypeface(), originalTypeface.getStyle());
+                } else if (0 > TypefacePlugin.getInstance().getTypefaceStyle()) {
                     textView.setTypeface(TypefacePlugin.getInstance().getTypeface());
+                } else {
+                    textView.setTypeface(TypefacePlugin.getInstance().getTypeface(), TypefacePlugin.getInstance().getTypefaceStyle());
                 }
-                originalView = textView;
             }
+            originalView = textView
         }
         return originalView;
     }
