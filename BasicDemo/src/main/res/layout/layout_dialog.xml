@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/DialogBackground">
+
+    <TextView
+        android:id="@+id/txt_title"
+        style="@style/text.Headline4.Bold.BlackHigh"
+        android:layout_marginHorizontal="@dimen/tp_12"
+        android:gravity="center"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:text="I'm Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_content"
+        style="@style/text.Body2.BlackMedium"
+        android:layout_marginHorizontal="@dimen/tp_12"
+        android:layout_marginTop="@dimen/tp_8"
+        android:text="I'm Content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_title" />
+
+
+    <Button
+        android:id="@+id/btn_day"
+        style="@style/MediumBtn.Primary"
+        android:layout_width="@dimen/tp_0"
+        android:layout_height="@dimen/tp_37"
+        android:layout_marginEnd="@dimen/tp_10"
+        android:text="白天"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_night"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_night"
+        style="@style/MediumBtn.Default"
+        android:layout_width="@dimen/tp_0"
+        android:layout_height="@dimen/tp_37"
+        android:layout_marginStart="@dimen/tp_10"
+        android:text="黑夜"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_day"
+        app:layout_constraintTop_toTopOf="@id/btn_day" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

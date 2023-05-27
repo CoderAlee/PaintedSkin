@@ -31,9 +31,14 @@ android {
     }
 
     applicationVariants.all { variant ->
-        variant.outputs.all { output ->
+        variant.outputs.all {
             outputFileName = "SpringFestival.skin"
-            variant.packageApplication.outputDirectory = new File("../../Shell/src/main/assets/spring/")
+        }
+        variant.packageApplication.doLast {
+            copy {
+                from file("/build/intermediates/apk/debug")
+                into file("../../Shell/src/main/assets/spring/")
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package org.alee.component.fount;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
@@ -43,7 +44,7 @@ final class TypefaceFactory implements IExpandedFactory2 {
                     textView.setTypeface(TypefacePlugin.getInstance().getTypeface(), TypefacePlugin.getInstance().getTypefaceStyle());
                 }
             }
-            originalView = textView
+            originalView = textView;
         }
         return originalView;
     }
