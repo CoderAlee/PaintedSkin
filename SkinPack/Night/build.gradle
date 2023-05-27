@@ -32,9 +32,14 @@ android {
     }
 
     applicationVariants.all { variant ->
-        variant.outputs.all { output ->
+        variant.outputs.all {
             outputFileName = "Night.skin"
-            variant.packageApplication.outputDirectory = new File("../../Shell/src/main/assets/night/")
+        }
+        variant.packageApplication.doLast {
+            copy {
+                from file("/build/intermediates/apk/debug")
+                into file("../../Shell/src/main/assets/night/")
+            }
         }
     }
 }

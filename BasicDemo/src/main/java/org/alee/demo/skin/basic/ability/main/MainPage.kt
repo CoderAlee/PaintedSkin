@@ -22,7 +22,6 @@ internal class MainPage : BasePage(), View.OnClickListener {
      */
     override fun requireLayoutId() = R.layout.page_main
 
-
     override fun onBindViewListener() {
         findView<View>(R.id.btn_text_view_demo).setOnClickListener(this)
         findView<View>(R.id.btn_image_view_demo).setOnClickListener(this)
@@ -33,6 +32,7 @@ internal class MainPage : BasePage(), View.OnClickListener {
         findView<View>(R.id.btn_custom_attr_demo).setOnClickListener(this)
         findView<View>(R.id.btn_skin_enable_demo).setOnClickListener(this)
         findView<View>(R.id.btn_festive_skin_demo).setOnClickListener(this)
+        findView<View>(R.id.btn_dialog_demo).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -46,6 +46,7 @@ internal class MainPage : BasePage(), View.OnClickListener {
             R.id.btn_custom_attr_demo -> go(R.id.toThirdPartViewAttrDemoPage)
             R.id.btn_skin_enable_demo -> go(R.id.toSkinEnableDemoPage)
             R.id.btn_festive_skin_demo -> go(R.id.toFestiveSkinDemoPage)
+            R.id.btn_dialog_demo -> go(R.id.toDialogDemoPage)
         }
     }
 }

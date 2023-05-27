@@ -42,6 +42,10 @@
         android:name="org.alee.demo.skin.basic.ability.thirdpart.view.ViewAndAttrDemoPage"
         android:label="ThirdPartViewAttrDemoPage" />
     <fragment
+        android:id="@+id/dialogDemoPage"
+        android:name="org.alee.demo.skin.basic.ability.dialog.DialogDemoPage"
+        android:label="DialogDemoPage" />
+    <fragment
         android:id="@+id/mainPage"
         android:name="org.alee.demo.skin.basic.ability.main.MainPage"
         android:label="MainPage"
@@ -73,6 +77,9 @@
         <action
             android:id="@+id/toThirdPartViewAttrDemoPage"
             app:destination="@id/thirdPartViewAttrDemoPage" />
+        <action
+            android:id="@+id/toDialogDemoPage"
+            app:destination="@id/dialogDemoPage" />
     </fragment>
 
 </navigation>

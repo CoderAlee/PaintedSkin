@@ -15,6 +15,7 @@ import org.alee.component.skin.service.ThemeSkinService;
 import org.alee.demo.skin.basic.ability.ConstantKt;
 import org.alee.demo.skin.basic.ability.SkinOptionFactory;
 import org.alee.demo.skin.basic.ability.util.ResourceExtKt;
+import org.alee.demo.skin.compat.AppCompatButtonCompat;
 import org.alee.demo.skin.compat.BackButtonCompat;
 import org.alee.demo.skin.compat.NestedScrollViewCompat;
 import org.alee.demo.skin.compat.RecyclerViewCompat;
@@ -27,15 +28,16 @@ import org.alee.demo.skin.compat.RecyclerViewCompat;
  *
  *********************************************************/
 public final class App extends Application implements ISwitchThemeSkinObserver {
-
+    
     static {
         Config.getInstance().setPerformanceMode(Config.PerformanceMode.EXPERIENCE_FIRST);
         ConstraintLayoutCompat.init();
         NestedScrollViewCompat.init();
         BackButtonCompat.init();
         RecyclerViewCompat.init();
+        AppCompatButtonCompat.init();
     }
-
+    
     @Override
     public void onCreate() {
         super.onCreate();
@@ -43,12 +45,12 @@ public final class App extends Application implements ISwitchThemeSkinObserver {
         ThemeSkinService.getInstance().subscribeSwitchThemeSkin(this);
         WindowManager.getInstance().init(this, new SkinOptionFactory());
     }
-
+    
     private void copySkinPack() {
         ResourceUtils.copyFileFromAssets(ConstantKt.ASSETS_NIGHT_SKIN_PACK, ConstantKt.getSKIN_PACK_PATH() + ConstantKt.NIGHT_SKIN_PACK_NAME);
         ResourceUtils.copyFileFromAssets(ConstantKt.ASSETS_SPRING_FESTIVAL_SKIN_PACK, ConstantKt.getSKIN_PACK_PATH() + ConstantKt.SPRING_FESTIVAL_SKIN_PACK_NAME);
     }
-
+    
     @Override
     public void onThemeSkinSwitchRunOnUiThread() {
         ToastUtils.getDefaultMaker()
