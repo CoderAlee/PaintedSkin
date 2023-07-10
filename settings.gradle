@@ -8,6 +8,8 @@ include ':SkinPack:SpringFestival'
 if (CITING_THE_SOURCE_CODE.toBoolean()){
     include ':Library:PaintedSkin'
     project(':Library:PaintedSkin').projectDir = new File(settingsDir, '/Library/PaintedSkin')
+    include ':Library:PaintedSkin-Kotlin'
+    project(':Library:PaintedSkin-Kotlin').projectDir = new File(settingsDir, '/Library/PaintedSkin-Kotlin')
     include ':Library:ConstraintLayoutCompat'
     project(':Library:ConstraintLayoutCompat').projectDir = new File(settingsDir, '/Library/ConstraintLayoutCompat')
     include ':Library:Plugin:TypefacePlugin'
@@ -24,4 +26,5 @@ if (CITING_THE_SOURCE_CODE.toBoolean()){
     project(':Library:Plugin:AopPlugin:AopPlugin-Annotation').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin/AopPlugin-Annotation')
 }
 rootProject.name = "PaintedSkinDemo"
+
 

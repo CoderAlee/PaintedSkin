@@ -1,6 +1,6 @@
 ext {
     android = [
-            compileSdkVersion = 30,
+            compileSdkVersion = 31,
             applicationId = "org.alee.demo.skin",
             minSdkVersion = 19,
             targetSdkVersion = 30,
@@ -16,7 +16,7 @@ ext {
             "navigation-runtime-ktx" : "androidx.navigation:navigation-runtime-ktx:2.3.2",
             "navigation-fragment-ktx": "androidx.navigation:navigation-fragment-ktx:2.3.2",
             "navigation-ui-ktx"      : "androidx.navigation:navigation-ui-ktx:2.3.2",
-            core_ktx                 : "androidx.core:core-ktx:1.6.0",
+            core_ktx                 : "androidx.core:core-ktx:1.8.0",
     ]
 
     Tripartite_Library = [
