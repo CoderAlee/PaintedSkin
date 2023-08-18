@@ -84,6 +84,7 @@
 9. **支持Androidx、support**
 10. **支持定制扩展**
 11.  **不会与其他依赖LayoutInflater.Factory 的库冲突**
+12.  **混淆配置**
 
 ---
 
@@ -595,6 +596,15 @@ public final class App extends Application {
        TypefacePlugin.getInstance().setEnable(true).switchTypeface(Typeface);
     }
 }
+```
+
+## 混淆配置
+
+项目需要混淆编译时，请在proguard-rules.pro中添加如下规则
+
+```java
+-keep class org.alee.reflex.** { *; }
+-keep class org.alee.component.skin.** { *; }
 ```
 
 ---
