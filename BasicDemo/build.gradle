@@ -33,7 +33,7 @@ dependencies {
     implementation rootProject.ext.Official_Library["appcompat"]
     implementation rootProject.ext.Official_Library["constraintlayout"]
     implementation rootProject.ext.Official_Library["material"]
-    implementation rootProject.ext.Official_Library["core_ktx"]
+    implementation rootProject.ext.Official_Library["core-ktx"]
     implementation rootProject.ext.Official_Library["navigation-runtime-ktx"]
     implementation rootProject.ext.Official_Library["navigation-fragment-ktx"]
     implementation rootProject.ext.Official_Library["navigation-ui-ktx"]
