@@ -2,26 +2,30 @@ include ':App:Shell'
 project(':App:Shell').projectDir = new File(settingsDir, '/Shell')
 include ':App:BasicDemo'
 project(':App:BasicDemo').projectDir = new File(settingsDir, '/BasicDemo')
+include ':App:KotlinDemo'
+project(':App:KotlinDemo').projectDir = new File(settingsDir, '/KotlinDemo')
 include ':SkinPack:Night'
 project(':SkinPack:Night').projectDir = new File(settingsDir, '/SkinPack/Night')
 include ':SkinPack:SpringFestival'
 if (CITING_THE_SOURCE_CODE.toBoolean()){
     include ':Library:PaintedSkin'
     project(':Library:PaintedSkin').projectDir = new File(settingsDir, '/Library/PaintedSkin')
+    include ':Library:PaintedSkin-Kotlin'
+    project(':Library:PaintedSkin-Kotlin').projectDir = new File(settingsDir, '/Library/PaintedSkin-Kotlin')
     include ':Library:ConstraintLayoutCompat'
     project(':Library:ConstraintLayoutCompat').projectDir = new File(settingsDir, '/Library/ConstraintLayoutCompat')
     include ':Library:Plugin:TypefacePlugin'
     project(':Library:Plugin:TypefacePlugin').projectDir = new File(settingsDir, '/Library/Plugin/TypefacePlugin')
     include ':Library:Plugin:StandardPlugin'
     project(':Library:Plugin:StandardPlugin').projectDir = new File(settingsDir, '/Library/Plugin/StandardPlugin')
-    include ':Library:Plugin:AopPlugin'
-    project(':Library:Plugin:AopPlugin').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin')
-    include ':Library:Plugin:Base-Compiler'
-    project(':Library:Plugin:Base-Compiler').projectDir = new File(settingsDir, '/Library/Plugin/Base-Compiler')
-    include ':Library:Plugin:AopPlugin:AopPlugin-Compiler'
-    project(':Library:Plugin:AopPlugin:AopPlugin-Compiler').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin/AopPlugin-Compiler')
-    include ':Library:Plugin:AopPlugin:AopPlugin-Annotation'
-    project(':Library:Plugin:AopPlugin:AopPlugin-Annotation').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin/AopPlugin-Annotation')
+//    include ':Library:Plugin:AopPlugin'
+//    project(':Library:Plugin:AopPlugin').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin')
+//    include ':Library:Plugin:Base-Compiler'
+//    project(':Library:Plugin:Base-Compiler').projectDir = new File(settingsDir, '/Library/Plugin/Base-Compiler')
+//    include ':Library:Plugin:AopPlugin:AopPlugin-Compiler'
+//    project(':Library:Plugin:AopPlugin:AopPlugin-Compiler').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin/AopPlugin-Compiler')
+//    include ':Library:Plugin:AopPlugin:AopPlugin-Annotation'
+//    project(':Library:Plugin:AopPlugin:AopPlugin-Annotation').projectDir = new File(settingsDir, '/Library/Plugin/AopPlugin/AopPlugin-Annotation')
 }
 rootProject.name = "PaintedSkinDemo"
 

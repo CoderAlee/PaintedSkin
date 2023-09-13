@@ -1,5 +1,6 @@
 package org.alee.component.skin.util
 
+import org.alee.component.skin.util.ext.memoryAddress
 import java.lang.ref.WeakReference
 
 /**

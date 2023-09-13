@@ -7,7 +7,7 @@ import android.view.LayoutInflater.Factory2
 import android.view.View
 import org.alee.component.skin.template.IViewCreator
 import org.alee.component.skin.util.SafeArray
-import org.alee.component.skin.util.memoryAddress
+import org.alee.component.skin.util.ext.memoryAddress
 import org.alee.component.skin.util.safeCall
 
 /**

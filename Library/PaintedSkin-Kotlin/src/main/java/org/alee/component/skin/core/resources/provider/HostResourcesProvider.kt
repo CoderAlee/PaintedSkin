@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.res.ResourcesCompat
 import org.alee.component.skin.constant.ResourcesType
+import org.alee.component.skin.util.ext.isValidResourcesId
 import org.alee.component.skin.util.safeCall
 
 /**

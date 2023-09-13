@@ -1,6 +1,7 @@
 package org.alee.component.skin.model
 
 import android.content.Context
+import org.alee.component.skin.util.INotProguard
 
 /**
  * 此类用于描述需要换肤的属性
@@ -20,7 +21,7 @@ data class SkinAttribute(
      * 属性所使用的资源ID; 例 R.color.black
      */
     val resourceId: Int,
-) {
+) : INotProguard {
     /**
      * 资源类型
      */
@@ -49,6 +50,10 @@ data class SkinAttribute(
         result = 31 * result + resourceType.hashCode()
         result = 31 * result + resourceName.hashCode()
         return result
+    }
+
+    override fun toString(): String {
+        return "SkinAttribute(attrName='$attrName', resourceId=$resourceId, resourceType='$resourceType', resourceName='$resourceName')"
     }
 }
 

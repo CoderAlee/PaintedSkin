@@ -1,5 +1,7 @@
 package org.alee.component.skin.util
 
+import org.alee.component.skin.util.ext.memoryAddress
+
 /**
  * 摘要
  *
@@ -19,6 +21,9 @@ internal class SafeArray<T : Any> {
      * [ListThreadLocal]
      */
     private val mThreadLocal: ListThreadLocal<T> by lazy { ListThreadLocal() }
+
+    val size: Int
+        get() = mReferenceArray.size
 
     /**
      * 添加一个元素
@@ -58,8 +63,10 @@ internal class SafeArray<T : Any> {
      *
      * @param key 元素的唯一id
      */
-    fun remove(key: Int) {
-        synchronized(mReferenceArray) { mReferenceArray.remove(key) }
+    fun remove(key: Int): T? {
+        synchronized(mReferenceArray) {
+            return mReferenceArray.remove(key)
+        }
     }
 
     fun isEmpty(): Boolean {

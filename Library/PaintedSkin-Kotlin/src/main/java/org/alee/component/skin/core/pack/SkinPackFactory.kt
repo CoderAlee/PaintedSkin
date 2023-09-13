@@ -9,6 +9,8 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
 import android.util.LruCache
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.isActive
 import org.alee.component.skin.core.resources.provider.HostResourcesProvider
 import org.alee.component.skin.core.resources.provider.ISkinResourcesProvider
 import org.alee.component.skin.core.resources.provider.StandardSkinResourcesProvider
@@ -37,11 +39,14 @@ internal val POOL = LruCache<String, ISkinResourcesProvider>(MAX_CACHE)
  */
 private val DEFAULT_PACK: BaseThemeSkinPack = DefaultThemeSkinPack()
 
-internal fun loadSkinPack(context: Context, option: IThemeSkin): IThemeSkinPack {
+internal fun CoroutineScope.loadSkinPack(context: Context, option: IThemeSkin): IThemeSkinPack {
     return createPack(context, option)
 }
 
-private fun createPack(context: Context, option: IThemeSkin): IThemeSkinPack {
+private fun CoroutineScope.createPack(context: Context, option: IThemeSkin): IThemeSkinPack {
+    if (isActive.not()) {
+        return DEFAULT_PACK
+    }
     if (option is EmptyThemeSkin) {
         return DEFAULT_PACK.apply {
             if (isAvailable.not()) {

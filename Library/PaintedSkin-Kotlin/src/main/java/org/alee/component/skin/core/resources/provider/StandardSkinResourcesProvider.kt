@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Build.VERSION
 import androidx.core.content.res.ResourcesCompat
 import org.alee.component.skin.constant.ResourcesType
+import org.alee.component.skin.util.ext.isValidResourcesId
 
 /**
  * 标准皮肤包资源提供者

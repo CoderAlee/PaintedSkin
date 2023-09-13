@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import org.alee.component.skin.ThemeSkinService
 import org.alee.component.skin.constant.SkinMode
-import org.alee.component.skin.core.template.IEnableSkinViewWarehouse
+import org.alee.component.skin.core.template.ISkinnableViewWarehouse
 import org.alee.component.skin.util.safeCall
 
 /**
@@ -20,7 +20,7 @@ import org.alee.component.skin.util.safeCall
 internal class ThemeSkinRecognizer(
     factory2: LayoutInflater.Factory2?,
     viewCreatorManager: IViewCreatorManager,
-    private val mWarehouse: IEnableSkinViewWarehouse,
+    private val mWarehouse: ISkinnableViewWarehouse,
 ) : ViewInterceptor(factory2, viewCreatorManager) {
 
     private companion object {
@@ -45,7 +45,7 @@ internal class ThemeSkinRecognizer(
         if (attributeSet.isEnableThemeSkin.not()) {
             return
         }
-        mWarehouse.addEnableSkinView(view, attributeSet)
+        mWarehouse.addSkinnableView(view, attributeSet)
     }
 
     private inline val AttributeSet.isEnableThemeSkin: Boolean

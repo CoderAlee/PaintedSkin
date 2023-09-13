@@ -42,10 +42,10 @@ dependencies {
     implementation rootProject.ext.Tripartite_Library["circle_imageview"]
     api rootProject.ext.Tripartite_Library["blankj"]
     if (CITING_THE_SOURCE_CODE.toBoolean()) {
-        compileOnly project(path: ':Library:PaintedSkin')
-        compileOnly project(path: ':Library:Plugin:StandardPlugin')
+        api project(path: ':Library:PaintedSkin')
+        api project(path: ':Library:Plugin:StandardPlugin')
     } else {
-        compileOnly rootProject.ext.Tripartite_Library["paintedskin"]
-        compileOnly rootProject.ext.Tripartite_Library["skin_standard_plugin"]
+        api rootProject.ext.Tripartite_Library["paintedskin"]
+        api rootProject.ext.Tripartite_Library["skin_standard_plugin"]
     }
 }

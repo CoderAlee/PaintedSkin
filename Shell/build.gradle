@@ -41,17 +41,9 @@ dependencies {
     implementation rootProject.ext.Tripartite_Library["reflex"]
     implementation project(path: ':App:BasicDemo')
     if (CITING_THE_SOURCE_CODE.toBoolean()) {
-        implementation project(path: ':Library:PaintedSkin')
-//        annotationProcessor project(path: ':Library:Plugin:AopPlugin')
-//        implementation project(path: ':Library:Plugin:AopPlugin')
-        implementation project(path: ':Library:Plugin:StandardPlugin')
         implementation project(path: ':Library:ConstraintLayoutCompat')
     } else {
-        implementation rootProject.ext.Tripartite_Library["paintedskin"]
         implementation rootProject.ext.Tripartite_Library["skin_constraintlayout_compat"]
-//        annotationProcessor rootProject.ext.Tripartite_Library["skin_auto_plugin"]
-//        implementation rootProject.ext.Tripartite_Library["skin_auto_plugin"]
         implementation rootProject.ext.Tripartite_Library["skin_standard_plugin"]
-        implementation rootProject.ext.Tripartite_Library["typeface_plugin"]
     }
 }

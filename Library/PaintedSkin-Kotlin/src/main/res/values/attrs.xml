@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BasicSupportAttr">
+        <!--View Start-->
+        <attr name="android:background" />
+        <attr name="android:foreground" />
+        <attr name="android:backgroundTint" />
+        <attr name="android:foregroundTint" />
+        <attr name="android:scrollbarThumbHorizontal" />
+        <attr name="android:scrollbarThumbVertical" />
+        <attr name="android:scrollbarTrackHorizontal" />
+        <attr name="android:scrollbarTrackVertical" />
+        <!--View End-->
+
+        <!--TextView Start-->
+        <attr name="android:textColor" />
+        <attr name="android:textColorHint" />
+        <attr name="android:textColorHighlight" />
+        <attr name="android:textColorLink" />
+        <attr name="android:shadowColor" />
+        <attr name="android:drawableLeft" />
+        <attr name="android:drawableStart" />
+        <attr name="android:drawableTop" />
+        <attr name="android:drawableRight" />
+        <attr name="android:drawableEnd" />
+        <attr name="android:drawableBottom" />
+        <attr name="android:drawableTint" />
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableStartCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableEndCompat" />
+        <attr name="drawableBottomCompat" />
+        <attr name="drawableTint" />
+        <!--TextView End-->
+
+        <!-- CompoundButton Start -->
+        <attr name="android:button" />
+        <attr name="android:buttonTint" />
+        <!-- CompoundButton End -->
+
+        <!-- ImageView Start -->
+        <attr name="android:src" />
+        <attr name="android:tint" />
+        <attr name="tint" />
+        <attr name="srcCompat" />
+        <!-- ImageView End -->
+
+        <!--ProgressBar Start-->
+        <attr name="android:progressDrawable" />
+        <attr name="android:progressTint" />
+        <attr name="android:indeterminateDrawable" />
+        <attr name="android:indeterminateTint" />
+        <attr name="android:progressBackgroundTint" />
+        <attr name="android:secondaryProgressTint" />
+        <!--ProgressBar End-->
+
+        <!--AbsListView Start-->
+        <attr name="android:cacheColorHint" />
+        <attr name="android:listSelector" />
+        <!--AbsListView End-->
+
+        <!-- ListView Start -->
+        <attr name="android:divider" />
+        <!-- ListView End -->
+
+        <!-- ExpandableListView Start -->
+        <attr name="android:childDivider" />
+        <attr name="android:childIndicator" />
+        <attr name="android:groupIndicator" />
+        <!-- ExpandableListView End -->
+    </declare-styleable>
+</resources>

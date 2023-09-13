@@ -9,4 +9,4 @@ package org.alee.component.skin.util
  * created in 2023/7/12
  *
  */
-internal interface INotProguard
+interface INotProguard

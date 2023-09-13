@@ -9,6 +9,7 @@ import android.view.LayoutInflater.Factory2
 import android.view.View
 import androidx.annotation.RequiresApi
 import org.alee.component.skin.template.IViewCreator
+import org.alee.component.skin.util.INotProguard
 import org.alee.component.skin.util.ext.logI
 import org.alee.component.skin.util.safeCall
 import java.lang.reflect.Constructor
@@ -120,7 +121,7 @@ internal abstract class BaseViewCreator(private val mOriginalFactory2: Factory2?
         attributeSet: AttributeSet,
     ): View?
 
-    private object ViewInflater : IViewCreator {
+    private object ViewInflater : IViewCreator, INotProguard {
 
         /**
          * 自定义view标志

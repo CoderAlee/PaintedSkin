@@ -33,6 +33,7 @@
         android:layout_height="@dimen/tp_37"
         android:layout_marginEnd="@dimen/tp_10"
         android:text="白天"
+        app:buttonCompat="@style/MediumBtn.Primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_night"
         app:layout_constraintStart_toStartOf="parent" />
