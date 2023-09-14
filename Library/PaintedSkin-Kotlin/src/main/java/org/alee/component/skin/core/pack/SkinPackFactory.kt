@@ -129,7 +129,7 @@ private fun Context.getSkinPackResources(path: String): Resources? {
 }
 
 private fun Context.getSKinPackContext(packageName: String): Context? {
-    safeCall {
+    safeCall(false) {
         return createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY)
     }
     return null

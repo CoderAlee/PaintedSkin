@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.ThemeSkinDemo">
-        <activity android:name=".basic.ability.BasicAbilityActivity"
+        <activity android:name=".kotlin.ability.DemoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -89,11 +89,10 @@ internal object DefaultService : IThemeSkinService, CoroutineScope by MainScope(
     /**
      * 当前主题
      */
-    private val mCurrentTheme by lazy { AtomicInteger(-1) }
+    private val mCurrentTheme by lazy { AtomicInteger(Int.MIN_VALUE) }
 
     init {
         addSkinExecutorBuilder(DefaultExecutorBuilder())
-        "ThemeSkin version is ${BuildConfig.VERSION_NAME}".logI()
     }
 
     /**
@@ -157,7 +156,7 @@ internal object DefaultService : IThemeSkinService, CoroutineScope by MainScope(
      * @param skinAttributes Array<out SkinAttribute> 需要换肤的属性集合
      */
     override fun entrustSkinnableView(skinnableView: View, vararg skinAttributes: SkinAttribute) {
-        TODO("Not yet implemented")
+        WindowManager.fetchWindowProxy(skinnableView.context)?.addSkinnableView(skinnableView, *skinAttributes)
     }
 
     /**

@@ -9,6 +9,7 @@ import org.alee.component.skin.template.ILogger
 import org.alee.component.skin.template.IThemeFactory
 import org.alee.component.skin.util.INotProguard
 import org.alee.component.skin.util.InnerLogger
+import org.alee.component.skin.util.ext.logI
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
@@ -42,6 +43,7 @@ object ThemeSkinService : IThemeSkinService by DefaultService, INotProguard {
         if (mIsInitialized.get()) {
             return
         }
+        "ThemeSkin version is ${BuildConfig.VERSION_NAME}".logI()
         mIsInitialized.set(true)
         DefaultService.initialize(application, factory, theme)
     }
@@ -64,7 +66,7 @@ object ThemeSkinService : IThemeSkinService by DefaultService, INotProguard {
         /**
          * 标识 是否启用Debug模式
          */
-        var debugMode: Boolean = false
+        var debugMode: Boolean = true
 
         /**
          * 标识 是否启用严格模式

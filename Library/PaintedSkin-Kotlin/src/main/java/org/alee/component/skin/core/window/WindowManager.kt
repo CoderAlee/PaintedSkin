@@ -54,6 +54,7 @@ internal object WindowManager {
             val sb = StringBuilder()
             mWindowProxyMap.values.forEach {
                 sb.append(it.dump())
+                sb.append("\r\n")
             }
             sb.toString()
         }

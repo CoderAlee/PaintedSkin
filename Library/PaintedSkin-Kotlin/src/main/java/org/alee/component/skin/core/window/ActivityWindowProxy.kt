@@ -106,14 +106,18 @@ internal class ActivityWindowProxy(activityName: String) :
         mViewWarehouse.destroy()
     }
 
+    private fun <T> safeUsePageManager(block: PageManager.() -> T): T? {
+        if (this::mPageManager.isInitialized.not()) {
+            return null
+        }
+        return mPageManager.block()
+    }
+
     /**
      * Called when the view is attached to a window.
      * @param v The view that was attached
      */
-    override fun onViewAttachedToWindow(v: View?) {
-        if (null == v) {
-            return
-        }
+    override fun onViewAttachedToWindow(v: View) {
         v.removeOnAttachStateChangeListener(this)
         safeCall(false) {
             val fragment = FragmentManager.findFragment<Fragment>(v)
@@ -129,16 +133,7 @@ internal class ActivityWindowProxy(activityName: String) :
      * Called when the view is detached from a window.
      * @param v The view that was detached
      */
-    override fun onViewDetachedFromWindow(v: View?) {
-        if (null == v) {
-            return
-        }
-    }
-
-    private fun <T> safeUsePageManager(block: PageManager.() -> T): T? {
-        if (this::mPageManager.isInitialized.not()) {
-            return null
-        }
-        return mPageManager.block()
+    override fun onViewDetachedFromWindow(v: View) {
+        // ignored
     }
 }

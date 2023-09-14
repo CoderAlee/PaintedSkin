@@ -39,9 +39,10 @@ dependencies {
     implementation rootProject.ext.Official_Library["constraintlayout"]
     implementation rootProject.ext.Official_Library["material"]
     implementation rootProject.ext.Tripartite_Library["reflex"]
-    implementation project(path: ':App:BasicDemo')
+    implementation project(path: ':App:KotlinDemo')
+    debugImplementation "com.bytedance.tools.codelocator:codelocator-core:2.0.3"
     if (CITING_THE_SOURCE_CODE.toBoolean()) {
-        implementation project(path: ':Library:ConstraintLayoutCompat')
+//        implementation project(path: ':Library:ConstraintLayoutCompat')
     } else {
         implementation rootProject.ext.Tripartite_Library["skin_constraintlayout_compat"]
         implementation rootProject.ext.Tripartite_Library["skin_standard_plugin"]

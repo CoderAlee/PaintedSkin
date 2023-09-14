@@ -39,10 +39,11 @@ dependencies {
     implementation rootProject.ext.Tripartite_Library["listAdapterHelper"]
     implementation rootProject.ext.Tripartite_Library["mmkv"]
     implementation rootProject.ext.Tripartite_Library["circle_imageview"]
+    api rootProject.ext.Official_Library["kotlinx-coroutines-core"]
     api rootProject.ext.Tripartite_Library["blankj"]
     if (CITING_THE_SOURCE_CODE.toBoolean()) {
-        compileOnly project(path: ':Library:PaintedSkin-Kotlin')
+        api project(path: ':Library:PaintedSkin-Kotlin')
     } else {
-        compileOnly rootProject.ext.Tripartite_Library["paintedskin"]
+        api rootProject.ext.Tripartite_Library["paintedskin"]
     }
 }

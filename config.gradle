@@ -1,9 +1,9 @@
 ext {
     android = [
-            compileSdkVersion = 30,
+            compileSdkVersion = 33,
             applicationId = "org.alee.demo.skin",
             minSdkVersion = 19,
-            targetSdkVersion = 30,
+            targetSdkVersion = 33,
             versionCode = LOCAL_VERSION_CODE as Integer,
             versionName = LOCAL_VERSION_NAME,
             buildToolsVersion = "30.0.1",

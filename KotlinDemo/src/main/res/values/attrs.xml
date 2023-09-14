@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="point_color" format="color" />
+        <attr name="circle_color" format="color" />
+        <attr name="rectangle_color" format="color" />
+        <attr name="icon" format="reference" />
+        <attr name="android:textColor" />
+    </declare-styleable>
+</resources>

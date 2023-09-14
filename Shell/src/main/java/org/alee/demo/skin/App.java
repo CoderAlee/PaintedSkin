@@ -4,21 +4,23 @@ package org.alee.demo.skin;
 import android.app.Application;
 import android.view.Gravity;
 
+import androidx.annotation.NonNull;
+
 import com.blankj.utilcode.util.ResourceUtils;
+import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;
 
-import org.alee.component.skin.compat.ConstraintLayoutCompat;
-import org.alee.component.skin.page.WindowManager;
-import org.alee.component.skin.service.Config;
-import org.alee.component.skin.service.ISwitchThemeSkinObserver;
-import org.alee.component.skin.service.ThemeSkinService;
-import org.alee.demo.skin.basic.ability.ConstantKt;
-import org.alee.demo.skin.basic.ability.SkinOptionFactory;
-import org.alee.demo.skin.basic.ability.util.ResourceExtKt;
+import org.alee.component.skin.ThemeSkinService;
+import org.alee.component.skin.constant.PerformanceMode;
+import org.alee.component.skin.core.pack.IThemeSkinPack;
+import org.alee.component.skin.template.IThemeSkinObserver;
 import org.alee.demo.skin.compat.AppCompatButtonCompat;
 import org.alee.demo.skin.compat.BackButtonCompat;
 import org.alee.demo.skin.compat.NestedScrollViewCompat;
 import org.alee.demo.skin.compat.RecyclerViewCompat;
+import org.alee.demo.skin.kotlin.ability.ConstantKt;
+import org.alee.demo.skin.kotlin.ability.theme.AppThemeManager;
+import org.alee.demo.skin.kotlin.ability.util.ResourceExtKt;
 
 /**********************************************************
  *
@@ -27,11 +29,14 @@ import org.alee.demo.skin.compat.RecyclerViewCompat;
  * @description: xxxx
  *
  *********************************************************/
-public final class App extends Application implements ISwitchThemeSkinObserver {
+public final class App extends Application implements IThemeSkinObserver {
     
     static {
-        Config.getInstance().setPerformanceMode(Config.PerformanceMode.EXPERIENCE_FIRST);
-        ConstraintLayoutCompat.init();
+        ThemeSkinService.Config config = ThemeSkinService.INSTANCE.getConfig();
+        config.setDebugMode(BuildConfig.DEBUG);
+        config.setPerformanceMode(PerformanceMode.PERFORMANCE_PRIORITY);
+        config.setStrictMode(true);
+        //        ConstraintLayoutCompat.init();
         NestedScrollViewCompat.init();
         BackButtonCompat.init();
         RecyclerViewCompat.init();
@@ -42,8 +47,8 @@ public final class App extends Application implements ISwitchThemeSkinObserver {
     public void onCreate() {
         super.onCreate();
         copySkinPack();
-        ThemeSkinService.getInstance().subscribeSwitchThemeSkin(this);
-        WindowManager.getInstance().init(this, new SkinOptionFactory());
+        ThemeSkinService.INSTANCE.subscribe(this);
+        AppThemeManager.INSTANCE.init(this);
     }
     
     private void copySkinPack() {
@@ -52,7 +57,12 @@ public final class App extends Application implements ISwitchThemeSkinObserver {
     }
     
     @Override
-    public void onThemeSkinSwitchRunOnUiThread() {
+    public void onThemeSkinChanged(int theme, @NonNull IThemeSkinPack usedSkinPack) {
+        ThreadUtils.runOnUiThread(() -> onThemeSkinChangedRunOnUiThread(ThemeSkinService.INSTANCE.getCurrentSkinPack()));
+    }
+    
+    @Override
+    public void onThemeSkinChangedRunOnUiThread(@NonNull IThemeSkinPack usedSkinPack) {
         ToastUtils.getDefaultMaker()
                 .setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, ResourceExtKt.getDimenResource(R.dimen.tp_12))
                 .setBgColor(ResourceExtKt.getColorResource(R.color.black_300))

@@ -14,7 +14,7 @@ import org.alee.component.skin.util.Version
  */
 interface ILogger {
     companion object {
-        const val TAG = "ThemeSkin"
+        const val TAG = "PaintedSkin"
     }
 
     /**

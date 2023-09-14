@@ -98,10 +98,11 @@ internal class PageManager(private val fm: FragmentManager) : FragmentManager.Fr
         for (i in 0 until depth) {
             append("-")
         }
+        append(" ")
         append(pageDumpInfo.pageName)
-            .append("visible = [${pageDumpInfo.isVisible}]")
-            .append("waitApplySkin = [${pageDumpInfo.isNeedApplyThemeSkin}]")
-            .append("skinnableViewSize = [${pageDumpInfo.skinnableViewSize}]")
+            .append(" visible = [${pageDumpInfo.isVisible}]")
+            .append(" waitApplySkin = [${pageDumpInfo.isNeedApplyThemeSkin}]")
+            .append(" skinnableViewSize = [${pageDumpInfo.skinnableViewSize}]")
             .append("\r\n")
         pageDumpInfo.subPageInfo.forEach {
             customAppend(it, depth + 1)

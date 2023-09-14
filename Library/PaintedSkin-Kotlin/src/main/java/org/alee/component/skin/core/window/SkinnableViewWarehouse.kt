@@ -65,7 +65,7 @@ internal class SkinnableViewWarehouse(private val mPageName: String) : ISkinnabl
             return
         }
         for (skinAttribute in skinAttributes) {
-            if (skinAttribute.resourceId.isValidResourcesId) {
+            if (skinAttribute.resourceId.isValidResourcesId.not()) {
                 continue
             }
             if (skinAttribute.resourceType.isEmpty()) {

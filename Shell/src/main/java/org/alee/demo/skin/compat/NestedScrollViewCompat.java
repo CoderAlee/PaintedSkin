@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 
-import org.alee.component.skin.factory2.IExpandedFactory2;
-import org.alee.component.skin.service.ThemeSkinService;
+import org.alee.component.skin.ThemeSkinService;
+import org.alee.component.skin.template.IViewCreator;
 
 /**
  * 摘要
@@ -21,33 +21,22 @@ import org.alee.component.skin.service.ThemeSkinService;
  * created in 2022/9/13
  */
 public final class NestedScrollViewCompat {
-
+    
     public static void init() {
-        ThemeSkinService.getInstance().getCreateViewInterceptor().add(new NestedScrollViewFactory());
+        ThemeSkinService.INSTANCE.getViewCreatorManager().addCreator(new NestedScrollViewFactory());
     }
-
-    private static class NestedScrollViewFactory implements IExpandedFactory2 {
-
+    
+    private static class NestedScrollViewFactory implements IViewCreator {
+        
         /**
          * {@link NestedScrollView} 类名
          */
         private final static String CLASS_NAME = NestedScrollView.class.getName();
-
-        /**
-         * 创建View
-         *
-         * @param originalView 上一个IExpandedFactory生成的View
-         * @param parent       父View
-         * @param name         名称
-         * @param context      {@link Context}
-         * @param attrs        {@link AttributeSet}
-         *
-         * @return 生成的View
-         */
-        @NonNull
+        
+        @Nullable
         @Override
-        public View onCreateView(@Nullable View originalView, @Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-            return TextUtils.equals(CLASS_NAME, name) ? new NestedScrollView(context, attrs) : originalView;
+        public View onCreateView(@Nullable View predecessorOutput, @Nullable View parent, @NonNull Context context, @NonNull String viewName, @NonNull AttributeSet attrs) {
+            return TextUtils.equals(CLASS_NAME, viewName) ? new NestedScrollView(context, attrs) : predecessorOutput;
         }
     }
 }
