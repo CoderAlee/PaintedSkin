@@ -38,4 +38,32 @@
         <item name="android:paddingEnd">@dimen/tp_12</item>
         <item name="android:background">@mipmap/bg_default_dialog</item>
     </style>
+
+    <style name="MenuTitle" parent="text.Button1.Primary">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">@dimen/tp_10</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/tp_12</item>
+        <item name="drawableTint">@color/primary_main</item>
+    </style>
+
+    <style name="MenuRadioGroup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/tp_48</item>
+        <item name="android:layout_marginTop">@dimen/tp_12</item>
+        <item name="android:background">@drawable/shape_bg_set_checked_unselected</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="MenuRadioButton" parent="text.Body2.BlackHigh">
+        <item name="android:layout_width">@dimen/tp_0</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/selector_set_checked</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

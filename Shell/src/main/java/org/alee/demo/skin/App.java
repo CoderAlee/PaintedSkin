@@ -34,7 +34,7 @@ public final class App extends Application implements IThemeSkinObserver {
     static {
         ThemeSkinService.Config config = ThemeSkinService.INSTANCE.getConfig();
         config.setDebugMode(BuildConfig.DEBUG);
-        config.setPerformanceMode(PerformanceMode.PERFORMANCE_PRIORITY);
+        config.setPerformanceMode(PerformanceMode.EXPERIENCE_FIRST);
         config.setStrictMode(true);
         //        ConstraintLayoutCompat.init();
         NestedScrollViewCompat.init();
@@ -65,8 +65,8 @@ public final class App extends Application implements IThemeSkinObserver {
     public void onThemeSkinChangedRunOnUiThread(@NonNull IThemeSkinPack usedSkinPack) {
         ToastUtils.getDefaultMaker()
                 .setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, ResourceExtKt.getDimenResource(R.dimen.tp_12))
-                .setBgColor(ResourceExtKt.getColorResource(R.color.black_300))
-                .setTextColor(ResourceExtKt.getColorResource(R.color.text_white_high))
+                .setBgColor(ResourceExtKt.getColorResource(R.color.black_800))
+                .setTextColor(ResourceExtKt.getColorResource(R.color.white_800))
                 .setTextSize(ResourceExtKt.getDimenResource(R.dimen.tp_14));
     }
 }

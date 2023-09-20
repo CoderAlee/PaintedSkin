@@ -1,16 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/main" />
+        android:layout_height="@dimen/tp_40"
+        android:background="@color/primary_main"
+        android:gravity="center"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:title="@string/toolbar_title" />
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/layout_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_main"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/main" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:orientation="horizontal">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/menu"
+                style="@style/CommonBg"
+                android:layout_width="@dimen/tp_0"
+                android:layout_weight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="@dimen/tp_8"
+                    android:paddingVertical="@dimen/tp_12">
+
+                    <TextView
+                        android:id="@+id/txt_theme"
+                        style="@style/MenuTitle"
+                        android:text="主题"
+                        app:drawableStartCompat="@drawable/icon_theme_svga"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/group_theme"
+                        style="@style/MenuRadioGroup"
+                        app:layout_constraintTop_toBottomOf="@id/txt_theme">
+
+                        <RadioButton
+                            android:id="@+id/btn_default_theme"
+                            style="@style/MenuRadioButton"
+                            android:text="默认" />
+
+                        <RadioButton
+                            android:id="@+id/btn_spring_festival_theme"
+                            style="@style/MenuRadioButton"
+                            android:text="春节" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/txt_day_night_mode"
+                        style="@style/MenuTitle"
+                        android:text="日夜模式"
+                        app:drawableStartCompat="@drawable/icon_day_night_mode_svga"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/group_theme" />
+
+                    <RadioGroup
+                        android:id="@+id/group_day_night_mode"
+                        style="@style/MenuRadioGroup"
+                        app:layout_constraintTop_toBottomOf="@id/txt_day_night_mode">
+
+                        <RadioButton
+                            android:id="@+id/btn_day_mode"
+                            style="@style/MenuRadioButton"
+                            android:text="白天" />
+
+                        <RadioButton
+                            android:id="@+id/btn_night_mode"
+                            style="@style/MenuRadioButton"
+                            android:text="黑夜" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/txt_setting"
+                        style="@style/MenuTitle"
+                        android:text="自定义皮肤包设置"
+                        app:drawableStartCompat="@drawable/icon_setting_svga"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/group_day_night_mode" />
+
+                    <TextView
+                        android:id="@+id/btn_custom_setting"
+                        style="@style/BigBtn.PrimaryBg"
+                        android:layout_width="@dimen/tp_0"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/tp_15"
+                        android:text="自定义"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txt_setting" />
+
+                    <TextView
+                        android:id="@+id/txt_pressure_test"
+                        style="@style/MenuTitle"
+                        android:text="压力测试"
+                        app:drawableStartCompat="@drawable/icon_pressure_test_svga"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btn_custom_setting" />
+
+                    <TextView
+                        android:id="@+id/btn_pressure_test"
+                        style="@style/BigBtn.PrimaryBg"
+                        android:layout_width="@dimen/tp_0"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/tp_15"
+                        android:text="开始压力测试"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txt_pressure_test" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <View
+                android:id="@+id/space"
+                android:layout_width="@dimen/tp_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -17,4 +17,7 @@
     <string name="dynamic_add_view_content">我是&#160;No·%1$s&#160;个动态添加的View </string>
     <string name="dialog_demo_show_dialog">Dialog</string>
     <string name="dialog_demo_show_appcompatdialog">AppCompatDialog</string>
+    <string name="toolbar_title">PaintedSkinDemo</string>
+    <string name="empty"></string>
+
 </resources>

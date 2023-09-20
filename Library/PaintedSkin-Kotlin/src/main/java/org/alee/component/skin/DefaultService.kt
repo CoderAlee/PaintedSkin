@@ -29,6 +29,7 @@ import org.alee.component.skin.util.INotProguard
 import org.alee.component.skin.util.Publisher
 import org.alee.component.skin.util.ThemeSkinCoroutineExceptionHandler
 import org.alee.component.skin.util.ext.logI
+import org.alee.component.skin.util.ext.measureTimeIfDebug
 import org.alee.component.skin.util.ext.memoryAddress
 import org.alee.component.skin.util.ext.printIfDebug
 import java.util.concurrent.atomic.AtomicInteger
@@ -119,7 +120,7 @@ internal object DefaultService : IThemeSkinService, CoroutineScope by MainScope(
         mOptionFactory = factory
         WindowManager.init(application)
         printIfDebug {
-            " service initialization, The initial theme is $theme , the default theme is ${factory.defaultTheme}"
+            "service initialization, The initial theme is $theme , the default theme is ${factory.defaultTheme}"
         }
         switchTheme(theme, true)
     }
@@ -193,6 +194,7 @@ internal object DefaultService : IThemeSkinService, CoroutineScope by MainScope(
         if (mCurrentTheme.get() == theme) {
             return
         }
+        mCurrentTheme.set(theme)
         mLoadSkinPackJob?.cancel()
         if (theme == mOptionFactory.defaultTheme) {
             loadSkinPack(theme, EmptyThemeSkin, sync)
@@ -219,12 +221,15 @@ internal object DefaultService : IThemeSkinService, CoroutineScope by MainScope(
     }
 
     private fun CoroutineScope.onSkinPackLoadCompleted(theme: Int, pack: IThemeSkinPack) {
-        if (isActive.not()) {
+        if (isActive.not() || theme != mCurrentTheme.get()) {
             return
         }
-        mCurrentTheme.set(theme)
         mCurrentThemeSkinPack = pack
-        mSwitchThemePublisher.notifyObservers { it.onThemeSkinChanged(theme, pack) }
+        mSwitchThemePublisher.notifyObservers {
+            measureTimeIfDebug({ it.onThemeSkinChanged(theme, pack) }) { milliseconds ->
+                "[ $it ] execution takes $milliseconds ms"
+            }
+        }
     }
 
     override fun equals(other: Any?): Boolean {

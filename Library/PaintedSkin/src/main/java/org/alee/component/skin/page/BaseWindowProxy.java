@@ -100,7 +100,7 @@ abstract class BaseWindowProxy implements IWindowProxy {
         mIsNeedApplyThemeSkin = false;
         long startTime = System.currentTimeMillis();
         mEnableThemeSkinViewWarehouse.applyThemeSkin();
-        PrintUtil.getInstance().printD("执行换肤耗时: [ " + (System.currentTimeMillis() - startTime) + " ] 毫秒");
+        PrintUtil.getInstance().printD("Skin resurfacing takes time: [ " + (System.currentTimeMillis() - startTime) + " ] ms");
     }
 
     /**

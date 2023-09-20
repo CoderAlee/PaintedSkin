@@ -73,30 +73,30 @@ private fun CoroutineScope.createPack(context: Context, option: IThemeSkin): ITh
 
 private fun StandardThemeSkinPack.makeReady(context: Context, path: String) {
     if (path.isEmpty()) {
-        "标准皮肤包路径不能为空".logE()
+        "The standard skin package path cannot be empty".logE()
         return
     }
     val provider = POOL.get(path)
     if (null != provider) {
         printIfDebug {
-            "从缓存中加载皮肤包 [ $path ]"
+            "Load [ $path ] from cache"
         }
         onReady(provider)
         return
     }
     if (File(path).exists().not()) {
-        "路径下不存在皮肤包 [ $path ]".logE()
+        "The skin package does not exist under the path [ $path ]".logE()
         return
     }
     val packPackageName = context.getSkinPackPackageName(path)
     if (packPackageName.isNullOrEmpty()) {
-        "无法获取到皮肤包包名 [ $path ]".logE()
+        "Unable to get [ $path ] package name ".logE()
         return
     }
     val packResources = context.getSkinPackResources(path)
     val packContext = context.getSKinPackContext(packPackageName)
     if (null == packResources) {
-        "无法加载皮肤包 [ $path ]".logE()
+        "Unable to load skin pack: [ $path ]".logE()
         return
     }
     StandardSkinResourcesProvider(packContext, context.resources, packResources, packPackageName).run {
@@ -104,7 +104,7 @@ private fun StandardThemeSkinPack.makeReady(context: Context, path: String) {
         onReady(this)
     }
     printIfDebug {
-        "皮肤包[$path]加载成功! packageName = $packPackageName packResources = $packResources packContext = $packContext"
+        "Skin package [$path] loaded successfully! packageName = $packPackageName packResources = $packResources packContext = $packContext"
     }
 }
 

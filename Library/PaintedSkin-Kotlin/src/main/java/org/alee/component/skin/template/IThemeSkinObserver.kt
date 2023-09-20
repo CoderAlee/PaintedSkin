@@ -16,6 +16,7 @@ import org.alee.component.skin.util.runOnMainThread
  *
  */
 interface IThemeSkinObserver {
+
     /**
      * 当主题发生变化时被回调
      * <p>注意此回调可能为非UI线程

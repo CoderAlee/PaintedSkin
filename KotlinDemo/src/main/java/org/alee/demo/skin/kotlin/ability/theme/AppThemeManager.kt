@@ -25,14 +25,23 @@ object AppThemeManager : CoroutineScope by MainScope() {
     /**
      * 当前应使用的日夜模式
      */
-    private val usedDayMode: Boolean
+    val usedDayMode: Boolean
         get() = DayNightMode.DAY == KEY_DAY_NIGHT_MODE.loadInt(DayNightMode.NIGHT)
 
     /**
      * 当前选中的主题
      */
-    private val selectedTheme: Int
+    val selectedTheme: Int
         get() = KEY_THEME.loadInt(Theme.SPRING_FESTIVAL)
+
+    val nextTheme: Int
+        get() = when (selectedTheme) {
+            Theme.STANDARD -> Theme.SPRING_FESTIVAL
+            else -> Theme.STANDARD
+        }
+
+    val nextDayNightMode: Int
+        get() = if (usedDayMode) DayNightMode.NIGHT else DayNightMode.DAY
 
     /**
      * 当前应应用的主题皮肤
@@ -69,7 +78,6 @@ object AppThemeManager : CoroutineScope by MainScope() {
     @AnyThread
     private fun refreshThemeSkin() {
         val appTheme = theme
-        "即将切换至$appTheme".logI()
         ThemeSkinService.switchTheme(appTheme.ordinal)
     }
 

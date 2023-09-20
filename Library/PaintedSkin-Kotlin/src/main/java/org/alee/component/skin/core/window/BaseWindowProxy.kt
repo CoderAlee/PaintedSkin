@@ -9,6 +9,7 @@ import org.alee.component.skin.core.template.ISkinnableViewWarehouse
 import org.alee.component.skin.model.SkinAttribute
 import org.alee.component.skin.template.IThemeSkinObserver
 import org.alee.component.skin.util.ext.measureTimeIfDebug
+import org.alee.component.skin.util.ext.memoryAddress
 import org.alee.component.skin.util.ext.subscribeThemeSkinIfNeed
 
 /**
@@ -92,7 +93,7 @@ internal sealed class BaseWindowProxy(private val mWindowName: String) : IWindow
         measureTimeIfDebug({
             mViewWarehouse.applyThemeSkin()
         }) {
-            "$mWindowName 执行换肤耗时：[$it] ms"
+            "[ $mWindowName ] Skin resurfacing takes time：$it ms"
         }
     }
 
@@ -106,6 +107,10 @@ internal sealed class BaseWindowProxy(private val mWindowName: String) : IWindow
 
     override fun dump(): String {
         return "$mWindowName visible = [$mIsVisible] waitApplySkin = [$mIsNeedApplySkin] skinnableViewSize = [${mViewWarehouse.skinnableViewSize}]"
+    }
+
+    override fun toString(): String {
+        return "$mWindowName`Proxy@${this.memoryAddress}"
     }
 
     protected fun finalize() {

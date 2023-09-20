@@ -12,6 +12,7 @@ import org.alee.component.skin.core.template.ISkinnableViewWarehouse
 import org.alee.component.skin.core.window.SkinnableViewWarehouse
 import org.alee.component.skin.template.IThemeSkinObserver
 import org.alee.component.skin.util.ext.measureTimeIfDebug
+import org.alee.component.skin.util.ext.memoryAddress
 import org.alee.component.skin.util.ext.subscribeThemeSkinIfNeed
 import java.util.WeakHashMap
 
@@ -159,7 +160,7 @@ internal class PageProxy(private val mPageName: String) : FragmentLifecycleCallb
         measureTimeIfDebug({
             mViewWarehouse.applyThemeSkin()
         }) {
-            "$mPageName 执行换肤耗时：[$it] ms"
+            "[ $mPageName ] Skin resurfacing takes time：$it ms"
         }
     }
 
@@ -202,5 +203,9 @@ internal class PageProxy(private val mPageName: String) : FragmentLifecycleCallb
         synchronized(mSubPageProxyMap) {
             mSubPageProxyMap.remove(f)
         }
+    }
+
+    override fun toString(): String {
+        return "$mPageName`Proxy@${this.memoryAddress}"
     }
 }

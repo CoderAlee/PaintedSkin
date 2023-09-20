@@ -100,8 +100,10 @@ internal class SkinnableViewWarehouse(private val mPageName: String) : ISkinnabl
      * 应用当前的主题皮肤
      */
     override fun applyThemeSkin() {
-        printIfDebug {
-            "[$mPageName] 开始换肤,待换肤View数量=${mSkinnableViews.size}"
+        if (mSkinnableViews.isEmpty().not()) {
+            printIfDebug {
+                "[ $mPageName ] Start skin changing, number of Views to be changed =${mSkinnableViews.size}"
+            }
         }
         mSkinnableViews.use().use { skinnableViews ->
             skinnableViews.filter { it.isValid }
@@ -138,7 +140,7 @@ internal class SkinnableViewWarehouse(private val mPageName: String) : ISkinnabl
         mSkinnableViews.remove(key)?.run {
             destroy()
             printIfDebug {
-                "[$mPageName] 中的一个View已被回收,当前页面待换肤View数量=${mSkinnableViews.size}"
+                "a view in [$mPageName] has been recycled. The number of Views to be reskinned on the current page =${mSkinnableViews.size}"
             }
         }
     }
