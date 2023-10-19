@@ -97,6 +97,14 @@
             android:layout_marginTop="@dimen/tp_12"
             android:paddingHorizontal="@dimen/tp_12"
             android:text="@string/main_btn_dialog" />
+        <TextView
+            android:id="@+id/btn_process_demo"
+            style="@style/BigBtn.PrimaryBg"
+            android:layout_height="@dimen/tp_40"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tp_12"
+            android:paddingHorizontal="@dimen/tp_12"
+            android:text="@string/main_btn_process" />
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

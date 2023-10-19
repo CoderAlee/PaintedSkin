@@ -1,6 +1,8 @@
 package org.alee.demo.skin.basic.ability.main
 
 import android.view.View
+import com.blankj.utilcode.util.ActivityUtils
+import org.alee.demo.skin.basic.ability.ProcessDemoActivity
 import org.alee.demo.skin.basic.ability.R
 import org.alee.demo.skin.basic.ability.basic.fragment.BasePage
 import org.alee.demo.skin.basic.ability.util.go
@@ -33,6 +35,7 @@ internal class MainPage : BasePage(), View.OnClickListener {
         findView<View>(R.id.btn_skin_enable_demo).setOnClickListener(this)
         findView<View>(R.id.btn_festive_skin_demo).setOnClickListener(this)
         findView<View>(R.id.btn_dialog_demo).setOnClickListener(this)
+        findView<View>(R.id.btn_process_demo).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -47,6 +50,9 @@ internal class MainPage : BasePage(), View.OnClickListener {
             R.id.btn_skin_enable_demo -> go(R.id.toSkinEnableDemoPage)
             R.id.btn_festive_skin_demo -> go(R.id.toFestiveSkinDemoPage)
             R.id.btn_dialog_demo -> go(R.id.toDialogDemoPage)
+            R.id.btn_process_demo -> {
+                ActivityUtils.startActivity(ProcessDemoActivity::class.java)
+            }
         }
     }
 }
