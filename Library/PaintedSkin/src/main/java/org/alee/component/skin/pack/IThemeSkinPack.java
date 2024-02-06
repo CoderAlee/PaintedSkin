@@ -61,7 +61,7 @@ public interface IThemeSkinPack extends ISkinResourcesProvider {
         int DESTROYED = 0x1002;
     }
 
-    @IntDef({SkinPackType.TYPE_DEFAULT, SkinPackType.TYPE_STANDARD, SkinPackType.TYPE_CUSTOMIZE})
+    @IntDef({SkinPackType.TYPE_DEFAULT, SkinPackType.TYPE_STANDARD, SkinPackType.TYPE_CUSTOMIZE, SkinPackType.TYPE_PLUGIN})
     @Retention(RetentionPolicy.SOURCE)
     @interface SkinPackType {
         /**
@@ -76,5 +76,10 @@ public interface IThemeSkinPack extends ISkinResourcesProvider {
          * 自定义皮肤包 由外部开发者提供
          */
         int TYPE_CUSTOMIZE = 0x1002;
+
+        /**
+         * 插件皮肤包
+         */
+        int TYPE_PLUGIN = 0x1003;
     }
 }

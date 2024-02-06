@@ -69,18 +69,18 @@ public abstract class BaseSkinExecutor<T extends View> implements ISkinExecutor 
     private void applyThemeSkin(@NonNull T view, @NonNull SkinElement element) {
         switch (element.getResourcesType()) {
             case ResourcesType.COLOR:
-                ColorStateList colorStateList = ThemeSkinService.getInstance().getCurrentThemeSkinPack().getColorStateList(element.getResourcesId());
+                ColorStateList colorStateList = ThemeSkinService.getInstance().getCurrentThemeSkinPack(view.getContext()).getColorStateList(element.getResourcesId());
                 if (null != colorStateList) {
                     applyColor(view, colorStateList, element.getAttrName());
                     break;
                 }
-                applyColor(view, ThemeSkinService.getInstance().getCurrentThemeSkinPack().getColor(element.getResourcesId()), element.getAttrName());
+                applyColor(view, ThemeSkinService.getInstance().getCurrentThemeSkinPack(view.getContext()).getColor(element.getResourcesId()), element.getAttrName());
                 break;
             case ResourcesType.DRAWABLE:
-                applyDrawable(view, ThemeSkinService.getInstance().getCurrentThemeSkinPack().getDrawable(element.getResourcesId()), element.getAttrName());
+                applyDrawable(view, ThemeSkinService.getInstance().getCurrentThemeSkinPack(view.getContext()).getDrawable(element.getResourcesId()), element.getAttrName());
                 break;
             case ResourcesType.MIPMAP:
-                applyDrawable(view, ThemeSkinService.getInstance().getCurrentThemeSkinPack().getMipmap(element.getResourcesId()), element.getAttrName());
+                applyDrawable(view, ThemeSkinService.getInstance().getCurrentThemeSkinPack(view.getContext()).getMipmap(element.getResourcesId()), element.getAttrName());
                 break;
             default:
                 break;

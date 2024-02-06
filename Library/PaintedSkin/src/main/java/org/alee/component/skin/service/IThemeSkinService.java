@@ -46,6 +46,13 @@ public interface IThemeSkinService {
     IThemeSkinPack getCurrentThemeSkinPack();
 
     /**
+     * 获取当前正在使用的主题皮肤包
+     *
+     * @return {@link IThemeSkinPack} 对应context的皮肤包,主进程context, 插件context
+     */
+    IThemeSkinPack getCurrentThemeSkinPack(Context context);
+
+    /**
      * 切换主题皮肤
      *
      * @param theme 要切换的主题

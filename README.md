@@ -335,6 +335,136 @@ class NightOption implements IThemeSkinOption {
 ---
 
 
+
+## 插件apk换肤
+
+如果应用没有使用插件功能,请忽略本节类容
+
+所谓插件,即是通过ClassLoader加载其他apk的字节码来创建的对象,代码和资源都在另一个apk
+
+比如以下插件类的创建方式:
+
+```java
+Context remoteContext = mContext.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY | Context.CONTEXT_INCLUDE_CODE)
+Class<?> aClass = remoteContext.getClassLoader().loadClass(classPath);
+Constructor<?> constructor = aClass.getConstructor(Context.class);
+// eg. view对象是插件apk的一个ViewGroup对象,其子view都是在构造函数中通过LayoutInflator.inflate创建,
+// 这样的子view可以通过本节的配置进行换肤
+view = (View) constructor.newInstance(remoteContext);
+```
+
+如果有以上方式生成的class, 那么可以配置插件选项,支持对插件view的主题切换
+
+配置插件换肤以下步骤是必要的
+
+### 1.配置插件 Context
+
+```java
+//换肤框架托管插件view创建,提供换肤能力
+WindowManager.getInstance().attachPluginWindow(remoteContext);
+```
+
+remoteContext要和创建插件View的context对象保持一致,比如在上面实例化插件View之前生成的remoteContext传递给框架, 因为每次创建的对象不一样,建议在实例化插件class的时候传递
+
+### 2.配置插件主题资源
+
+ 新增Light主题, 重写 `IThemeSkinOption#getPluginPackagesPackPath`
+
+```java
+private static class LightOption implements  IThemeSkinOption{
+
+        //主应用主题包
+        @Override
+        public LinkedHashSet<String> getStandardSkinPackPath() {
+            LinkedHashSet<String> path = new LinkedHashSet<>();
+            path.add(EXTERNAL_THEME_RESOURCE_PATH);
+            return path;
+        }
+
+        /**
+         * 插件包名和皮肤包列表的映射结果
+         * 插件 插件包名-插件主题包列表 映射
+         * <br/>主题包列表只能有一个路径,如果有多个路径只有一个随机生效
+         * @return k-v, k:插件包名,v:插件的主题包路径
+         */
+        @Override
+        @Nullable
+        public Map<String, List<String>> getPluginPackagesPackPath(){
+            Map<String, List<String>> plugins = new ArrayMap<>();
+            List<String> plugin1Themes = new ArrayList<>();
+            kuwoThemes.add("/sdcard/pluginTheme/plugin1-light.skin");
+            //com.plugin.test1 使用指定路径下的主题包
+            plugins.put("com.plugin.test1", plugin1Themes);
+            //null则使用插件自带的资源,不提供换肤能力
+            plugins.put("com.plugin.test2", null);
+            plugins.put("com.plugin.test3", null);
+            ....
+            return plugins;
+        }
+    }
+```
+
+
+
+### 3.配置插件默认主题资源
+
+重写 `IThemeSkinOption#getPluginPackagesPackPath` 主题资源路径为null即可
+
+```java
+ /**
+     * 插件默认主题
+     */
+    private static class DefaultOption implements  IThemeSkinOption {
+
+        @Override
+        public LinkedHashSet<String> getStandardSkinPackPath() {
+            return null;
+        }
+
+
+        /**
+         * @return 主题包路径为null, 全部使用apk自带资源
+         */
+        @Override
+        @Nullable
+        public Map<String, List<String>> getPluginPackagesPackPath(){
+            Map<String, List<String>> plugins = new ArrayMap<>();
+            plugins.put("com.plugin.test1", null);
+            plugins.put("com.plugin.test2", null);
+            plugins.put("com.plugin.test3", null);
+            ....
+            return plugins;
+        }
+    }
+```
+
+此步骤目的是为框架提供插件的包名列表,框架会根据包名列表创建对应的packageContext加载插件apk自带的资源, 如果不提供则会导致插件view自带资源加载失败
+
+### 4. 创建默认选项
+
+最后在Factory中返回默认选项,请保证 requireOption不要返回null
+
+```java
+    private static class SkinOptionFactory implements IOptionFactory{
+
+        @Override
+        public int defaultTheme() {
+            return THEME_MODE_DARK;
+        }
+
+        @Override
+        public IThemeSkinOption requireOption(int theme) {
+            if (theme == THEME_MODE_LIGHT){
+                return new LightOption();
+            }
+            //如果要对插件换肤,选项是必须的,否则框架不知道插件包名
+            return new DefaultOption();
+        }
+    }
+```
+
+
+
 ## 进阶用法
 
 

@@ -1,6 +1,8 @@
 package org.alee.component.skin.service;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.util.ArrayMap;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,6 +12,8 @@ import org.alee.component.skin.collection.SparseStack;
 import org.alee.component.skin.factory2.ExpandedFactory2Manager;
 import org.alee.component.skin.pack.ILoadThemeSkinObserver;
 import org.alee.component.skin.pack.IThemeSkinPack;
+import org.alee.component.skin.pack.PluginDefaultThemePack;
+import org.alee.component.skin.pack.PluginThemeSkinPack;
 import org.alee.component.skin.pack.ThemeSkinPackFactory;
 import org.alee.component.skin.parser.DefaultExecutorBuilder;
 import org.alee.component.skin.parser.IThemeSkinExecutorBuilder;
@@ -19,7 +23,9 @@ import org.alee.component.skin.util.PrintUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**********************************************************
@@ -38,6 +44,12 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
     private IOptionFactory mOptionFactory;
     private int mCurrentTheme = -1;
 
+    /**
+     * 插件皮肤包映射: 包名-皮肤包
+     * 每个插件单独一个皮肤包
+     */
+    private Map<String, IThemeSkinPack> mSkinPackMap;
+
     DefaultService() {
         mExpandedFactory2Manager = new ExpandedFactory2Manager();
         mSwitchThemeSkinObserverStack = new SparseStack<>();
@@ -48,6 +60,7 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
                 return new ArrayList<>();
             }
         };
+        mSkinPackMap = new ArrayMap<>(11);
     }
 
     /**
@@ -68,6 +81,7 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
 
     private void restoreDefaultThemeSkin() {
         ThemeSkinPackFactory.loadThemeSkinPack(mContext, this, null);
+        switchPluginThemeSkin(mOptionFactory.requireOption(mOptionFactory.defaultTheme()));
     }
 
     /**
@@ -105,6 +119,20 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
     }
 
     /**
+     * 获取当前正在使用的主题皮肤包
+     *
+     * @return {@link IThemeSkinPack} 对应context的皮肤包,主进程context, 插件context
+     */
+    @Override
+    public IThemeSkinPack getCurrentThemeSkinPack(Context context) {
+        IThemeSkinPack themePack = mSkinPackMap.get(context.getPackageName());
+        if ( themePack!= null){
+            return themePack;
+        }
+        return getCurrentThemeSkinPack();
+    }
+
+    /**
      * 切换主题皮肤
      *
      * @param theme 要切换的主题
@@ -132,7 +160,43 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
         }
         ThemeSkinPackFactory.loadThemeSkinPack(mContext, this, pathArray);
         //        ThemeSkinPackFactoryMapping.loadThemeSkinPack.call(mContext, this, pathArray);
+        switchPluginThemeSkin(option);
 
+    }
+
+    /**
+     * 切换插件主题
+     * @param option 主题选项
+     */
+    private void switchPluginThemeSkin(IThemeSkinOption option){
+        //null option 没有配置插件皮肤包,不支持插件换肤
+        if (option == null){
+            return;
+        }
+        //option选定主题
+        Map<String, List<String>> plugins = option.getPluginPackagesPackPath();
+        //没有配置插件选项
+        if (plugins == null){
+            return;
+        }
+        Iterator<Map.Entry<String, List<String>>> ite = plugins.entrySet().iterator();
+        while (ite.hasNext()){
+            Map.Entry<String, List<String>> entry = ite.next();
+            String packageName = entry.getKey();
+            List<String> packPathList = entry.getValue();
+            //插件包名不能为空
+            if (packageName != null || !packageName.isEmpty()) {
+                //为插件加载皮肤包列表
+                try {
+                    Context packageContext = mContext.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY | Context.CONTEXT_INCLUDE_CODE);
+                    PrintUtil.getInstance().printD("loadPluginThemeSkinPack: " + packageName);
+                    ThemeSkinPackFactory.loadPluginThemeSkinPack(packageContext, this, packPathList);
+                }
+                catch (PackageManager.NameNotFoundException ignored){
+                    PrintUtil.getInstance().printE("loadPluginThemeSkinPack exception: "+ignored.getCause());
+                }
+            }
+        }
     }
 
     /**
@@ -158,7 +222,20 @@ final class DefaultService implements IThemeSkinService, ILoadThemeSkinObserver 
 
     @Override
     public void onLoadCompleted(IThemeSkinPack pack) {
-        mCurrentThemeSkinPack = pack;
+        //保存插件皮肤包
+        if (pack instanceof PluginThemeSkinPack){
+            mSkinPackMap.put(((PluginThemeSkinPack) pack).getPackageName(), pack);
+        }
+        //保存插件默认皮肤包
+        else if (pack instanceof PluginDefaultThemePack){
+            mSkinPackMap.put(((PluginDefaultThemePack) pack).getPackageName(), pack);
+        }
+        //主程序皮肤包
+        else {
+            mSkinPackMap.put(mContext.getPackageName(), pack);
+            //兼容原逻辑不变
+            mCurrentThemeSkinPack = pack;
+        }
         List<ISwitchThemeSkinObserver> tempList = mThreadLocal.get();
         synchronized (mSwitchThemeSkinObserverStack) {
             tempList.clear();

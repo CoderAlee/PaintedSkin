@@ -44,6 +44,45 @@ public final class ThemeSkinPackFactory {
         queue.performTask(underpinPack, observer);
     }
 
+    /**
+     * 加载插件皮肤包
+     * @param packageContext 插件context
+     * @param observer 创建结果回调观察者
+     * @param pathList 插件皮肤包路径
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static void loadPluginThemeSkinPack(@NonNull Context packageContext, ILoadThemeSkinObserver observer, List<String> pathList) {
+        PluginDefaultThemePack defaultPack = generateDefaultPack(packageContext);
+        //Our project always > 24
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            LoadThemeSkinQueue24 queue = new LoadThemeSkinQueue24(packageContext);
+            if (null == pathList || pathList.isEmpty()) {
+                observer.onLoadCompleted(defaultPack);
+                return;
+            }
+            queue.addTask(defaultPack);
+            BaseThemeSkinPack underpinPack = defaultPack;
+            for (String path : pathList) {
+                //生成插件主题包, 如果主题包找不到资源,则使用默认主题包里面的资源, 所以必须传入defaultPack
+                underpinPack = new PluginThemeSkinPack(path, defaultPack, packageContext.getPackageName());
+                queue.addTask(underpinPack);
+            }
+            queue.performTask(underpinPack, observer);
+        }
+    }
+
+    /**
+     * 生成插件默认主题包
+     * 默认主题: 插件apk自身的主题资源,非主题包的资源
+     * @param context 插件context
+     * @return 主题包
+     */
+    private static PluginDefaultThemePack generateDefaultPack(Context context) {
+        PluginDefaultThemePack defaultPack = new PluginDefaultThemePack(context.getPackageName());
+        defaultPack.onReady(new DefaultSkinResourcesProvider(context));
+        return defaultPack;
+    }
+
     private static void initDefaultPack(Context context) {
         if (DEFAULT_PACK.isAvailable()) {
             return;
