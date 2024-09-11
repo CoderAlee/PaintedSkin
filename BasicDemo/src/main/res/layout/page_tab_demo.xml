@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CommonBg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_signal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicator="@drawable/layer_tab_indicator"
+        app:tabIndicatorColor="@color/text_error"
+        app:tabRippleColor="@color/transparent"
+        app:tabSelectedTextColor="@color/text_correct"
+        app:tabTextAppearance="@style/text.Body1.Bold"
+        app:tabTextColor="@color/text_prompt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@
     <string name="main_btn_skin_enable">在XML中标记不支持换肤的View Demo</string>
     <string name="main_btn_festive_skin">节日皮肤 Demo</string>
     <string name="main_btn_dialog">Dialog Demo</string>
+    <string name="main_btn_tab">Tab Demo</string>
     <string name="main_btn_process">Process Demo</string>
     <string name="switch_skin">换肤</string>
     <string name="list_demo_recycler_item_nam">名称----%1$s</string>
