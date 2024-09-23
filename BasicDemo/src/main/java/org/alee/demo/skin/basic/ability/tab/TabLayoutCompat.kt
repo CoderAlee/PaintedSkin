@@ -44,14 +44,22 @@ private class TabLayoutSkinExecutor(
             TabLayoutSkinExecutorBuilder.ATTRIBUTE_TAB_INDICATOR_COLOR -> applyColor(view, colorStateList.defaultColor, attrName)
             TabLayoutSkinExecutorBuilder.ATTRIBUTE_TAB_SELECTED_TEXT_COLOR -> {
                 // 从TabTextColors中获取原本设置的未选中的颜色
-                val originalTabTextColor = view.tabTextColors?.getColorForState(intArrayOf(1), colorStateList.defaultColor)
+                val originalTabTextColor =
+                    view.tabTextColors?.getColorForState(
+                        intArrayOf(android.R.attr.state_empty),
+                        colorStateList.defaultColor,
+                    )
                 // 这里需要将未选中颜色与要换肤的选中色一起设置
                 view.setTabTextColors(originalTabTextColor ?: colorStateList.defaultColor, colorStateList.defaultColor)
             }
 
             TabLayoutSkinExecutorBuilder.ATTRIBUTE_TAB_TEXT_COLOR -> {
                 // 同上
-                val originalTabSelectedTextColor = view.tabTextColors?.getColorForState(intArrayOf(0), colorStateList.defaultColor)
+                val originalTabSelectedTextColor =
+                    view.tabTextColors?.getColorForState(
+                        intArrayOf(android.R.attr.state_selected),
+                        colorStateList.defaultColor,
+                    )
                 view.setTabTextColors(colorStateList.defaultColor, originalTabSelectedTextColor ?: colorStateList.defaultColor)
             }
         }
